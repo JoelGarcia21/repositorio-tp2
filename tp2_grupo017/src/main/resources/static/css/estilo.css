@@ -1,0 +1,158 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+header {
+	background: #0080802e;
+	padding: 5px 0px;
+}
+
+.imagen {
+	height: 180px;
+	width: 20%;
+	mix-blend-mode: color-burn;
+
+	background-position: left;
+}
+
+.titulo {
+
+	color: black;
+	line-height: 60px;
+	width: 50%;
+	display: inline;
+	font-size: 54px;
+	font-family: monospace;
+	font-style: italic;
+	background-position: center;
+
+}
+
+
+
+
+nav {
+	background:  #00b3b3;
+	padding: 5px 0px;
+	font-size: 20px;
+
+}
+
+.lista li {
+	display: inline-block;
+	
+	width: 16.3%;
+	outline: none;
+	text-align: center;
+	line-height: 3;
+	
+
+
+}
+
+.lista li a {
+	padding: 0px 10px;
+	color:black;
+	text-decoration: none;
+
+}
+
+.lista li:hover {
+	
+	background: white;
+
+}
+
+
+
+
+.content-aside {
+	width: 30%;
+	text-decoration: none;
+	background:#ccffff;
+	text-align: center;
+padding: 25px 20px;
+
+}
+
+.content-aside li {
+	list-style: none;
+	text-decoration: overline;
+}
+
+.contactenos {
+	width: 70%;
+	background-color:#e6ffff;
+	outline-style: auto;
+    padding: 25px 20px;
+}
+
+
+
+form {
+	text-align: center;
+	height: 700px;
+
+
+}
+
+form div {
+	text-align: center;
+	mix-blend-mode: multiply;
+	font-weight: bold;
+	padding: 20px;
+
+
+}
+
+.boton {
+	mix-blend-mode: multiply;
+	font-weight: bold;
+
+}
+
+form h3 {
+	font-weight: 30px;
+}
+
+form p {
+	padding: 10px 45px;
+}
+
+.listaRedes {
+
+	text-decoration: none;
+	padding: 10px 45px;
+}
+
+.listaRedes li {
+	display: inline-block;
+	padding: 15px;
+}
+
+footer {
+	background-color: #85A596;
+	display: block;
+	padding: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.classefooter {
+	background-color:  #003333;
+	font-style: italic;
+	color: white;
+
+}
+
+#container-mid {
+	display: flex;
+}
+
+#inicio{
+	
+padding: 25px 20px;
+}
