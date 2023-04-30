@@ -72,7 +72,7 @@ nav {
 	text-decoration: none;
 	background:#ccffff;
 	text-align: center;
-padding: 25px 20px;
+	padding: 25px 20px;
 
 }
 
@@ -155,4 +155,33 @@ footer {
 #inicio{
 	
 padding: 25px 20px;
+}
+
+#container-principal{
+	display: flex;
+
+}
+
+.principal{
+	width: 70%;
+	background-color:#e6ffff;
+	outline-style: auto;
+	padding: 25px 20px;
+	height: 600px;
+	font-size: 18px;
+	text-align: center;
+}
+
+
+.content-aside2{
+	width: 30%;
+	text-decoration: none;
+	background:#ccffff;
+	text-align: center;
+	padding: 25px 20px;
+}
+
+.content-aside2 li {
+	list-style: none;
+	text-decoration: overline;
 }
