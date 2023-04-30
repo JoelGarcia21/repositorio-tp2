@@ -185,3 +185,33 @@ padding: 25px 20px;
 	list-style: none;
 	text-decoration: overline;
 }
+
+.productos{
+	background-color:#e6ffff;
+}
+.productos ul li{
+	margin-top:30px; 
+	text-align: center;
+	display: inline-block;
+	width: 400px;
+	height: 450px;
+	vertical-align: middle;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	margin-left: 35px;
+	background-color: #FEFAE0;
+	border: 1px solid black;
+}
+
+.productos ul li img{
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.productos h2{
+	font-size: 45px;
+	text-align: center;
+}
+
+
