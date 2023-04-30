@@ -1,3 +1,6 @@
+/* importar tipo de fuente para header */
+@import url('https://fonts.googleapis.com/css2?family=Sigmar&display=swap');
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -18,15 +21,15 @@ header {
 
 .titulo {
 
-	color: black;
+	color:#304c78;
 	line-height: 60px;
 	width: 50%;
 	display: inline;
 	font-size: 54px;
-	font-family: monospace;
-	font-style: italic;
+	font-family: 'Sigmar', sans-serif;
+	/* font-style: italic; */
 	background-position: center;
-
+	text-shadow: 5px 4px 6px #60838A;
 }
 
 
@@ -244,4 +247,53 @@ padding: 25px 20px;
 .consejos aside {
 	display: flex;
 	width: 30%;
+}
+
+
+
+
+/* diseño de página de paseos */
+.contenido {
+	width: 70%;
+	background-color:#e6ffff;
+	outline-style: hidden;
+    padding: 25px 20px;
+}
+
+.contenedor-paseos h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #123;
+	padding: 10px;
+	text-align: center;
+}
+
+table {
+	background: rgb(224,226,237);
+	color: #123;
+    font-size: 14px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th {
+    background: rgba(69, 86, 238, 0.801);
+	color: #e6ffff;
+	padding: 20px 15px ;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 14px;
+	font-family: sans-serif;
+	border: solid 1px rgba(12, 0, 0, 0.2);
+}
+
+tr {
+    cursor: pointer;
+}
+
+tr:hover {
+    background: rgba(69, 86, 238, 0.801);
+	color: #e6ffff;
 }
