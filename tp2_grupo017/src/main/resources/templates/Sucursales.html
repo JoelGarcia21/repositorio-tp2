@@ -1,66 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-	<meta charset="UTF-8">
-	<meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sucursales</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sucursales</title>
+		<link rel="stylesheet" href="../static/css/estilo.css">
+	</head>
 
-	<header id=inicio>
-		<h1>Tienda de mascotas pata de Oro</h1>
-		<img src="../static/images/logoT.jpg" alt="Logo de tienda" title="Un logo con un perro y gato">
-	</header>
+	
 	
 <body>
-	<h1>Visite nuestras tiendas</h1>
-	<p> Les invitamos a visitar nuestros locales ubicados en los distintos barrios</p>
-	<p> de la ciudad de San Salvador de Jujuy </p>
-	<img src="../static/images/tienda.png" alt="Minuatura de tienda" title="Un logo de una tienda png" width="100" height="100">
-	<section>
-            <h2>Sucursales Pata de Oro</h2>
-            <table border="1">            
-                <tr>
-                    <th>Sucursales</th>
-                    <th>Horario de Atención</th>
-                    <th>Dirección</th>
-                </tr>
-                
-                <tr>
-                    <th>Alto Comedero</th>
-                    <td>09:00hs - 20:00hs Lunes - Viernes <br> 09:00hs - 14:00hs Sábados <br> Cerrado Domingos y Feriados</td>
-                    <td>Comandante de la Colina 1444</td>
+	<header id=inicio>
+			<img src="../static/images/logoT.jpg" alt="Logo de tienda" title="Un logo con un perro y gato" class="imagen">
+			<h1 class="titulo">Tienda de mascotas pata de Oro</h1>
+		</header>
+	<nav>
+            <ul class="lista">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="creacion_de_productos.html">Productos</a></li>
+                <li><a href="creacion_consejos_de_salud.html">Consejos de salud</a></li>
+                <li><a href="servicios_paseos.html">Servicio de paseo</a></li>
+                <li><a href="Sucursales.html">Sucursales</a></li>
+                <li><a href="contactenos.html">Contactenos</a></li>
+            </ul>
+        </nav>
+        
+    <div id="container-mid">
+    	<section class="sucursal">
+    	<div class="form-sucursales">
 
-                </tr>
-                <tr>
-                    <th>Almirante Brown</th>
-                    <td>09:00hs - 21:00hs Lunes - Viernes <br> 09:00hs - 16:00hs Sábados <br> Cerrado Domingos y Feriados</td>
-                    <td>Islas Malvinas 55</td>
+			<h1>Visite nuestras tiendas</h1>
 
-                </tr>
-                <tr>
-                    <th>Centro</th>
-                    <td>09:00hs - 21:00hs Lunes - Viernes <br> 09:00hs - 20:00hs Sábados <br> Cerrado Domingos y Feriados</td>
-                    <td>Benito Bárcena 680</td>
-
-                </tr> 
-                <tr>
-                    <th>Coronel Arias</th>
-                    <td>09:00hs - 20:00hs Lunes - Viernes <br> 09:00hs - 18:00hs Sábados <br> Cerrado Domingos y Feriados</td>
-                    <td>Triunvirato 950</td>
-
-                </tr>            
-
-            </table>
-            <br>
-            <div>
-                <a href="index.html">Volver >> </a>
-            </div>        
-        </section>
-    <footer>
-		<p>Copyright 2023 - Tienda de mascotas pata de Oro - Diseñado por Grupo 17 - Jujuy - República Argentina</p>
-	</footer>
-</body>
-</html>
+			<p> Les invitamos a visitar nuestros locales ubicados en los distintos barrios</p>
+			<p> de la ciudad de San Salvador de Jujuy </p>
+		<img src="../static/images/tienda.png" alt="Minuatura de tienda" title="Un logo de una tienda png" width="100" height="100">
+					<div class="sucursal-tabla">
+		            <table border="1">            
+		                <tr>
+		                    <th>Sucursales</th>
+		                    <th>Horario de Atención</th>
+		                    <th>Dirección</th>
+		                </tr>
+		                
+		                <tr>
+		                    <th>Alto Comedero</th>
+		                    <td>09:00hs - 20:00hs Lunes - Viernes <br> 09:00hs - 14:00hs Sábados <br> Cerrado Domingos y Feriados</td>
+		                    <td>Comandante de la Colina 1444</td>
+		
+		                </tr>
+		                <tr>
+		                    <th>Almirante Brown</th>
+		                    <td>09:00hs - 21:00hs Lunes - Viernes <br> 09:00hs - 16:00hs Sábados <br> Cerrado Domingos y Feriados</td>
+		                    <td>Islas Malvinas 55</td>
+		
+		                </tr>
+		                <tr>
+		                    <th>Centro</th>
+		                    <td>09:00hs - 21:00hs Lunes - Viernes <br> 09:00hs - 20:00hs Sábados <br> Cerrado Domingos y Feriados</td>
+		                    <td>Benito Bárcena 680</td>
+		
+		                </tr> 
+		                <tr>
+		                    <th>Coronel Arias</th>
+		                    <td>09:00hs - 20:00hs Lunes - Viernes <br> 09:00hs - 18:00hs Sábados <br> Cerrado Domingos y Feriados</td>
+		                    <td>Triunvirato 950</td>
+		
+		                </tr>            
+		
+		            </table>
+		            
+		            </div>
+		</div>
+		</section>            
+			<aside class="content-aside">
+						<h3>Tambien le puede interesar: </h3>
+						<ul>
+							<li><a href="https://www.royalcanin.es/articulos/alimentacion-y-nutricion-para-perros-y-gatos" target="_blank">Dieta equilibrada para mascotas.</a></li>
+							<li><a href="https://essentialspetcare.com/es/what-vaccines-do-dogs-need-yearly/" target="_blank">Vacunas para mascotas.</a></li>
+							<li><a href="https://www.rover.com/es/blog/guia-para-hacer-ejercicio-con-tu-perro-en-casa/" target="_blank">Ejercicio para mascotas.</a></li>
+							<li><a href="https://www.purina-latam.com/mx/purina/nota/perros/higiene-en-mascotas" target="_blank">Higiene para mascotas.</a></li>
+							<li><a href="https://www.fda.gov/animal-veterinary/animal-health-literacy/articulos-potencialmente-peligrosos-para-su-mascota" target="_blank">Productos tóxicos para mascotas.</a></li>
+						</ul>
+			</aside>
+		            
+		            <br>
+	  </div>
+	    <footer>
+			<p>Copyright 2023 - Tienda de mascotas pata de Oro - Diseñado por Grupo 17 - Jujuy - República Argentina</p>
+		</footer>
+	</body>
+	</html>
