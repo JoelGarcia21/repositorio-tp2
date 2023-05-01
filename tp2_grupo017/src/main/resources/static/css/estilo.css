@@ -182,7 +182,7 @@ padding: 25px 20px;
 }
 
 
-.content-aside{
+.content-aside2{
 	width: 30%;
 	display:lineonblock;
 	text-decoration: none;
@@ -191,7 +191,7 @@ padding: 25px 20px;
 	padding: 25px 20px;
 }
 
-.content-aside li {
+.content-aside2 li {
 	list-style: none;
 	text-decoration: overline;
 }
