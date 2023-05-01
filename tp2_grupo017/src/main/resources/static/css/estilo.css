@@ -78,11 +78,19 @@ nav {
 	padding: 25px 20px;
 
 }
+.content-aside2 {
+	width: 60%;
+	text-decoration: none;
+	background:#ccffff;
+	text-align: center;
+	padding: 25px 20px;
 
+}
 .content-aside li {
 	list-style: none;
 	text-decoration: overline;
 }
+
 
 .contactenos {
 	width: 70%;
@@ -95,8 +103,7 @@ nav {
 
 form {
 	text-align: center;
-	height: 700px;
-
+	height: 600px;
 
 }
 
@@ -112,7 +119,6 @@ form div {
 .boton {
 	mix-blend-mode: multiply;
 	font-weight: bold;
-
 }
 
 form h3 {
@@ -297,3 +303,21 @@ tr:hover {
     background: rgba(69, 86, 238, 0.801);
 	color: #e6ffff;
 }
+
+.sucursal {
+	width: 70%;
+	background-color: white;
+	outline-style: hidden;
+    padding: 25px 20px;
+}
+ .sucursal-tabla {
+ 	background-color: white;
+ 	margin-left: 20%;
+  	margin-top: 0%;
+  	padding: 20px;
+  	width: 70%;
+ }
+ .form-sucursales {
+ 	text-align: center;
+	height: 600px;
+ }
