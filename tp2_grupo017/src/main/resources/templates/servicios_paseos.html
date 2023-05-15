@@ -1,31 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Servicios de paseos</title>
-
-        <!-- fuentes para titulo -->
-        <!-- <link href="https://fonts.googleapis.com/css2?family=Sigmar&display=swap" rel="stylesheet"> -->
-        <link rel="stylesheet" href="../static/css/estilo.css">
+        <title th:text="${titulo}"></title>   
+        <link rel="stylesheet" th:href="@{/css/estilo.css}">
     </head>
+    
 
     <body>
-        <header id=inicio>
-			<img src="../static/images/logoT.jpg" alt="Logo de tienda" title="Un logo con un perro y gato" class="imagen">
-			<h1 class="titulo">Tienda de mascotas pata de Oro</h1>
+        <header th:replace="~{layouts/header::header}" id=inicio>
+			
 		</header>
-        <nav>
-            <ul class="lista">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="creacion_de_productos.html">Productos</a></li>
-                <li><a href="creacion_consejos_de_salud.html">Consejos de salud</a></li>
-                <li><a href="servicios_paseos.html">Servicio de paseo</a></li>
-                <li><a href="Sucursales.html">Sucursales</a></li>
-                <li><a href="contactenos.html">Contactenos</a></li>
-            </ul>
+        <nav th:replace="~{layouts/nav::nav}">
+            
         </nav>
         <div id="container-mid">
             <section class="contenido">
@@ -65,28 +55,10 @@
                 </div>
                 <br>                
             </section>
-            <aside class="content-aside">
-                <div>
-                    <h3>Tambien le puede interesar: </h3>
-                    <ul>
-                        <li><a href="https://www.royalcanin.es/articulos/alimentacion-y-nutricion-para-perros-y-gatos"
-                                target="_blank">Dieta equilibrada para mascotas.</a></li>
-                        <li><a href="https://essentialspetcare.com/es/what-vaccines-do-dogs-need-yearly/"
-                                target="_blank">Vacunas para mascotas.</a></li>
-                        <li><a href="https://www.rover.com/es/blog/guia-para-hacer-ejercicio-con-tu-perro-en-casa/"
-                                target="_blank">Ejercicio para mascotas.</a></li>
-                        <li><a href="https://www.purina-latam.com/mx/purina/nota/perros/higiene-en-mascotas"
-                                target="_blank">Higiene para mascotas.</a></li>
-                        <li><a href="https://www.fda.gov/animal-veterinary/animal-health-literacy/articulos-potencialmente-peligrosos-para-su-mascota"
-                                target="_blank">Productos tóxicos para mascotas.</a></li>
-                    </ul>
-    
-                </div>
+            <aside th:replace="~{layouts/aside::aside}">                
             </aside>
-
         </div>
-        <footer class="classefooter">
-			<p>Copyright 2023 - Tienda de mascotas pata de Oro - Diseñado por Grupo 17 - Jujuy - República Argentina</p>
+        <footer th:replace="~{layouts/footer::footer}">			
 		</footer>
 
     </body>
