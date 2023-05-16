@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title th:text="${titulo}"></title>   
-        <link rel="stylesheet" th:href="@{/css/estilo.css}">
-    </head>
-    
 
-    <body>
-        <header th:replace="~{layouts/header::header}" id=inicio>
-			
-		</header>
-        <nav th:replace="~{layouts/nav::nav}">
-            
-        </nav>
-        <div id="container-mid">
-            <section class="contenido">
-                <div class="contenedor-paseos">
-                    <h2>Servicio de Paseos</h2>
-                    <table>            
-                        <tr>
-                            <th>Día</th>
-                            <th>Lunes</th>
-                            <th>Martes</th>
-                            <th>Miercoles</th>
-                            <th>Jueves</th>
-                            <th>Viernes</th>
-                            <th>Sábado</th>
-                        </tr>
-                        
-                        <tr>
-                            <th>Horario</th>
-                            <td>9 a 12 - 16 a 18</td>
-                            <td>9 a 12 - 16 a 18</td>
-                            <td>9 a 12 - 16 a 18</td>
-                            <td>9 a 12 - 16 a 18</td>
-                            <td>9 a 12 - 16 a 18</td>
-                            <td>9 a 12 - 16 a 18</td>
-                        </tr>
-                        <tr>
-                            <th>Paseador</th>
-                            <td>Juan Perez</td>
-                            <td>Lucas Díaz</td>
-                            <td>Juan Perez</td>
-                            <td>María Gomez</td>
-                            <td>Lucas Díaz</td>
-                            <td>Roberto Vazquez</td>
-                        </tr>            
-        
-                    </table>
-                </div>
-                <br>                
-            </section>
-            <aside th:replace="~{layouts/aside::aside}">                
-            </aside>
-        </div>
-        <footer th:replace="~{layouts/footer::footer}">			
-		</footer>
+<head th:replace="~{layouts/head::head}"></head>
 
-    </body>
+<body>
+    <header th:replace="~{layouts/header::header}" id=inicio>
+
+    </header>
+    <nav th:replace="~{layouts/nav::nav}">
+
+    </nav>
+    <div id="container-mid">
+        <section class="contenido">
+            <div class="contenedor-paseos">
+                <h2>Servicio de Paseos</h2>
+                <table>
+                    <tr>
+                        <th>Día</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miercoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                        <th>Sábado</th>
+                    </tr>
+
+                    <tr>
+                        <th>Horario</th>
+                        <td>9 a 12 - 16 a 18</td>
+                        <td>9 a 12 - 16 a 18</td>
+                        <td>9 a 12 - 16 a 18</td>
+                        <td>9 a 12 - 16 a 18</td>
+                        <td>9 a 12 - 16 a 18</td>
+                        <td>9 a 12 - 16 a 18</td>
+                    </tr>
+                    <tr>
+                        <th>Paseador</th>
+                        <td>Juan Perez</td>
+                        <td>Lucas Díaz</td>
+                        <td>Juan Perez</td>
+                        <td>María Gomez</td>
+                        <td>Lucas Díaz</td>
+                        <td>Roberto Vazquez</td>
+                    </tr>
+
+                </table>
+            </div>
+            <br>
+        </section>
+        <aside th:replace="~{layouts/aside::aside}">
+        </aside>
+    </div>
+    <footer th:replace="~{layouts/footer::footer}">
+    </footer>
+
+</body>
 
 </html>
