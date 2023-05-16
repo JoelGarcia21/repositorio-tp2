@@ -1,33 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="../static/css/estilo.css" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Consejos de salud</title>
-	</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head th:replace="~{layouts/head :: head}"></head>
 	<body>
-		<header id=inicio>
-			<img src="../static/images/logoT.jpg" alt="Logo de tienda" title="Un logo con un perro y gato" class="imagen">
-			<h1 class="titulo">Tienda de mascotas pata de Oro</h1>
-		</header>
-		
-		<nav>
-			<ul class="lista">
-				<li><a href="index.html">Inicio</a></li>
-				<li><a href="creacion_de_productos.html">Productos</a></li>
-				<li><a href="creacion_consejos_de_salud.html">Consejos de salud</a></li>
-				<li><a href="servicios_paseos.html">Servicio de paseo</a></li>
-				<li><a href="Sucursales.html">Sucursales</a></li>
-				<li><a href="contactenos.html">Contactenos</a></li>
-			</ul>
-		</nav>
-		
-		<div id="container-mid">
+		<header th:replace="~{layouts/header :: header}"></header>
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<div id=container-mid>
 			<section class="consejos">
 				<h3>Consejos de salud para cuidar a tu mascota:</h3>
-					<ol>
+					<ul>
 						<li>Mantén a tu mascota al día con sus vacunas: Es importante que tu mascota esté al día con sus vacunas para protegerla contra enfermedades peligrosas. Consulta con tu veterinario para determinar qué vacunas son necesarias para tu mascota.</li>
 						<li>Dale una dieta equilibrada: Una dieta equilibrada es esencial para la salud de tu mascota. Asegúrate de proporcionarle una alimentación adecuada y evitar darle alimentos que no sean adecuados para su especie.</li>
 						<li>Ejercicio regular: Al igual que los humanos, los animales necesitan hacer ejercicio regularmente para mantenerse en forma y saludables. Asegúrate de proporcionarle a tu mascota suficiente actividad física diaria.</li>
@@ -36,22 +16,10 @@
 						<li>Monitorea su salud dental: La salud dental es importante para la salud general de tu mascota. Asegúrate de cepillarle los dientes regularmente y proporcionarle juguetes adecuados para ayudar a mantener sus dientes limpios y sanos.</li>
 						<li>Presta atención a su comportamiento: Tu mascota no puede decirte cuándo algo no está bien, por lo que es importante prestar atención a su comportamiento y detectar cualquier cambio que pueda indicar un problema de salud. Si notas algún cambio en el comportamiento de tu mascota, consulta a tu veterinario.</li>
 						<li>Proporciona un ambiente seguro: Mantén a tu mascota en un ambiente seguro y protegido, lejos de peligros potenciales como calles transitadas, cuerpos de agua y productos químicos peligrosos.</li>
-					</ol>
-			</section>	
-					<aside class="content-aside2">
-							<h3>Tambien le puede interesar: </h3>
-							<ul>
-								<li><a href="https://www.royalcanin.es/articulos/alimentacion-y-nutricion-para-perros-y-gatos" target="_blank">Dieta equilibrada para mascotas.</a></li>
-								<li><a href="https://essentialspetcare.com/es/what-vaccines-do-dogs-need-yearly/" target="_blank">Vacunas para mascotas.</a></li>
-								<li><a href="https://www.rover.com/es/blog/guia-para-hacer-ejercicio-con-tu-perro-en-casa/" target="_blank">Ejercicio para mascotas.</a></li>
-								<li><a href="https://www.purina-latam.com/mx/purina/nota/perros/higiene-en-mascotas" target="_blank">Higiene para mascotas.</a></li>
-								<li><a href="https://www.fda.gov/animal-veterinary/animal-health-literacy/articulos-potencialmente-peligrosos-para-su-mascota" target="_blank">Productos tóxicos para mascotas.</a></li>
-							</ul>
-					</aside>
-				<br>
+					</ul>
+			</section>
+			<aside th:replace="~{layouts/aside :: aside}"></aside>	
 		</div>
-		<footer class="classefooter">
-			<p>Copyright 2023 - Tienda de mascotas pata de Oro - Diseñado por Grupo 17 - Jujuy - República Argentina</p>
-		</footer>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>
