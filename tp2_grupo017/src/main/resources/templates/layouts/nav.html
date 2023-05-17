@@ -11,7 +11,12 @@
             <li><a th:href="@{/}">Inicio</a></li>
             <li><a th:href="@{/productos}">Productos</a></li>
             <li><a th:href="@{/consejos}">Consejos de salud</a></li>
-            <li><a th:href="@{/paseos}">Servicio de paseo</a></li>
+            <li><a href="#">Servicio de paseo</a>
+                <ul>
+                    <li><a th:href="@{/paseos}">Horarios</a></li>
+                    <li><a th:href="@{/paseos/paseadores}">Paseadores</a></li>
+                </ul>
+            </li>
             <li><a th:href="@{/sucursales}">Sucursales</a></li>
             <li><a th:href="@{/contactenos}">Contactenos</a></li>
         </ul>
