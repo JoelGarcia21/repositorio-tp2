@@ -12,7 +12,7 @@
                     <h2>Listado de Paseadores</h2>
                     <a th:href="@{/paseos/paseadores/nuevo}">Agregar</a>                    
                 </div>
-                <table>
+                <table class="tabla-paseadores">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -23,6 +23,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr th:each="paseador : ${listado}">
+                            <td th:text="${paseador.id}"></td>
+                            <td th:text="${paseador.apellido}"></td>
+                            <td th:text="${paseador.nombres}"></td>
+                            <td th:text="${paseador.horario}"></td>
+                            <td><a th:href="@{/paseos/paseadores/editar/}+${paseador.id}">Editar</a>    <a th:href="@{/paseos/paseadores/eliminar/}+${paseador.id}">Eliminar</a></td>
+
+                        </tr>
     
                     </tbody>
                 </table>
