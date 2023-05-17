@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{layouts/head::head}"></head>
+<body>
+    <header th:replace="~{layouts/header::header}"></header>
+    <nav th:replace="~{layouts/nav::nav}"></nav>
+    <div id="container-mid">
+        <div class="contenido">
+            <div class="formulario">
+                <h2 th:text="${tituloFormulario}"></h2>
+                <form th:action="@{/paseos/paseadores/guardar}" th:object="${paseador}" method="post">
+                    <div>
+                        <input type="text" hidden="true" th:field="*{id}">
+                    </div>
+                    <div>
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" placeholder="Ingrese apellido" th:field="*{apellido}">
+                    </div>
+                    <div>
+                        <label for="nombre">Nombres:</label>
+                        <input type="text" id="nombre" placeholder="Ingrese nombres" th:field="*{nombres}">
+                    </div>
+
+                    <div>
+                        <label for="horario">Horario:</label>
+                        <input type="text" id="horario" placeholder="Ingrese horario" th:field="*{horario}">
+                    </div>
+
+                    <div>
+                        <button th:class="${nuevo} ? 'btn-nuevo':'btn-edit'" type="submit">
+                            <div th:switch="${nuevo}" th:class="contenido-boton">
+                                <p th:case="true" th:class="nuevo">Guardar</p>
+                                <p th:case="false" th:class="editar">Actualizar</p>
+                            </div>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <aside th:replace="~{layouts/aside::aside}"></aside>
+    </div>
+
+    <footer th:replace="~{layouts/footer::footer}"></footer>
+</body>
+</html>
