@@ -8,7 +8,7 @@
         <div class="contenido">
             <div class="formulario">
                 <h2 th:text="${tituloFormulario}"></h2>
-                <form th:action="@{/paseos/paseadores/guardar}" th:object="${paseador}" method="post">
+                <form th:action="${nuevo} ? @{/paseos/paseadores/guardar} : @{/paseos/paseadores/editar}" th:object="${paseador}" method="post">
                     <div>
                         <input type="text" hidden="true" th:field="*{id}">
                     </div>
@@ -27,11 +27,7 @@
                     </div>
 
                     <div>
-                        <button th:class="${nuevo} ? 'btn-nuevo':'btn-edit'" type="submit">
-                            <div th:switch="${nuevo}" th:class="contenido-boton">
-                                <p th:case="true" th:class="nuevo">Guardar</p>
-                                <p th:case="false" th:class="editar">Actualizar</p>
-                            </div>
+                        <button th:class="${nuevo} ? 'btn-nuevo':'btn-edit'" type="submit" th:text="${textoBoton}">                            
                         </button>
                     </div>
 

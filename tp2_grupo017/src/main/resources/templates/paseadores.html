@@ -9,8 +9,12 @@
         <div class="contenido">
             <div class="contenedor-paseos">
                 <div class="titulo-seccion">
-                    <h2>Listado de Paseadores</h2>
-                    <a th:href="@{/paseos/paseadores/nuevo}">Agregar</a>                    
+                    <div class="titulo-tabla">
+                        <h2>Listado de Paseadores</h2>
+                    </div>
+                    <div class="btn-agregar">
+                        <a th:href="@{/paseos/paseadores/nuevo}">Agregar</a>
+                    </div>
                 </div>
                 <table class="tabla-paseadores">
                     <thead>
