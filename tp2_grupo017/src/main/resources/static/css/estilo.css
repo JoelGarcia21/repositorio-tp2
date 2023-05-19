@@ -325,3 +325,104 @@ tr:hover {
  	text-align: center;
 	height: 600px;
  }
+
+
+/* submenú servicios de paseos */
+
+.lista ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left:0;
+	background: white;
+	color: #010101;
+	padding: 0;	
+}
+
+/* item menu desplegable */
+.lista ul li {
+	float: none;
+	width: 10rem;
+	margin: 0;
+	padding: 0% 13.6%;
+}
+
+.lista li {
+	position: relative;
+}
+
+.lista li:hover > ul {
+	display: block;	
+}
+
+
+.lista li ul li:hover {
+	background-color: #00b3b3;	
+}
+
+.titulo-seccion {
+	display: flex;
+	padding: 1rem 2rem;
+}
+
+
+
+.titulo-tabla h2 {
+	margin: 0 2rem;
+	color: #123;
+}
+
+.btn-agregar {	
+	margin: 0 1rem;
+	padding: 1rem;
+}
+
+.btn-agregar a {
+	background: #123;
+	color: #e6ffff;
+	padding: 1rem;
+	text-decoration: none;
+
+}
+
+.btn-agregar a:hover {
+	background: #85A596;
+}
+
+/* formulario paseo */
+.contenido-boton {
+	padding: 0;
+}
+
+/* tabla de paseadores  */
+.tabla-paseadores {
+	width: 90%;
+}
+
+/* boton de formulario paseador */
+.btn-nuevo {
+	background: #003333 ;
+	color: #ccffff;
+	padding: 1rem;
+}
+
+.btn-edit {
+	background: rgba(214, 90, 8, 0.918);
+	color: #123;
+	padding: 1rem;
+}
+
+.btn-nuevo:hover {
+	border-color: cornflowerblue;
+}
+
+.btn-edit:hover {
+	border-color: brown;
+}
+
+/* titulo de formulario de paseador */
+.formulario h2 {
+	text-align: center;
+	color: #123;
+	font-size: 2rem;
+}
