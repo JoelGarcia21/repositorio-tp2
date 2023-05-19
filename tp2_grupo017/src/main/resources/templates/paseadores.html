@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{layouts/head::head}"></head>
+<body>
+    <header th:replace="~{layouts/header::header}"></header>
+    <nav th:replace="~{layouts/nav::nav}"></nav>
+
+    <div id="container-mid">
+        <div class="contenido">
+            <div class="contenedor-paseos">
+                <div class="titulo-seccion">
+                    <div class="titulo-tabla">
+                        <h2>Listado de Paseadores</h2>
+                    </div>
+                    <div class="btn-agregar">
+                        <a th:href="@{/paseos/paseadores/nuevo}">Agregar</a>
+                    </div>
+                </div>
+                <table class="tabla-paseadores">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>Horario</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="paseador : ${listado}">
+                            <td th:text="${paseador.id}"></td>
+                            <td th:text="${paseador.apellido}"></td>
+                            <td th:text="${paseador.nombres}"></td>
+                            <td th:text="${paseador.horario}"></td>
+                            <td><a th:href="@{/paseos/paseadores/editar/}+${paseador.id}">Editar</a>    <a th:href="@{/paseos/paseadores/eliminar/}+${paseador.id}">Eliminar</a></td>
+
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <aside th:replace="~{layouts/aside::aside}"></aside>
+    </div>
+
+    <footer th:replace="~{layouts/footer::footer}"></footer>
+</body>
+</html>
