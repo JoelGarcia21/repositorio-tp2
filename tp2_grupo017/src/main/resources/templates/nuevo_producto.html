@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head th:replace="~{layouts/head::head}"></head>
+	<body>
+	<header th:replace="~{layouts/header::header}"></header>
+    <nav th:replace="~{layouts/nav::nav}"></nav>
+	<div id="container-mid">	
+      <section class="contactenos">
+
+		<h3  >nuevo producto</h3>
+		
+		
+		
+		<form th:action="${edicion}?@{/producto/editar/}+${indice}:@{/producto/guardar}" th:object="${producto}" method="post">
+			<div>
+			    <label>nombre del producto:</label>
+			   <input type="text" th:field="*{nombre}"/> 
+			</div>
+			<div>
+				
+				<label>codigo:</label>
+			<input type="number" th:field="*{codigo}"/> 
+			</div>
+			<div>
+				
+				<label>precio:</label>
+			<input type="number" th:field="*{precio}"/> <br>
+			</div>
+			<div>
+				<label>categoria:</label>
+			<input type="text" th:field="*{categoria}"/> <br>
+				
+			</div>
+			<div>
+				<label>descuento:</label>
+			<input type="number" th:field="*{descuento}" min="1"  max="50"/> <br>
+				
+			</div>
+			
+			
+			
+			
+			<input type="submit" value="guardar"/>
+		</form>
+		
+		
+		<p th:if="${error}" th:text="${error}"></p>
+	 </section>
+		 <aside th:replace="~{layouts/aside::aside}"></aside>
+	</div>
+		 
+		<footer th:replace="~{layouts/footer::footer}"> </footer>
+    
+	</body>
+</html>

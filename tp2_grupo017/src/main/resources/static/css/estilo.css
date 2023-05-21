@@ -426,3 +426,69 @@ tr:hover {
 	color: #123;
 	font-size: 2rem;
 }
+
+
+.btn-add{
+	position: fixed;
+	width: 55px;
+	height: 55px;
+	bottom: 30px;
+	right: 35px;
+	background: #00b3b3;
+	color: #fff;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+	z-index: 100;
+}
+.btn-add img{
+height: 100%;	
+}
+.btn-add :hover{
+	background: rgb(255, 255, 255);
+	border-radius: 50px;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 100;
+}
+
+.btn-add:hover .tooltiptext {
+  visibility: visible;
+}
+.btn-acciones a:hover .tooltiptext {
+  visibility: visible;
+}
+.lista-producto{
+	overflow: hidden;
+}
+.lista-producto img{
+	height: 50%;
+}
+.content-producto-detalle{
+	display: flex;
+	justify-content: center;
+}
+.btn-acciones{
+	position: relative;
+		display: flex;
+	    justify-content: space-around;
+}
+
+
+.btn-acciones img{
+height: 25px;	
+}
