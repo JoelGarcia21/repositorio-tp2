@@ -7,7 +7,7 @@
 	<div id="container-mid">	
       <section class="contactenos">
 
-		<h3  >nuevo producto</h3>
+		<h3 class="tituloh3"  th:text="${edicion}?'Modificar producto':'Nuevo producto' "></h3>
 		
 		
 		
@@ -40,7 +40,7 @@
 			
 			
 			
-			<input type="submit" value="guardar"/>
+			<button th:class="${edicion} ? 'btn-edit': 'btn-nuevo'" type="submit" value="guardar">guardar</button>
 		</form>
 		
 		
