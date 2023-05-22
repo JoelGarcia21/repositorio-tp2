@@ -2,11 +2,14 @@ package ar.edu.unju.fi.models;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Sucursal {
 		private String nombre;
 		private String direccion;
 		private String provincia;
-		private LocalDate fecha;
+		@DateTimeFormat(pattern = "yyyy-MM-dd")
+		private LocalDate fechaInicio;
 		private String email;
 		private String telefono;
 		
@@ -22,7 +25,7 @@ public class Sucursal {
 			this.nombre = nombre;
 			this.direccion = direccion;
 			this.provincia = provincia;
-			this.fecha = fecha;
+			this.fechaInicio = fecha;
 			this.email = email;
 			this.telefono = telefono;
 		}
@@ -47,11 +50,11 @@ public class Sucursal {
 		public void setProvincia(String provincia) {
 			this.provincia = provincia;
 		}
-		public LocalDate getFecha() {
-			return fecha;
+		public LocalDate getFechaInicio() {
+			return fechaInicio;
 		}
-		public void setFecha(LocalDate fecha) {
-			this.fecha = fecha;
+		public void setFechaInicio(LocalDate fecha) {
+			this.fechaInicio = fecha;
 		}
 		public String getEmail() {
 			return email;

@@ -59,7 +59,7 @@ public class SucursalesController {
 				//sucu = sucursal;
 				sucu.setDireccion(sucursal.getDireccion());
 				sucu.setEmail(sucursal.getEmail());
-				sucu.setFecha(sucursal.getFecha());
+				sucu.setFechaInicio(sucursal.getFechaInicio());
 				sucu.setProvincia(sucursal.getProvincia());
 				sucu.setTelefono(sucursal.getTelefono());
 			}
