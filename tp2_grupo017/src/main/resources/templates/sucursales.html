@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+	<head th:replace="~{/layouts/head :: head}"></head>
+
+<body>
+	<header th:replace="~{/layouts/header :: header}"></header>
+
+    <nav th:replace="~{/layouts/nav :: nav}"></nav>
+        
+    <div id="container-mid">
+    	<div class="sucursal">
+	    	<div class="form-sucursales">
+						<div class="sucursal-tabla">
+						<a th:href="@{/sucursal/nuevo}">Nueva Sucursal</a>
+			            <table border="1">            
+			              
+			                <tr>
+			                	<th>Nombre</th>
+			                	<th>Direccion</th>
+			                	<th>Ciudad</th>
+			                	<th>Fecha Inicio</th>
+			                	<th>Email</th>
+			                	<th>Telefono</th>
+			                	<th>Acciones</th>
+			                </tr>
+			                <tr th:each="sucu: ${sucursales}">
+			                	<td th:text="${sucu.nombre}"></td>
+			                	<td th:text="${sucu.direccion}"></td>
+			                	<td th:text="${sucu.provincia}"></td>
+			                	<td th:text="${#temporals.format(sucu.fechainicio,'dd/mm/yyyy)'}"></td>
+			                	<td th:text="${sucu.email}"></td>
+			                	<td th:text="${sucu.telefono}"></td>
+			                	<td>
+			                		<a th:href="@{/sucursal/modificar/}+${sucu.nombre}">Editar</a>
+			                		<a th:href="@{/sucursal/eliminar/}+${sucu.nombre}">Eliminar</a>
+			                	</td>
+			                </tr>
+			                
+			            </table>
+			            
+			           </div>
+			</div>
+		</div>            
+			<aside th:replace="~{/layouts/aside :: aside}" class="content-aside"></aside>
+		            
+	  </div>
+	    <footer th:replace="~{/layouts/footer :: footer}" class="classefooter"></footer>
+	</body>
+	</html>
+	<!--  -->
