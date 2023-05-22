@@ -23,7 +23,7 @@ ListaProductos manejaListas = new ListaProductos();
 		model.addAttribute( "lista",  manejaListas.getLista());
 		return "creacion_de_productos";
 	}		
-	
+
 	
 	@GetMapping("/nuevo")  
 	public String formularioIngreso(Model model) {  
@@ -56,7 +56,7 @@ ListaProductos manejaListas = new ListaProductos();
 		model.addAttribute( "lista",  manejaListas.getLista());
 		return "redirect:/producto/listado";
 		 
-				
+			
 	
 	} 
 	
