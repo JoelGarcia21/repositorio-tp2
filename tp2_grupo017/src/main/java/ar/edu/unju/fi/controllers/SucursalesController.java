@@ -17,25 +17,30 @@ import ar.edu.unju.fi.models.Sucursal;
 public class SucursalesController {
 	
 	ListaSucursal listaSucursales = new ListaSucursal();
+	String titulo;
 	
 	@GetMapping("/listado")
 	public String getListaSucursalesPage (Model model) {
 		model.addAttribute("sucursales", listaSucursales.getSucursales()); //Falta completar listaSucursales
+		this.titulo = "Sucursales";
+		model.addAttribute("titulo", this.titulo);
 		return "sucursales";
 	}
 
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
+		this.titulo = "Nueva Sucursal";
 		model.addAttribute("sucursal", new Sucursal());
 		model.addAttribute("edicion", edicion);
+		model.addAttribute("titulo", this.titulo);
 		return "nueva_sucursal";
 	}
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarSucursalPage(@ModelAttribute("sucursal") Sucursal sucursal) {
 		ModelAndView modelView = new ModelAndView("sucursales");
 		listaSucursales.getSucursales().add(sucursal);
-		modelView.addObject("sucursales", listaSucursales.getSucursales());
+		modelView.addObject("sucursales", listaSucursales.getSucursales());		
 		return modelView;
 	}
 	
@@ -43,12 +48,14 @@ public class SucursalesController {
 	public String getModificarSucursalPage(Model model, @PathVariable(value="nombre") String nombre) {
 		Sucursal sucursalEncontrada = new Sucursal();
 		boolean edicion=true;
+		this.titulo = "Editar Sucursal";
 		for(Sucursal sucu : listaSucursales.getSucursales()) {
 			sucursalEncontrada = sucu;
 			break;
 		}
 		model.addAttribute("sucursal", sucursalEncontrada);
 		model.addAttribute("edicion", edicion);
+		model.addAttribute("titulo", this.titulo);
 		return "nueva_sucursal";
 	}
 	

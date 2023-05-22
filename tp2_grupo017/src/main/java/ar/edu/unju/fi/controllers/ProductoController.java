@@ -15,21 +15,25 @@ import ar.edu.unju.fi.models.Producto;
 @RequestMapping("/producto")
 public class ProductoController {
 	
-ListaProductos manejaListas = new ListaProductos(); 
+	ListaProductos manejaListas = new ListaProductos(); 
+	String titulo;
 	
 	@GetMapping("/listado")  
 	public String producto(Model model) {  
-	
+		this.titulo = "Productos";
 		model.addAttribute( "lista",  manejaListas.getLista());
+		model.addAttribute("titulo", this.titulo);
 		return "creacion_de_productos";
 	}		
 
 	
 	@GetMapping("/nuevo")  
 	public String formularioIngreso(Model model) {  
-		Producto producto = new  Producto();   
+		Producto producto = new  Producto();
+		this.titulo = "Nuevo producto";
 		model.addAttribute("producto",  producto);
 		model.addAttribute("edicion",  false);
+		model.addAttribute("titulo", this.titulo);
 		return "nuevo_producto";//formulario
 	}
 	
@@ -45,9 +49,9 @@ ListaProductos manejaListas = new ListaProductos();
 		manejaListas.agregarProducro(producto);
 		//System.out.println(manejaListas.getLista().size());
 		
-		for (Producto prot : manejaListas.getLista()) {
-			//System.out.println(prot.toString());
-		}
+		// for (Producto prot : manejaListas.getLista()) {
+		 	//System.out.println(prot.toString());
+		// }
 		
 		//for (int i=0; i<=manejaListas.getLista().size()-1;i++) {
 			//manejaListas.getLista().get(i);
@@ -62,12 +66,14 @@ ListaProductos manejaListas = new ListaProductos();
 	
 	@GetMapping("/editar/{nombre}")
 	public String modificar(Model model , @PathVariable(value="nombre") String nombre ) {
+		this.titulo="Editar Producto";
 		Producto p =manejaListas.buscarProductoporNombre(nombre);
 		model.addAttribute("producto",p );
 		// en q lugar de la lista se encuentra el objeto a editar
 		int indice = manejaListas.getLista().indexOf(p);
 		model.addAttribute("edicion",  true);
 		model.addAttribute("indice",  indice);
+		model.addAttribute("titulo", this.titulo);
 		return "nuevo_producto";
 	}
 	

@@ -34,6 +34,7 @@ public class ServicioPaseosController {
         ModelAndView modelAndView = new ModelAndView("paseadores");
         this.titulo = "Paseadores";
         modelAndView.addObject("listado", this.paseadores.getListado());
+        modelAndView.addObject("titulo", this.titulo);
         return modelAndView;
     }
 
