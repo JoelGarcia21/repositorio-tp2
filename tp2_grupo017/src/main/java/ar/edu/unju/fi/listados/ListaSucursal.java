@@ -8,7 +8,7 @@ import ar.edu.unju.fi.models.*;
 
 public class ListaSucursal {
 	private List<Sucursal> sucursales;
-	
+
 	
 	public ListaSucursal() {
 		sucursales = new ArrayList<Sucursal>();
@@ -23,5 +23,5 @@ public class ListaSucursal {
 		this.sucursales = sucursales;
 	}
 }
-
+//
 
