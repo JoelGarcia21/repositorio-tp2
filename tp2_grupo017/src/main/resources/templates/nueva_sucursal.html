@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+	<head th:replace="~{layouts/head::head}"></head>
+	<body>
+		<header th:replace="~{/layouts/header :: header}"></header>
+		<nav th:replace="~{/layouts/nav :: nav}"></nav>
+		<div id="container">
+			
+			
+			<section id="content">
+				<h3 th:text="${edicion}?'Modificar Sucursal':'Nueva Sucursal'">Nueva Sucursal</h3><br>
+				<form th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+					<label for="nombre">Nombre</label>
+					<input type="text" id="nombre" name="sucursal_nombre" th:field="*{nombre}"><br><br>
+					<label for="direccion">Direccion</label>
+					<input type="text" id="direccion" name="sucursal_direccion" th:field="*{direccion}"><br><br>
+					<label for="provincia">Provincia</label>
+					<select id="provincia" name="sucursal_provincia" th:field="*{provincia}">
+						<option value="S.S. de Jujuy"></option>
+						<option value="Perico"></option>
+					</select>
+					<label for="fecha">Fecha de Inicio</label>
+					<input type="date" id="fecha" name="sucursal_fecha" th:field="*{fechaInicio}" th:value="*{fechaInicio}"><br><br>
+					<label for="email">Email</label>
+					<input type="text" id="email" name="sucursal_email" th:field="*{email}"><br><br>
+					<label for="telefono">Telefono</label>
+					<input type="text" id="telefono" name="sucursal_telefono" th:field="*{telefono}"><br><br>
+					<p><input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'"></p>
+				</form>
+				
+				<p th:if="${error}" th:text="${error}"></p>
+				
+			</section>
+			
+			<aside th:replace="~{layouts/aside::aside}"></aside>
+		
+		</div>
+		
+		<footer th:replace="~{layouts/footer::footer}"> </footer>
+		
+	</body>
+</html>
+<!--  -->
