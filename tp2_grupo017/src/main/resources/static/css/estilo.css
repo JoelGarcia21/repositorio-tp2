@@ -12,11 +12,18 @@ header {
 }
 
 .imagen {
-	height: 180px;
-	width: 20%;
+	/* height: 180px; */
+	/* width: 20%; */
 	mix-blend-mode: color-burn;
 
-	background-position: left;
+	/* background-position: left; */
+}
+
+/* clase agregada para centrar el titulo del encabezado  */
+.encabezado {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .titulo {
