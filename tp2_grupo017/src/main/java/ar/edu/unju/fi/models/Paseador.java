@@ -1,5 +1,8 @@
 package ar.edu.unju.fi.models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Paseador {
     private int id;
     private String apellido;

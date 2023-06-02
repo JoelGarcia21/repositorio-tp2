@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,9 +18,12 @@ public class ServicioPaseosController {
     private String titulo;
     private boolean nuevo;
     private String textoBoton;
+    
+    @Autowired
     private Paseador paseador;
     
-    private Paseadores paseadores = new Paseadores();
+    @Autowired
+    private Paseadores paseadores;
 
     @GetMapping("")
     public ModelAndView getServiciosPaseosPage(){
@@ -45,7 +49,7 @@ public class ServicioPaseosController {
         this.titulo = "Nuevo Paseador";
         this.nuevo = true;
         this.textoBoton = "Guardar";
-        this.paseador = new Paseador();
+        // this.paseador = new Paseador();
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
         modelAndView.addObject("paseador", this.paseador);
