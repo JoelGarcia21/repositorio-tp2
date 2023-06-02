@@ -63,7 +63,7 @@ nav {
 
 .lista li a {
 	padding: 0px 10px;
-	color:whitesmoke;
+	color:#110b0b;
 	text-decoration: none;
 
 }
@@ -72,19 +72,21 @@ nav {
 	
 	background: white;
 
+
 }
 
 
 
 
 .content-aside {
-	width: 30%;
+	/* width: 30%; */
 	text-decoration: none;
 	background:#ccffff;
 	text-align: center;
 	padding: 25px 20px;
 
 }
+
 .content-aside2 {
 	width: 60%;
 	text-decoration: none;
@@ -108,14 +110,14 @@ nav {
 
 
 
-form {
+/* form {
 	text-align: center;
 	height: 600px;
 
-}
+} */
 
 form div {
-	text-align: center;
+	/* text-align: center; */
 	mix-blend-mode: multiply;
 	font-weight: bold;
 	padding: 20px;
@@ -271,7 +273,7 @@ padding: 25px 20px;
 
 /* diseño de página de paseos */
 .contenido {
-	width: 70%;
+	/* width: 70%; */
 	background-color:#e6ffff;
 	outline-style: hidden;
     padding: 25px 20px;
@@ -292,28 +294,28 @@ table {
     border-collapse: collapse;
 }
 
-th {
+/* th {
     background: rgba(69, 86, 238, 0.801);
 	color: #e6ffff;
 	padding: 20px 15px ;
     font-weight: 700;
     text-transform: uppercase;
-}
+} */
 
-td {
+/* td {
     padding: 14px;
 	font-family: sans-serif;
 	border: solid 1px rgba(12, 0, 0, 0.2);
-}
+} */
 
-tr {
+/* tr {
     cursor: pointer;
 }
 
 tr:hover {
     background: rgba(69, 86, 238, 0.801);
 	color: #e6ffff;
-}
+} */
 
 .sucursal {
 	width: 70%;
@@ -373,6 +375,10 @@ tr:hover {
 }
 
 
+.titulo-tabla {
+	display: flex;
+	align-items: center;	
+}
 
 .titulo-tabla h2 {
 	margin: 0 2rem;
@@ -402,9 +408,9 @@ tr:hover {
 }
 
 /* tabla de paseadores  */
-.tabla-paseadores {
+/* .tabla-paseadores {
 	width: 90%;
-}
+} */
 
 /* boton de formulario paseador */
 .btn-nuevo {
@@ -434,6 +440,10 @@ tr:hover {
 	font-size: 2rem;
 }
 
+.formulario {	
+	border: solid 2px rgb(74, 149, 224);
+	border-radius: 1rem;
+}
 
 .btn-add{
 	position: fixed;

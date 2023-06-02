@@ -4,37 +4,43 @@
 <body>
     <header th:replace="~{layouts/header::header}"></header>
     <nav th:replace="~{layouts/nav::nav}"></nav>
-    <div id="container-mid">
-        <div class="contenido">
-            <div class="formulario">
-                <h2 th:text="${tituloFormulario}"></h2>
-                <form th:action="${nuevo} ? @{/paseos/paseadores/guardar} : @{/paseos/paseadores/editar}" th:object="${paseador}" method="post">
-                    <div>
-                        <input type="text" hidden="true" th:field="*{id}">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+                <div class="row justify-content-evenly"> 
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 formulario">
+                        <h2 th:text="${tituloFormulario}"></h2>
+                        <form th:action="${nuevo} ? @{/paseos/paseadores/guardar} : @{/paseos/paseadores/editar}" th:object="${paseador}" method="post">
+                            <div>
+                                <input type="text" hidden="true" th:field="*{id}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellido" class="form-label">Apellido:</label>
+                                <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" th:field="*{apellido}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombres:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombres" th:field="*{nombres}">
+                            </div>
+        
+                            <div class="mb-3">
+                                <label for="horario" class="form-label">Horario:</label>
+                                <input type="text" class="form-control" id="horario" placeholder="Ingrese horario" th:field="*{horario}">
+                            </div>
+        
+                            <div>
+                                <button th:class="${nuevo} ? 'btn btn-success':'btn btn-warning'" type="submit" th:text="${textoBoton}">                            
+                                </button>
+                            </div>
+        
+                        </form>
                     </div>
-                    <div>
-                        <label for="apellido">Apellido:</label>
-                        <input type="text" id="apellido" placeholder="Ingrese apellido" th:field="*{apellido}">
-                    </div>
-                    <div>
-                        <label for="nombre">Nombres:</label>
-                        <input type="text" id="nombre" placeholder="Ingrese nombres" th:field="*{nombres}">
-                    </div>
-
-                    <div>
-                        <label for="horario">Horario:</label>
-                        <input type="text" id="horario" placeholder="Ingrese horario" th:field="*{horario}">
-                    </div>
-
-                    <div>
-                        <button th:class="${nuevo} ? 'btn-nuevo':'btn-edit'" type="submit" th:text="${textoBoton}">                            
-                        </button>
-                    </div>
-
-                </form>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}"></aside>
             </div>
         </div>
-        <aside th:replace="~{layouts/aside::aside}"></aside>
     </div>
 
     <footer th:replace="~{layouts/footer::footer}"></footer>
