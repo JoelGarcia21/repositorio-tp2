@@ -79,11 +79,12 @@ nav {
 
 
 .content-aside {
-	/* width: 30%; */
+
 	text-decoration: none;
 	background:#ccffff;
 	text-align: center;
-	padding: 25px 20px;
+	    height: 100%;
+	
 
 }
 
@@ -110,33 +111,14 @@ nav {
 
 
 
-/* form {
-	text-align: center;
-	height: 600px;
 
-} */
-
-form div {
-	/* text-align: center; */
-	mix-blend-mode: multiply;
-	font-weight: bold;
-	padding: 20px;
-
-
-}
 
 .boton {
 	mix-blend-mode: multiply;
 	font-weight: bold;
 }
 
-form h3 {
-	font-weight: 30px;
-}
 
-form p {
-	padding: 10px 45px;
-}
 
 .listaRedes {
 
@@ -446,58 +428,35 @@ tr:hover {
 }
 
 .btn-add{
-	position: fixed;
-	width: 55px;
-	height: 55px;
-	bottom: 30px;
-	right: 35px;
-	background: #00b3b3;
-	color: #fff;
-	border-radius: 50px;
-	text-align: center;
-	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
-	z-index: 100;
+	    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 30px;
+    right: 35px;
+    /* background: #00b3b3; */
+    /* color: #fff; */
+    border-radius: 50px;
+    /* text-align: center; */
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    padding: 0px;
+    border: 0px;
+    display: flex;
 }
-.btn-add img{
-height: 100%;	
-}
-.btn-add :hover{
-	background: rgb(255, 255, 255);
-	border-radius: 50px;
-}
-
-.tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 100;
+.btn-add i{
+margin: auto;
+    font-size: 38px;	
 }
 
-.btn-add:hover .tooltiptext {
-  visibility: visible;
-}
-.btn-acciones a:hover .tooltiptext {
-  visibility: visible;
-}
 .lista-producto{
 	overflow: hidden;
 }
 .lista-producto img{
-	height: 50%;
+	height: 7%;
 }
 .content-producto-detalle{
 	display: flex;
-	justify-content: center;
+	justify-content: start;
 }
 .btn-acciones{
 	position: relative;
@@ -520,4 +479,14 @@ height: 25px;
 	color: rgb(0, 0, 0);
 	text-align: center;
 	padding:  40px;
+}
+.mi-card{
+	    height: 65vh;
+}
+
+.icon{
+	height: 25px;
+}
+.row section{
+	background-color:#e6ffff;
 }

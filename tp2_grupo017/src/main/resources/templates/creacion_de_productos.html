@@ -1,65 +1,97 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head th:replace="~{layouts/head::head}"></head>
 
-	<body>
-		 <header th:replace="~{layouts/header::header}"></header>
-			
+<head th:replace="~{layouts/head::head}">
+
+</head>
+
+<body>
+	<header th:replace="~{layouts/header::header}"></header>
+
 	<nav th:replace="~{layouts/nav::nav}"></nav>
-		
-		<section class="productos">
-			
-			<h2>Productos para mascotas</h2>
-			
-			<h3 class="titulo-sub"  th:text="${lista.size()}? '':'No hay productos cargados, puede agregar con el boton que esta abajo a la derecha'" ></h3>
-			
-			<a th:href="@{/producto/nuevo}" class="btn-add">
-				<img src="../images/boton-mas.png"/>
-				 <span class="tooltiptext">Nuevo Producto</span>
-			</a>
-			
-			<ul>
-				<li th:each="prod:${lista}" class="lista-producto">
-					
-					<h3 th:text="${prod.nombre}"></h3>
-						<p  th:text=" '$ ' + ${prod.calcularDescuento()} +' descuento de  %'+ ${prod.descuento}" ></p>
-					<div class="content-producto-detalle">
+
+
+
+	<section class="productos">
+
+		<h2>Productos para mascotas</h2>
+
+
+		<h3 class="titulo-sub"
+			th:text="${lista.size()}? '':'No hay productos cargados, puede agregar con el boton que esta abajo a la derecha'">
+		</h3>
+
+
+
+
+
+
+		<a th:href="@{/producto/nuevo}" class="btn-add btn btn-secondary" data-bs-toggle="tooltip"
+			data-bs-placement="top" data-bs-title="Nuevo Producto">
+			<i class="fa-solid fa-plus"></i>
+		</a>
+
+		<div class="row g-0">
+			<div class="card  col-xs-12 col-md-3 col-sm-4  m-4 bg-light card border-dark center"
+				th:each="prod:${lista}">
+
+				<img src="../images/al1.png" alt="Alimento para perros Advance" class="card-img-top">
+				<div class="card-body">
+
+					<l class="lista-producto">
+
+
+
+						<h3 class="fs-1" th:text="${prod.nombre}"></h3>
+
+						<p class="fs-5" th:text=" '$ ' + ${prod.calcularDescuento()} +' descuento de  %'+ ${prod.descuento}"></p>
+
+
+						<div class="content-producto-detalle">
+
+							<label class="fs-6">codigo : </label>
+							<p class="fs-6" th:text="${prod.codigo}"></p>
+						</div>
+
+						<div class="content-producto-detalle">
+							<label class="fs-6">categoria : </label>
+							<p class="fs-6" th:text="${prod.categoria}"></p>
+
+						</div>
+				</div>
+
+
+
+
+
+
+				<div class="row card-footer g-0 ">
+					<div class="col-6">
+
+						<a class="d-flex btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+							data-bs-title="Editar Producto" th:href="@{/producto/editar/} + ${prod.nombre}">
+							<i class="fa-regular fa-pen-to-square  m-auto"></i>
+
+						</a>
+
+					</div>
+					<div class="col-6">
+						<a class="d-flex btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top"
+							data-bs-title="Eliminar Producto" th:href="@{/producto/eliminar/} + ${prod.nombre}">
+							<i class="fa-solid fa-trash m-auto"></i>
+
+						</a>
 						
-					<label>codigo:</label>
-					<p th:text="${prod.codigo}" ></p>
 					</div>
-					
-					<div class="content-producto-detalle">
-						<label>categoria:</label>
-					<p th:text="${prod.categoria}" ></p>
-					
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					<img src="../images/al1.png" alt="Alimento para perros Advance">
-					<div  class="btn-acciones">
-						<a th:href="@{/producto/editar/} + ${prod.nombre}">
-						<img src="../images/editar.png"/>
-				 		<span class="tooltiptext">Editar Producto</span>
-					</a>
-					<a th:href="@{/producto/eliminar/} + ${prod.nombre}">
-						<img src="../images/eliminar.png"/>
-				 		<span class="tooltiptext">Eliminar Producto</span>
-					</a>
-					</div>
-					
-					
-					
+				</div>
+
 				</li>
-			</ul>
-			<br> 
-		</section>
-		
-		 <footer th:replace="~{layouts/footer::footer}"></footer>
-	</body>
+
+			</div>
+		</div>
+	</section>
+
+	<footer th:replace="~{layouts/footer::footer}"></footer>
+</body>
+
 </html>
