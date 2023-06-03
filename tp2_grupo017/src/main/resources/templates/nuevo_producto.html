@@ -1,55 +1,100 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-	<head th:replace="~{layouts/head::head}"></head>
-	<body>
-	<header th:replace="~{layouts/header::header}"></header>
-    <nav th:replace="~{layouts/nav::nav}"></nav>
-	<div id="container-mid">	
-      <section class="contactenos">
 
-		<h3 class="tituloh3"  th:text="${edicion}?'Modificar producto':'Nuevo producto' "></h3>
-		
-		
-		
-		<form th:action="${edicion}?@{/producto/editar/}+${indice}:@{/producto/guardar}" th:object="${producto}" method="post">
-			<div>
-			    <label>nombre del producto:</label>
-			   <input type="text" th:field="*{nombre}"/> 
+<head th:replace="~{layouts/head::head}"></head>
+
+<body>
+	<header th:replace="~{layouts/header::header}"></header>
+	<nav th:replace="~{layouts/nav::nav}"></nav>
+
+
+	<div id="container-fluid ">
+		<div class="row g-0">
+			<section class="col-9 ">
+
+				<h3 class="tituloh3 " th:text="${edicion}?'Modificar producto':'Nuevo producto' "></h3>
+
+
+
+				<form class="row mt-3 g-3 needs-validation p-5"
+					th:action="${edicion}?@{/producto/editar/}+${indice}:@{/producto/guardar}" th:object="${producto}"
+					method="post">
+
+					<div class="mb-6">
+						<label for="nombre" class="form-label">nombre del producto</label>
+						<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+						<input id="nombre" type="text" placeholder="escriba el nombre del producto" th:field="*{nombre}"
+							class="form-control form-control-sm" />
+
+					</div>
+
+
+					<div class="col-6">
+						<label for="codigo" class="form-label">codigo:</label>
+						<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+						<input id="codigo" class="form-control form-control-sm" type="number" th:field="*{codigo}" />
+
+					</div>
+
+
+					<div class="col-6">
+						<label for="precio" class="form-label">precio:</label>
+						<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+						<input id="precio" class="form-control form-control-sm" type="number" th:field="*{precio}" />
+						<br>
+
+					</div>
+
+
+					<div class="col-6">
+
+						<label for="categoria" class="form-label">categoria:</label>
+						<div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">
+						</div>
+						<select class="form-control form-control-sm" th:field="*{categoria}">
+							<option value="">Escriba o seleccione una opcion</option>
+							<option value="Alimentos">Alimentos</option>
+							<option value="Juguetes">Juguetes</option>
+							<option value="Arenas">Arenas</option>
+							<option value="Prod. Limpieza">Prod. Limpieza</option>
+						</select>
+
+
+					</div>
+
+
+					<div class="col-6">
+						<label for="descuento" class="form-label">descuento:</label>
+
+						<div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}">
+						</div>
+						<input id="descuento" class="form-control form-control-sm" type="number"
+							th:field="*{descuento}" />
+
+					</div>
+
+
+
+					<div class="col-3 mx-auto d-grid gap-2">
+						<button class="btn btn-primary btn-lg" th:value="${edicion} ? 'Modificar': 'Guardar'"
+							type="submit" value="guardar">guardar</button>
+					</div>
+				</form>
+
+
+				<p th:if="${error}" th:text="${error}"></p>
+
+			</section>
+
+			<div class="col-3">
+				<aside th:replace="~{layouts/aside::aside}"></aside>
 			</div>
-			<div>
-				
-				<label>codigo:</label>
-			<input type="number" th:field="*{codigo}"/> 
-			</div>
-			<div>
-				
-				<label>precio:</label>
-			<input type="number" th:field="*{precio}"/> <br>
-			</div>
-			<div>
-				<label>categoria:</label>
-			<input type="text" th:field="*{categoria}"/> <br>
-				
-			</div>
-			<div>
-				<label>descuento:</label>
-			<input type="number" th:field="*{descuento}" min="1"  max="50"/> <br>
-				
-			</div>
-			
-			
-			
-			
-			<button th:class="${edicion} ? 'btn-edit': 'btn-nuevo'" type="submit" value="guardar">guardar</button>
-		</form>
-		
-		
-		<p th:if="${error}" th:text="${error}"></p>
-	 </section>
-		 <aside th:replace="~{layouts/aside::aside}"></aside>
+
+		</div>
 	</div>
-		 
-		<footer th:replace="~{layouts/footer::footer}"> </footer>
-    
-	</body>
+
+	<footer th:replace="~{layouts/footer::footer}"> </footer>
+
+</body>
+
 </html>

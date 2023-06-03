@@ -3,9 +3,11 @@ package ar.edu.unju.fi.listados;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import ar.edu.unju.fi.models.Producto;
 
-
+@Component
 public class ListaProductos {
 	
 	private List<Producto> lista;
@@ -27,7 +29,12 @@ public class ListaProductos {
 		lista.add(producto);                          
 
 	}
-	
+	/** el metodo buscaProductoporNombre 
+	 * busca un producto por su nombre.
+	 * @param nombre
+	 * @return Producto
+	 * 
+	 */
 	public Producto buscarProductoporNombre(String nombre) {
 		Producto productoEncontrado = new Producto();
 		for(Producto buscar : lista) {
@@ -38,6 +45,7 @@ public class ListaProductos {
 		System.out.println(productoEncontrado);
 		return productoEncontrado;
 	}
+	
 	
 	
 }
