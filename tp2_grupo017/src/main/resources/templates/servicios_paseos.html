@@ -11,46 +11,86 @@
     <nav th:replace="~{layouts/nav::nav}">
 
     </nav>
-    <div id="container-mid">
-        <section class="contenido">
-            <div class="contenedor-paseos">
-                <h2>Servicio de Paseos</h2>
-                <table>
-                    <tr>
-                        <th>Día</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miercoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
-                        <th>Sábado</th>
-                    </tr>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+                <div class="contenedor-paseos">
+                    <h2 class="text-center">Servicio de Paseos</h2>
 
-                    <tr>
-                        <th>Horario</th>
-                        <td>9 a 12 - 16 a 18</td>
-                        <td>9 a 12 - 16 a 18</td>
-                        <td>9 a 12 - 16 a 18</td>
-                        <td>9 a 12 - 16 a 18</td>
-                        <td>9 a 12 - 16 a 18</td>
-                        <td>9 a 12 - 16 a 18</td>
-                    </tr>
-                    <tr>
-                        <th>Paseador</th>
-                        <td>Juan Perez</td>
-                        <td>Lucas Díaz</td>
-                        <td>Juan Perez</td>
-                        <td>María Gomez</td>
-                        <td>Lucas Díaz</td>
-                        <td>Roberto Vazquez</td>
-                    </tr>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-success">
+                                    <th scope="col">Día</th>
+                                    <th scope="col">Martes</th>
+                                    <th scope="col">Miercoles</th>
+                                    <th scope="col">Lunes</th>
+                                    <th scope="col">Jueves</th>
+                                    <th scope="col">Viernes</th>
+                                    <th scope="col">Sábado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="table-info" scope="row">Horario</th>
+                                    <td>9 a 12 - 16 a 18</td>
+                                    <td>9 a 12 - 16 a 18</td>
+                                    <td>9 a 12 - 16 a 18</td>
+                                    <td>9 a 12 - 16 a 18</td>
+                                    <td>9 a 12 - 16 a 18</td>
+                                    <td>9 a 12 - 16 a 18</td>
+                                </tr>
+                                <tr>
+                                    <th class="table-info" scope="row">Paseador</th>
+                                    <td>Juan Perez</td>
+                                    <td>Lucas Díaz</td>
+                                    <td>Juan Perez</td>
+                                    <td>María Gomez</td>
+                                    <td>Lucas Díaz</td>
+                                    <td>Roberto Vazquez</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- <table>
+                        <tr>
+                            <th>Día</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sábado</th>
+                        </tr>
 
-                </table>
+                        <tr>
+                            <th>Horario</th>
+                            <td>9 a 12 - 16 a 18</td>
+                            <td>9 a 12 - 16 a 18</td>
+                            <td>9 a 12 - 16 a 18</td>
+                            <td>9 a 12 - 16 a 18</td>
+                            <td>9 a 12 - 16 a 18</td>
+                            <td>9 a 12 - 16 a 18</td>
+                        </tr>
+                        <tr>
+                            <th>Paseador</th>
+                            <td>Juan Perez</td>
+                            <td>Lucas Díaz</td>
+                            <td>Juan Perez</td>
+                            <td>María Gomez</td>
+                            <td>Lucas Díaz</td>
+                            <td>Roberto Vazquez</td>
+                        </tr>
+
+                    </table> -->
+                </div>
+                <br>
             </div>
-            <br>
-        </section>
-        <aside th:replace="~{layouts/aside::aside}">
-        </aside>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}">
+                </aside>
+            </div>
+        </div>
     </div>
     <footer th:replace="~{layouts/footer::footer}">
     </footer>

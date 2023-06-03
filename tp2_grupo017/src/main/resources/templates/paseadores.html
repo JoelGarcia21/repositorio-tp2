@@ -1,48 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head th:replace="~{layouts/head::head}"></head>
+
 <body>
     <header th:replace="~{layouts/header::header}"></header>
     <nav th:replace="~{layouts/nav::nav}"></nav>
 
-    <div id="container-mid">
-        <div class="contenido">
-            <div class="contenedor-paseos">
-                <div class="titulo-seccion">
-                    <div class="titulo-tabla">
-                        <h2>Listado de Paseadores</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+                <div class="contenedor-paseos">
+                    <div class="titulo-seccion">
+                        <div class="titulo-tabla">
+                            <h2 class="text-center">Listado de Paseadores</h2>
+                            <a th:href="@{/paseos/paseadores/nuevo}"><i class="fa-sharp fa-solid fa-circle-plus fs-1"
+                                    title="Agregar"></i></a>
+                        </div>
                     </div>
-                    <div class="btn-agregar">
-                        <a th:href="@{/paseos/paseadores/nuevo}">Agregar</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-info">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Apellido</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Horario</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="paseador : ${listado}">
+                                    <td class="align-middle" th:text="${paseador.id}"></td>
+                                    <td class="align-middle" th:text="${paseador.apellido}"></td>
+                                    <td class="align-middle" th:text="${paseador.nombres}"></td>
+                                    <td class="align-middle" th:text="${paseador.horario}"></td>
+                                    <td>
+                                        
+                                        <a th:href="@{/paseos/paseadores/editar/}+${paseador.id}" class="btn btn-warning" title="editar"><i class="fa-sharp fa-solid fa-pen-to-square fs-6" style="color: #08093d;"></i> </a>              
+                                        <a th:href="@{/paseos/paseadores/eliminar/}+${paseador.id}" class="btn btn-danger" title="eliminar"><i class="fa-sharp fa-solid fa-trash-can fs-6" style="color: #ebeff4;"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- <table class="tabla-paseadores">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Apellido</th>
+                                <th>Nombre</th>
+                                <th>Horario</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="paseador : ${listado}">
+                                <td th:text="${paseador.id}"></td>
+                                <td th:text="${paseador.apellido}"></td>
+                                <td th:text="${paseador.nombres}"></td>
+                                <td th:text="${paseador.horario}"></td>
+                                <td><a th:href="@{/paseos/paseadores/editar/}+${paseador.id}">Editar</a>    <a th:href="@{/paseos/paseadores/eliminar/}+${paseador.id}">Eliminar</a></td>
+        
+                            </tr>
+        
+                        </tbody>
+                    </table> -->
                 </div>
-                <table class="tabla-paseadores">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Apellido</th>
-                            <th>Nombre</th>
-                            <th>Horario</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="paseador : ${listado}">
-                            <td th:text="${paseador.id}"></td>
-                            <td th:text="${paseador.apellido}"></td>
-                            <td th:text="${paseador.nombres}"></td>
-                            <td th:text="${paseador.horario}"></td>
-                            <td><a th:href="@{/paseos/paseadores/editar/}+${paseador.id}">Editar</a>    <a th:href="@{/paseos/paseadores/eliminar/}+${paseador.id}">Eliminar</a></td>
 
-                        </tr>
-    
-                    </tbody>
-                </table>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}"></aside>
             </div>
         </div>
-        <aside th:replace="~{layouts/aside::aside}"></aside>
+
+
     </div>
 
     <footer th:replace="~{layouts/footer::footer}"></footer>
 </body>
+
 </html>
