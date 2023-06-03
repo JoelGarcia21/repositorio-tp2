@@ -2,11 +2,19 @@ package ar.edu.unju.fi.models;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 @Component
 public class Paseador {
     private int id;
+    @Size(min = 3, max = 100, message = "El apellido tiene que tener entre 3 y 100 caractéres")
+    @NotEmpty(message = "El apellido no puede ser vacío")
     private String apellido;
+    @Size(min = 3, max = 100, message = "El nombre tiene que tener entre 3 y 100 caractéres")
+    @NotEmpty(message = "El nombre no puede ser vacío")
     private String nombres;
+    @NotEmpty(message = "Tiene que ingresar un horario")
     private String horario;
 
 

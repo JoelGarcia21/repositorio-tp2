@@ -2,6 +2,8 @@ package ar.edu.unju.fi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.listados.Paseadores;
 import ar.edu.unju.fi.models.Paseador;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/paseos")
@@ -59,8 +62,17 @@ public class ServicioPaseosController {
     }
 
     @PostMapping("/paseadores/guardar")
-    public String guardarPaseador(@ModelAttribute(name = "paseador")Paseador paseador){        
+    public String guardarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){        
         int id;
+        if (result.hasErrors()) {
+            model.addAttribute("titulo", "Nuevo Paseador");
+            model.addAttribute("tituloFormulario", "Registro Nuevo Paseador");
+            model.addAttribute("paseador", paseador);
+            model.addAttribute("nuevo", true);
+            model.addAttribute("textoBoton", "Guardar");
+            return "nuevo_paseador";
+        }
+        
         if (this.paseadores.getListado().isEmpty()) {
             paseador.setId(1);
         } else {
@@ -92,7 +104,15 @@ public class ServicioPaseosController {
     }
 
     @PostMapping("/paseadores/editar")
-    public String modificarPaseador(@ModelAttribute(name = "paseador")Paseador paseador){
+    public String modificarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){
+        if (result.hasErrors()) {
+            model.addAttribute("titulo", "Editar Paseador");
+            model.addAttribute("tituloFormulario", "Editar Datos Paseador");
+            model.addAttribute("paseador", paseador);
+            model.addAttribute("nuevo", false);
+            model.addAttribute("textoBoton", "Actualizar");
+            return "nuevo_paseador";
+        }
         this.paseadores.modificarPaseador(paseador);
         return "redirect:/paseos/paseadores";
     }

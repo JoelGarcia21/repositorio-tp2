@@ -17,19 +17,22 @@
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido:</label>
                                 <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" th:field="*{apellido}">
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombres:</label>
                                 <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombres" th:field="*{nombres}">
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
                             </div>
         
                             <div class="mb-3">
                                 <label for="horario" class="form-label">Horario:</label>
                                 <input type="text" class="form-control" id="horario" placeholder="Ingrese horario" th:field="*{horario}">
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
                             </div>
         
                             <div>
-                                <button th:class="${nuevo} ? 'btn btn-success':'btn btn-warning'" type="submit" th:text="${textoBoton}">                            
+                                <button th:class="${nuevo} ? 'btn btn-success mb-2':'btn btn-warning mb-2'" type="submit" th:text="${textoBoton}">                            
                                 </button>
                             </div>
         
