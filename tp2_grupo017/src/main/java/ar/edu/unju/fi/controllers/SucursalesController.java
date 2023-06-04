@@ -1,7 +1,9 @@
 package ar.edu.unju.fi.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,34 +13,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.listados.ListaSucursal;
 import ar.edu.unju.fi.models.Sucursal;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/sucursal")
 public class SucursalesController {
 	
-	ListaSucursal listaSucursales = new ListaSucursal();
-	String titulo;
+	@Autowired
+	private ListaSucursal listaSucursales;
+	//String titulo;
+	@Autowired
+	private Sucursal sucursal;
 	
 	@GetMapping("/listado")
 	public String getListaSucursalesPage (Model model) {
 		model.addAttribute("sucursales", listaSucursales.getSucursales()); //Falta completar listaSucursales
-		this.titulo = "Sucursales";
-		model.addAttribute("titulo", this.titulo);
+		//this.titulo = "Sucursales";
+		//model.addAttribute("titulo", this.titulo);
 		return "sucursales";
 	}
 
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
-		this.titulo = "Nueva Sucursal";
-		model.addAttribute("sucursal", new Sucursal());
+		//this.titulo = "Nueva Sucursal";
+		model.addAttribute("sucursal", sucursal);
 		model.addAttribute("edicion", edicion);
-		model.addAttribute("titulo", this.titulo);
+		//model.addAttribute("titulo", this.titulo);
 		return "nueva_sucursal";
 	}
+	
+	
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarSucursalPage(@ModelAttribute("sucursal") Sucursal sucursal) {
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal") Sucursal sucursal, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("sucursales");
+		if(result.hasErrors()) {
+			modelView.setViewName("nueva_sucursal");
+			modelView.addObject("sucursal", sucursal);
+			return modelView;
+		}
 		listaSucursales.getSucursales().add(sucursal);
 		modelView.addObject("sucursales", listaSucursales.getSucursales());		
 		return modelView;
@@ -48,14 +61,14 @@ public class SucursalesController {
 	public String getModificarSucursalPage(Model model, @PathVariable(value="nombre") String nombre) {
 		Sucursal sucursalEncontrada = new Sucursal();
 		boolean edicion=true;
-		this.titulo = "Editar Sucursal";
+		//this.titulo = "Editar Sucursal";
 		for(Sucursal sucu : listaSucursales.getSucursales()) {
 			sucursalEncontrada = sucu;
 			break;
 		}
 		model.addAttribute("sucursal", sucursalEncontrada);
 		model.addAttribute("edicion", edicion);
-		model.addAttribute("titulo", this.titulo);
+		//model.addAttribute("titulo", this.titulo);
 		return "nueva_sucursal";
 	}
 	

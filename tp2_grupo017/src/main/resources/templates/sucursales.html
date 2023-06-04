@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
-	<head th:replace="~{/layouts/head :: head}"></head>
+<head th:replace="~{/layouts/head :: head}"></head>
 
 <body>
 	<header th:replace="~{/layouts/header :: header}"></header>
 
     <nav th:replace="~{/layouts/nav :: nav}"></nav>
         
-    <div id="container-mid">
-    	<div class="sucursal">
-	    	<div class="form-sucursales">
-						<div class="sucursal-tabla">
-						<a th:href="@{/sucursal/nuevo}">Nueva Sucursal</a>
-			            <table border="1">            
+    <div id="container-fluid">
+    	<div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+				<div class="contenedor-paseos"> <!--  Revisar esto -->
+					<div class="titulo-seccion">
+						<div class="titulo-tabla">
+							<h2 class="text-center">Listado de Sucursales</h2>
+							<a th:href="@{/sucursal/nuevo}"><i class="fa-sharp fa-solid fa-circle-plus fs-1"
+                                    title="Agregar"></i></a>
+							
+			         	</div> 
+			         </div>   
+			            
+			            <div class="table-responsive">
+			            	<table class="table table-hover">
+			            		<thead>
+	                                <tr class="table-info">
+	                                    <th scope="col">Nombre</th>
+	                                    <th scope="col">Direccion</th>
+	                                    <th scope="col">Ciudad</th>
+	                                    <th scope="col">Fecha Inicio</th>
+	                                    <th scope="col">Email</th>
+	                                    <th scope="col">Telefono</th>
+	                                    <th scope="col">Acciones</th>
+	                                </tr>
+                            	</thead>
+                            	<tbody>
+	                                <tr th:each="sucursal : ${sucursales}">
+	                                    <td class="align-middle" th:text="${sucursal.nombre}"></td>
+	                                    <td class="align-middle" th:text="${sucursal.direccion}"></td>
+	                                    <td class="align-middle" th:text="${sucursal.provincia}"></td>
+	                                    <td class="align-middle" th:text="${sucursal.fechaInicio}"></td>
+	                                    <td class="align-middle" th:text="${sucursal.email}"></td>
+	                                    <td class="align-middle" th:text="${sucursal.telefono}"></td>
+	                                    <td>
+	                                       
+	                                    	<a th:href="@{/sucursal/modificar/}+${sucursal.nombre}" class="btn btn-warning" title="editar"><i class="fa-sharp fa-solid fa-pen-to-square fs-6" style="color: #08093d;"></i> </a>              
+	                                        <a th:href="@{/sucursal/eliminar/}+${sucursal.nombre}" class="btn btn-danger" title="eliminar"><i class="fa-sharp fa-solid fa-trash-can fs-6" style="color: #ebeff4;"></i></a>
+	                               	    
+	                               	    </td>
+	                                </tr>
+                            	</tbody>
+			            	
+			            <!--  <table border="1">            
 			              
 			                <tr>
 			                	<th>Nombre</th>
@@ -37,14 +75,19 @@
 			                	</td>
 			                </tr>
 			                
-			            </table>
+			            </table>-->
 			            
-			           </div>
+			            	</table>
+			            </div>
+			     	
+			     </div>
 			</div>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}"></aside>
+            </div>
 		</div>            
-			<aside th:replace="~{/layouts/aside :: aside}" class="content-aside"></aside>
 		            
-	  </div>
+	</div>
 	    <footer th:replace="~{/layouts/footer :: footer}" class="classefooter"></footer>
 	</body>
 	</html>
