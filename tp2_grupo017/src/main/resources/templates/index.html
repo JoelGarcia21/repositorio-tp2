@@ -4,19 +4,23 @@
 	<body>
 		<header th:replace="~{layouts/header :: header}"></header>
 		<nav th:replace="~{layouts/nav :: nav}"></nav>
-	<div id="container-principal">
-		<section class="principal">
-			<h3>Tienda para mascotas y animales</h3>
-			<article>
-				"Bienvenido a Pata de Oro, la mejor tienda para mascotas en la ciudad. Somos una empresa comprometida con el bienestar y la felicidad de tus peludos amigos. Contamos con una amplia variedad de productos y servicios de alta calidad para atender todas las necesidades de tus mascotas. Nuestro equipo de profesionales altamente capacitados está siempre dispuesto a brindarte la mejor atención y asesoramiento para que puedas tomar las mejores decisiones para tus amigos de cuatro patas. ¡Ven y conoce todo lo que tenemos para ofrecerte en Pata de Oro!"
-			</article>
-			<h3>Objetivos</h3>
-			<article>
-				Contribuimos a crear un mundo mejor, ayudando a amar y proteger a sus mascotas. Basados en nuestro equipo de trabajo somos solidarios socialmente, brindando la mayor cantidad de trabajo posible, innovando constantemente y logrando un prestigio que nos haga perdurar en el tiempo. Invirtiendo e innovando en proyectos para ampliar la estructura y seguir creciendo en otras ciudades. Aportando y participando solidariamente para crear una comunidad inclusiva y el cuidado del medio ambiente.
-			</article>
-		</section>
-		<aside th:replace="~{layouts/aside :: aside}" class="content-aside2"></aside>
-	</div>
+	<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8 principal">
+					<h3>Tienda para mascotas y animales</h3>
+					<article>
+						"Bienvenido a Pata de Oro, la mejor tienda para mascotas en la ciudad. Somos una empresa comprometida con el bienestar y la felicidad de tus peludos amigos. Contamos con una amplia variedad de productos y servicios de alta calidad para atender todas las necesidades de tus mascotas. Nuestro equipo de profesionales altamente capacitados está siempre dispuesto a brindarte la mejor atención y asesoramiento para que puedas tomar las mejores decisiones para tus amigos de cuatro patas. ¡Ven y conoce todo lo que tenemos para ofrecerte en Pata de Oro!"
+					</article>
+					<h3>Objetivos</h3>
+					<article>
+						Contribuimos a crear un mundo mejor, ayudando a amar y proteger a sus mascotas. Basados en nuestro equipo de trabajo somos solidarios socialmente, brindando la mayor cantidad de trabajo posible, innovando constantemente y logrando un prestigio que nos haga perdurar en el tiempo. Invirtiendo e innovando en proyectos para ampliar la estructura y seguir creciendo en otras ciudades. Aportando y participando solidariamente para crear una comunidad inclusiva y el cuidado del medio ambiente.
+					</article>
+				</div>
+				<div class="col-sm-4 content-aside2">
+					<nav th:replace="~{layouts/aside :: aside}"></nav>
+				</div>
+			</div>
+		</div>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
 </html>

@@ -5,56 +5,55 @@
 <body>
 	<header th:replace="~{/layouts/header :: header}"></header>
 	<nav th:replace="~{/layouts/nav :: nav}"></nav>
-	<div id="container-mid">
-		<section class="contactenos">
+	
+	<div class="container-fluid">
+    <div class="row">
+        <div  class="col-sm-8 contactenos">
+			<div class="d-flex justify-content-center align-items-center col-12">
+                <form class="form col-5 justify-content-center"> 
+                	<div class="text-center">
+	                    <h3 class="mb-4">Contáctenos</h3>
+	                    <p class="mb-3">3915 AV. General Belgrano, 388-4999999</p>
+	                    <p class="mb-3">Lunes a Viernes: 9:00 a.m. a 8:00 P.m.</p>
+	                    <p class="mb-3">Sábado a Domingo: 9:00 a.m. a 12:30 P.m.</p>
+					</div>
+                    <ul class="list-inline d-flex justify-content-center mb-4" >
+	                    <li class="list-inline-item ml-2"><a href="https://www.facebook.com/"><img src="/images/facebook.png" alt="Facebook" class="img-fluid" style="width: 50px; height: 50px;"></a></li>
+						<li class="list-inline-item ml-2"><a href="https://www.instagram.com/"><img src="/images/instagram.png" alt="Instagram" class="img-fluid" style="width: 50px; height: 50px;"></a></li>
+						<li class="list-inline-item ml-2"><a href="https://www.twitter.com/"><img src="/images/twitter.png" alt="Twitter" class="img-fluid" style="width: 50px; height: 50px;"></a></li>
+                    </ul>
 
-			<form>
+                    <div class="mb-3 col-10 mx-auto">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                    </div>
 
-				<h3> Contactenos</h3>
-				<p>3915 AV. General Belgrano, 388-4999999</p>
-				<p>Lunes a Viernes: 9:00 a.m. a 8:00 P.m.</p>
-				<p>Sabado a Domingo: 9:00 a.m. a 12:30 P.m.</p>
-				<a href="https://mail.google.com/"> contactos@gmail.com.ar</a>
+                    <div class="mb-3 col-10 mx-auto" >
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ingrese su email" name="email" >
+                    </div>
 
-				<ul class="listaRedes">
-					<li><a href="https://www.facebook.com/">Facebook</a></li>
-					<li><a href="https://www.instagram.com/">Instagram</a></li>
-					<li><a href="https://www.twiter.com/">Twitter</a></li>
-				</ul>
+                    <div class="mb-3 col-10 mx-auto">
+                        <label for="ciudad" class="form-label">Ciudad</label>
+                        <input type="text" class="form-control" id="ciudad" placeholder="Ingrese su ciudad" name="ciudad">
+                    </div>
 
-				<div>
-					<label for="nombre"> Nombre</label>
-					<input type="text" placeholder="ingrese su nombre" name="nombre" id="nombre">
+                    <div class="mb-3 col-10 mx-auto">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4"></textarea>
+                    </div>
 
-				</div>
-
-				<div>
-					<label for="email"> Email</label>
-					<input type="email" placeholder="ingrese su email " name="email" id="email">
-				</div>
-
-				<div>
-
-					<label for="ciudad"> Ciudad</label>
-					<input type="text" placeholder="ingrese ciudad " name="ciudad" id="ciudad">
-
-				</div>
-
-				<div>
-					<label for="mensaje"> Mensaje</label>
-					<textarea name="mensaje" id="mensaje">  </textarea>
-
-
-				</div>
-
-
-				<input class="boton" type="submit" value="Enviar">
-
-			</form>
-		</section>
-		<aside th:replace="~{/layouts/aside :: aside}" class="content-aside"></aside>
-	</div>
-
+                    <div class="text-center">
+    					<button class="btn btn-primary" type="submit">Enviar</button>
+					</div>
+                </form>
+			</div>
+        </div>
+        <div class="col-sm-4 content-aside2">
+            <nav th:replace="~{layouts/aside :: aside}"></nav>
+        </div>
+    </div>
+</div>
 
 	<footer th:replace="~{/layouts/footer :: footer}" class="classefooter">
 	</footer>
