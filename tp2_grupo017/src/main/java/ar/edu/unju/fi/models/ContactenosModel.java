@@ -1,9 +1,17 @@
 package ar.edu.unju.fi.models;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class ContactenosModel {
+	@NotBlank(message = ".El nombre es obligatorio.")
 	private String nombre;
+	@NotBlank(message = ".El correo es obligatorio")
+    @Email(message = ".El correo electrónico no es válido")
 	private String correo;
+	@NotBlank(message = ".Necesitamos saber su ciudad.")
 	private String ciudad;
+	@NotBlank(message = ".El campo de mensaje no puede estar vacio.")
 	private String mensaje;
 	
 	public String getNombre() {
