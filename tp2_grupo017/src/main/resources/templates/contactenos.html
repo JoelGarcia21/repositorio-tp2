@@ -6,11 +6,11 @@
 	<header th:replace="~{/layouts/header :: header}"></header>
 	<nav th:replace="~{/layouts/nav :: nav}"></nav>
 	
-	<div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
         <div  class="col-sm-8 contactenos">
 			<div class="d-flex justify-content-center align-items-center col-12">
-                <form class="form col-5 justify-content-center"> 
+                <form class="form col-5 justify-content-center" th:object="${contactenosModel}" th:action="@{/enviar}" method="post"> 
                 	<div class="text-center">
 	                    <h3 class="mb-4">Contáctenos</h3>
 	                    <p class="mb-3">3915 AV. General Belgrano, 388-4999999</p>
@@ -24,24 +24,28 @@
                     </ul>
 
                     <div class="mb-3 col-10 mx-auto">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-                    </div>
-
-                    <div class="mb-3 col-10 mx-auto" >
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese su email" name="email" >
-                    </div>
-
-                    <div class="mb-3 col-10 mx-auto">
-                        <label for="ciudad" class="form-label">Ciudad</label>
-                        <input type="text" class="form-control" id="ciudad" placeholder="Ingrese su ciudad" name="ciudad">
-                    </div>
-
-                    <div class="mb-3 col-10 mx-auto">
-                        <label for="mensaje" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4"></textarea>
-                    </div>
+				        <label for="nombre" class="form-label">Nombre</label>
+				        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" th:field="*{nombre} ">
+				        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="error-message" style="color: red;"></span>
+				    </div>
+				
+				    <div class="mb-3 col-10 mx-auto">
+				        <label for="email" class="form-label">Email</label>
+				        <input type="email" class="form-control" id="correo" placeholder="Ingrese su email" th:field="*{correo}">
+				        <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="error-message" style="color: red;"></span>
+				    </div>
+				
+				    <div class="mb-3 col-10 mx-auto">
+				        <label for="ciudad" class="form-label">Ciudad</label>
+				        <input type="text" class="form-control" id="ciudad" placeholder="Ingrese su ciudad" th:field="*{ciudad}">
+				        <span th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}" class="error-message" style="color: red;"></span>
+				    </div>
+				
+				    <div class="mb-3 col-10 mx-auto">
+				        <label for="mensaje" class="form-label">Mensaje</label>
+				        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" th:field="*{mensaje}"></textarea>
+				        <span th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}" class="error-message" style="color: red;" ></span>
+				    </div>
 
                     <div class="text-center">
     					<button class="btn btn-primary" type="submit">Enviar</button>
