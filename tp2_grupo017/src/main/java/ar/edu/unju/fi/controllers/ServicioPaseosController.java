@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-// import ar.edu.unju.fi.listados.Paseadores;
 import ar.edu.unju.fi.models.Paseador;
 import ar.edu.unju.fi.services.IPaseadorService;
 import jakarta.validation.Valid;
@@ -23,11 +22,7 @@ public class ServicioPaseosController {
     private boolean nuevo;
     private String textoBoton;
     
-    // @Autowired
-    // private Paseador paseador;
     
-    // @Autowired
-    // private Paseadores paseadores;
     @Autowired
     private IPaseadorService paseadorService;
 
@@ -55,7 +50,7 @@ public class ServicioPaseosController {
         this.titulo = "Nuevo Paseador";
         this.nuevo = true;
         this.textoBoton = "Guardar";
-        // this.paseador = new Paseador();
+        
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
         modelAndView.addObject("paseador", this.paseadorService.getPaseador());
@@ -66,7 +61,7 @@ public class ServicioPaseosController {
 
     @PostMapping("/paseadores/guardar")
     public String guardarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){        
-        // int id;
+        
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Nuevo Paseador");
             model.addAttribute("tituloFormulario", "Registro Nuevo Paseador");
@@ -75,15 +70,7 @@ public class ServicioPaseosController {
             model.addAttribute("textoBoton", "Guardar");
             return "nuevo_paseador";
         }
-        
-        // if (this.paseador.getListado().isEmpty()) {
-        //     paseador.setId(1);
-        // } else {
-        //     int ultimoId = this.paseadores.getListado().get(this.paseadores.getListado().size()-1).getId();
-        //     id = ultimoId+1;
-        //     paseador.setId(id);
-        // }
-        // this.paseadores.getListado().add(paseador);
+                
         this.paseadorService.guardarPaseador(paseador);
         
         return "redirect:/paseos/paseadores";
