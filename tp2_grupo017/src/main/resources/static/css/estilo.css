@@ -490,3 +490,16 @@ height: 25px;
 .row section{
 	background-color:#e6ffff;
 }
+/*Estilo para el form_consejos*/ 
+.form_consejos{
+	
+	width: 100%;
+	background-color:#e6ffff;
+	outline-style: auto;
+	padding: 25px 20px;
+	height: 600px;
+	font-size: 18px;
+	text-align: center;
+}
+
+
