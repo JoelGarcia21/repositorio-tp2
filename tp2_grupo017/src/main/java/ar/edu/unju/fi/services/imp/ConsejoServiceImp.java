@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.listados.ListaConsejos;
 import ar.edu.unju.fi.models.Consejos;
 import ar.edu.unju.fi.services.IConsejoService;
+/**
+ * Implementación de la interfaz IConsejoService que proporciona los métodos para administrar los consejos.
+ */
 
 @Service
 public class ConsejoServiceImp implements IConsejoService{
