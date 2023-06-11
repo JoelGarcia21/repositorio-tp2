@@ -14,7 +14,7 @@ header {
 .imagen {
 	/* height: 180px; */
 	/* width: 20%; */
-	mix-blend-mode: color-burn;
+	mix-blend-mode: normal;
 
 	/* background-position: left; */
 }

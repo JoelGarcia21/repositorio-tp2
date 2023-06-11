@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.listados.Paseadores;
 import ar.edu.unju.fi.models.Paseador;
+import ar.edu.unju.fi.services.IPaseadorService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -22,11 +22,9 @@ public class ServicioPaseosController {
     private boolean nuevo;
     private String textoBoton;
     
-    @Autowired
-    private Paseador paseador;
     
     @Autowired
-    private Paseadores paseadores;
+    private IPaseadorService paseadorService;
 
     @GetMapping("")
     public ModelAndView getServiciosPaseosPage(){
@@ -40,7 +38,7 @@ public class ServicioPaseosController {
     public ModelAndView getPaseadoresPage(){
         ModelAndView modelAndView = new ModelAndView("paseadores");
         this.titulo = "Paseadores";
-        modelAndView.addObject("listado", this.paseadores.getListado());
+        modelAndView.addObject("listado", this.paseadorService.getListado());
         modelAndView.addObject("titulo", this.titulo);
         return modelAndView;
     }
@@ -52,10 +50,10 @@ public class ServicioPaseosController {
         this.titulo = "Nuevo Paseador";
         this.nuevo = true;
         this.textoBoton = "Guardar";
-        // this.paseador = new Paseador();
+        
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
-        modelAndView.addObject("paseador", this.paseador);
+        modelAndView.addObject("paseador", this.paseadorService.getPaseador());
         modelAndView.addObject("nuevo", this.nuevo);
         modelAndView.addObject("textoBoton", this.textoBoton);
         return modelAndView;
@@ -63,7 +61,7 @@ public class ServicioPaseosController {
 
     @PostMapping("/paseadores/guardar")
     public String guardarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){        
-        int id;
+        
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Nuevo Paseador");
             model.addAttribute("tituloFormulario", "Registro Nuevo Paseador");
@@ -72,15 +70,8 @@ public class ServicioPaseosController {
             model.addAttribute("textoBoton", "Guardar");
             return "nuevo_paseador";
         }
-        
-        if (this.paseadores.getListado().isEmpty()) {
-            paseador.setId(1);
-        } else {
-            int ultimoId = this.paseadores.getListado().get(this.paseadores.getListado().size()-1).getId();
-            id = ultimoId+1;
-            paseador.setId(id);
-        }
-        this.paseadores.getListado().add(paseador);
+                
+        this.paseadorService.guardarPaseador(paseador);
         
         return "redirect:/paseos/paseadores";
     }
@@ -92,7 +83,7 @@ public class ServicioPaseosController {
         this.titulo = "Editar Paseador";
         this.nuevo = false;
         this.textoBoton = "Actualizar";
-        Paseador paseadorEncontrado = this.paseadores.getPaseador(idPaseador);
+        Paseador paseadorEncontrado = this.paseadorService.getPaseadorBy(idPaseador);
         
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
@@ -113,13 +104,13 @@ public class ServicioPaseosController {
             model.addAttribute("textoBoton", "Actualizar");
             return "nuevo_paseador";
         }
-        this.paseadores.modificarPaseador(paseador);
+        this.paseadorService.modificarPaseador(paseador);
         return "redirect:/paseos/paseadores";
     }
 
     @GetMapping("paseadores/eliminar/{id}")
     public String eliminarPaseador(@ModelAttribute(value = "id")int idPaseador){
-        this.paseadores.eliminarPaseador(idPaseador);
+        this.paseadorService.eliminarPaseador(idPaseador);
         return "redirect:/paseos/paseadores";
     }
 
