@@ -1,5 +1,9 @@
 package ar.edu.unju.fi.controllers;
 
+import java.io.IOException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 // import ar.edu.unju.fi.listados.ListaProductos;
 import ar.edu.unju.fi.models.Producto;
 import ar.edu.unju.fi.services.IProductoService;
+import ar.edu.unju.fi.services.IUploadFileService;
 import jakarta.validation.Valid;
 
 @Controller
@@ -25,7 +32,10 @@ public class ProductoController {
 	@Autowired
 	private IProductoService productoService;
 	
+	@Autowired
+	private IUploadFileService uploadFileService;
 	
+	private static final Log LOGGER = LogFactory.getLog(ProductoController.class);
 	private String titulo;
 
 	/**
@@ -69,15 +79,21 @@ public class ProductoController {
 	 * @param model
 	 * @param producto
 	 * @return String
+	 * @throws IOException
 	 */
 	@PostMapping("/guardar")
-	public String guardarProducto(@Valid @ModelAttribute("producto") Producto producto, BindingResult result) {
+	public String guardarProducto(@Valid @ModelAttribute("producto") Producto producto, BindingResult result, @RequestParam(name = "file") MultipartFile image) throws IOException {
 		ModelAndView modelview = new ModelAndView("creacion_de_productos");
 		if (result.hasErrors()) {
 			modelview.setViewName("nuevo_producto");
 			modelview.addObject("producto", producto);
 			return "nuevo_producto";
 		}
+		if (!image.isEmpty()) {
+            String uniqueFilename = uploadFileService.copy(image);
+            producto.setImagen(uniqueFilename);
+			LOGGER.info("url de imagen:---------->"+producto.getImagen());
+        }        
 		// manejaListas.getLista().add(producto);
 		this.productoService.guardarProducto(producto);
 		return "redirect:/producto/listado";
@@ -100,7 +116,8 @@ public class ProductoController {
 
 	@PostMapping("/editar/{indice}")
 	public String modificarProducto(@Valid @ModelAttribute("producto") Producto producto,
-			 BindingResult result,@PathVariable(value = "indice") int indice,Model model) {
+			 BindingResult result,@PathVariable(value = "indice") int indice, 
+			 @RequestParam(name = "file") MultipartFile image, Model model) throws IOException {
 		System.out.println(indice);
 
 		if (result.hasErrors()) {
@@ -110,6 +127,17 @@ public class ProductoController {
 			model.addAttribute("indice", indice);
 			return "nuevo_producto";
 		}
+
+		Producto prod = productoService.buscarProductoByCodigo(producto.getCodigo());
+        if (!image.isEmpty()) {
+            if (prod.getImagen() != null && prod.getImagen().length() > 0)
+                uploadFileService.delete(prod.getImagen());
+            String uniqueFileName = uploadFileService.copy(image);
+            producto.setImagen(uniqueFileName);
+        } else {
+            if (prod.getImagen() != null)
+                producto.setImagen(prod.getImagen());
+        }
 
 		// manejaListas.getLista().set(indice, producto);
 		// this.productoService.getProductos().set(indice, producto);
@@ -121,6 +149,10 @@ public class ProductoController {
 	public String eliminarProducto(@PathVariable(value = "codigo") int codigo) {
 		// Producto p = manejaListas.buscarProductoporNombre(nombre);		
 		// manejaListas.getLista().remove(p);
+		Producto prod = productoService.buscarProductoByCodigo(codigo);
+        if (prod.getImagen() != null && prod.getImagen().length()>0) {
+            uploadFileService.delete(prod.getImagen());            
+        }
 		this.productoService.eliminarProductoByCodigo(codigo);
 		return "redirect:/producto/listado";
 	}
