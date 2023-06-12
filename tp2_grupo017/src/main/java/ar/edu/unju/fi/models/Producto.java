@@ -4,9 +4,7 @@ import org.springframework.stereotype.Component;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -18,7 +16,7 @@ public class Producto {
 	@Size(min=4,max=20 , message="el nombre tiene que tener minimo 4 y maximo de 20 caracteres")
 	private String nombre;
 	
-	@Min(value=4, message="como minimo es de 4 caracteres ")
+	// @Min(value=4, message="como minimo es de 4 caracteres ")
 	private int codigo;
 	
 	@Positive(message="el valor ingresado tiene que ser positivo")

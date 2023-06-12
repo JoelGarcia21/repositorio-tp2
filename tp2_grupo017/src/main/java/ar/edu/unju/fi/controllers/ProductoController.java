@@ -11,16 +11,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.listados.ListaProductos;
+// import ar.edu.unju.fi.listados.ListaProductos;
 import ar.edu.unju.fi.models.Producto;
+import ar.edu.unju.fi.services.IProductoService;
 import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
+	// @Autowired
+	// private ListaProductos manejaListas; // = new ListaProductos();
+	// agrega las variables del servicio.
 	@Autowired
-	private ListaProductos manejaListas; // = new ListaProductos();
-	String titulo;
+	private IProductoService productoService;
+	
+	
+	private String titulo;
 
 	/**
 	 * el metodo producto renderiza la pagina creacion_de_productos(listado de
@@ -33,7 +39,8 @@ public class ProductoController {
 	@GetMapping("/listado")
 	public String producto(Model model) {
 		this.titulo = "Productos";
-		model.addAttribute("lista", manejaListas.getLista());
+		// model.addAttribute("lista", manejaListas.getLista());
+		model.addAttribute("lista", productoService.getProductos());
 		model.addAttribute("titulo", this.titulo);
 		return "creacion_de_productos";
 	}
@@ -47,9 +54,10 @@ public class ProductoController {
 
 	@GetMapping("/nuevo")
 	public String formularioIngreso(Model model) {
-		Producto producto = new Producto();
+		// Producto producto = new Producto();
+
 		this.titulo = "Nuevo producto";
-		model.addAttribute("producto", producto);
+		model.addAttribute("producto", productoService.getProducto());
 		model.addAttribute("edicion", false);
 		model.addAttribute("titulo", this.titulo);
 		return "nuevo_producto";// formulario
@@ -70,17 +78,20 @@ public class ProductoController {
 			modelview.addObject("producto", producto);
 			return "nuevo_producto";
 		}
-		manejaListas.getLista().add(producto);
+		// manejaListas.getLista().add(producto);
+		this.productoService.guardarProducto(producto);
 		return "redirect:/producto/listado";
 	}
 
-	@GetMapping("/editar/{nombre}")
-	public String modificar(Model model, @PathVariable(value = "nombre") String nombre) {
+	@GetMapping("/editar/{codigo}")
+	public String modificar(Model model, @PathVariable(value = "codigo") int codigo) {
 		this.titulo = "Editar Producto";
-		Producto p = manejaListas.buscarProductoporNombre(nombre);
+		// Producto p = manejaListas.buscarProductoporNombre(nombre);
+		Producto p = this.productoService.buscarProductoByCodigo(codigo);
 		model.addAttribute("producto", p);
 		// en q lugar de la lista se encuentra el objeto a editar
-		int indice = manejaListas.getLista().indexOf(p);
+		// int indice = manejaListas.getLista().indexOf(p);
+		int indice = this.productoService.getProductos().indexOf(p);
 		model.addAttribute("edicion", true);
 		model.addAttribute("indice", indice);
 		model.addAttribute("titulo", this.titulo);
@@ -100,14 +111,17 @@ public class ProductoController {
 			return "nuevo_producto";
 		}
 
-		manejaListas.getLista().set(indice, producto);
+		// manejaListas.getLista().set(indice, producto);
+		// this.productoService.getProductos().set(indice, producto);
+		this.productoService.modificarProducto(indice, producto);
 		return "redirect:/producto/listado";
 	}
 
-	@GetMapping("/eliminar/{nombre}")
-	public String eliminarProducto(@PathVariable(value = "nombre") String nombre) {
-		Producto p = manejaListas.buscarProductoporNombre(nombre);
-		manejaListas.getLista().remove(p);
+	@GetMapping("/eliminar/{codigo}")
+	public String eliminarProducto(@PathVariable(value = "codigo") int codigo) {
+		// Producto p = manejaListas.buscarProductoporNombre(nombre);		
+		// manejaListas.getLista().remove(p);
+		this.productoService.eliminarProductoByCodigo(codigo);
 		return "redirect:/producto/listado";
 	}
 
