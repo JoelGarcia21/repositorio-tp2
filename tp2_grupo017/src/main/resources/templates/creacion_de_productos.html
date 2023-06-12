@@ -35,29 +35,30 @@
 			<div class="card  col-xs-12 col-md-3 col-sm-4  m-4 bg-light card border-dark center"
 				th:each="prod:${lista}">
 
-				<img src="../images/al1.png" alt="Alimento para perros Advance" class="card-img-top">
+				<img th:src="@{'/uploads/'+${prod.imagen}}" alt="Alimento para perros Advance" class="card-img-top">
 				<div class="card-body">
 
-					<l class="lista-producto">
+					<!-- <l class="lista-producto"> -->
 
 
 
-						<h3 class="fs-1" th:text="${prod.nombre}"></h3>
+					<h3 class="fs-1" th:text="${prod.nombre}"></h3>
 
-						<p class="fs-5" th:text=" '$ ' + ${prod.calcularDescuento()} +' descuento de  %'+ ${prod.descuento}"></p>
+					<p class="fs-5"
+						th:text=" '$ ' + ${prod.calcularDescuento()} +' descuento de  %'+ ${prod.descuento}"></p>
 
 
-						<div class="content-producto-detalle">
+					<div class="content-producto-detalle">
 
-							<label class="fs-6">codigo : </label>
-							<p class="fs-6" th:text="${prod.codigo}"></p>
-						</div>
+						<label class="fs-6">codigo : </label>
+						<p class="fs-6" th:text="${prod.codigo}"></p>
+					</div>
 
-						<div class="content-producto-detalle">
-							<label class="fs-6">categoria : </label>
-							<p class="fs-6" th:text="${prod.categoria}"></p>
+					<div class="content-producto-detalle">
+						<label class="fs-6">categoria : </label>
+						<p class="fs-6" th:text="${prod.categoria}"></p>
 
-						</div>
+					</div>
 				</div>
 
 
@@ -81,7 +82,7 @@
 							<i class="fa-solid fa-trash m-auto"></i>
 
 						</a>
-						
+
 					</div>
 				</div>
 

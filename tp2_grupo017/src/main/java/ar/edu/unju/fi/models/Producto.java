@@ -28,6 +28,8 @@ public class Producto {
     @Min(value=0, message="valor minimo es 0")
     @Max(value=50, message="el valor no puede ser mas de 50")
 	private int descuento;
+
+	private String imagen;
 	
 	
 	
@@ -39,15 +41,15 @@ public class Producto {
 
 
 
-	public Producto(String nombre, int codigo, float precio, String categoria, int descuento) {
-		super();
+
+	public Producto(String nombre, int codigo, float precio, String categoria, int descuento, String imagen) {
 		this.nombre = nombre;
 		this.codigo = codigo;
 		this.precio = precio;
 		this.categoria = categoria;
 		this.descuento = descuento;
+		this.imagen = imagen;
 	}
-	
 	
 	
 	
@@ -82,6 +84,14 @@ public class Producto {
 		this.descuento = descuento;
 	}
 
+
+	public String getImagen() {
+		return this.imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
 
 
 
