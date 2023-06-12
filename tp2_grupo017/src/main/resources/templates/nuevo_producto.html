@@ -31,8 +31,8 @@
 
 					<div class="col-6">
 						<label for="codigo" class="form-label">codigo:</label>
-						<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
-						<input id="codigo" class="form-control form-control-sm" type="number" th:field="*{codigo}" />
+						<!-- <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div> -->
+						<input id="codigo" class="form-control form-control-sm" type="number" readonly th:field="*{codigo}" />
 
 					</div>
 
