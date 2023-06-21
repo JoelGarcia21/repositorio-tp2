@@ -164,12 +164,11 @@ public class ProductoController {
 
 	// ---- Métodos para mostrar imagenes --------
 
+	
 	@GetMapping("/uploads/{filename}")
     public ResponseEntity<Resource> irImagen(@PathVariable(value = "filename") String filename) throws MalformedURLException{
         Resource resource = null;
         resource = uploadFileService.load(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename:\"" + resource.getFilename() + "\"").body(resource);
-    }
-
-
+	}
 }

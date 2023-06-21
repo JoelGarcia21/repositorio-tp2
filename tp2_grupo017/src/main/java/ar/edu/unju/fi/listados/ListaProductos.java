@@ -19,7 +19,7 @@ public class ListaProductos {
 		this.lista.add(new Producto("Juguetes Can", 2, 1000, "Juguetes", 10, "al5.jpg"));
 		this.lista.add(new Producto("alimentos Premiun", 3, 1500, "Alimentos", 0, "al1.png"));
 	}
-
+	
 	public List<Producto> getLista() {
 		return lista;
 	}
