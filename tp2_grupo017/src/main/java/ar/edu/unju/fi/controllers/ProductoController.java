@@ -1,10 +1,14 @@
 package ar.edu.unju.fi.controllers;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -156,6 +160,16 @@ public class ProductoController {
 		this.productoService.eliminarProductoByCodigo(codigo);
 		return "redirect:/producto/listado";
 	}
+
+
+	// ---- Métodos para mostrar imagenes --------
+
+	@GetMapping("/uploads/{filename}")
+    public ResponseEntity<Resource> irImagen(@PathVariable(value = "filename") String filename) throws MalformedURLException{
+        Resource resource = null;
+        resource = uploadFileService.load(filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename:\"" + resource.getFilename() + "\"").body(resource);
+    }
 
 
 }
