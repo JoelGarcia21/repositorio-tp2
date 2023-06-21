@@ -21,28 +21,28 @@
 					method="post" enctype="multipart/form-data">
 
 					<!-- <div class="col-6"> -->
-						<!-- <label for="codigo" class="form-label">codigo:</label> -->
-						<!-- <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div> -->
-						<input id="codigo" class="form-control form-control-sm" type="hidden" th:field="*{codigo}" />
+					<!-- <label for="codigo" class="form-label">codigo:</label> -->
+					<!-- <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div> -->
+					<input id="codigo" class="form-control form-control-sm" type="hidden" th:field="*{codigo}" />
 
 					<!-- </div> -->
 
 					<div class="mb-6">
 						<label for="nombre" class="form-label">nombre del producto</label>
-						<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 						<input id="nombre" type="text" placeholder="escriba el nombre del producto" th:field="*{nombre}"
 							class="form-control form-control-sm" />
+						<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 
 					</div>
 
 
-					
+
 
 
 					<div class="col-6">
 						<label for="precio" class="form-label">precio:</label>
-						<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 						<input id="precio" class="form-control form-control-sm" type="number" th:field="*{precio}" />
+						<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
 						<br>
 
 					</div>
@@ -51,15 +51,17 @@
 					<div class="col-6">
 
 						<label for="categoria" class="form-label">categoria:</label>
-						<div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">
-						</div>
 						<select class="form-select form-control-sm" th:field="*{categoria}">
 							<option value="">Escriba o seleccione una opcion</option>
 							<option value="Alimentos">Alimentos</option>
 							<option value="Juguetes">Juguetes</option>
 							<option value="Arenas">Arenas</option>
 							<option value="Prod. Limpieza">Prod. Limpieza</option>
+							<option value="Accesorios">Accesorios</option>
 						</select>
+
+						<div class="text-danger" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">
+						</div>
 
 
 					</div>
@@ -67,17 +69,17 @@
 
 					<div class="col-6">
 						<label for="descuento" class="form-label">descuento:</label>
-
-						<div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}">
-						</div>
 						<input id="descuento" class="form-control form-control-sm" type="number"
 							th:field="*{descuento}" />
+						<div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}">
+						</div>
 
 					</div>
+					
 					<div class="col-6">
-						<label for="imagen" class="form-label">Imagen</label>						
-						<input id="imagen" name="file" type="file"
-							class="form-control form-control-sm" th:text="${producto.imagen}"/>
+						<label for="imagen" class="form-label">Imagen</label>
+						<input id="imagen" name="file" type="file" class="form-control form-control-sm"
+							th:text="${producto.imagen}" />
 
 					</div>
 
