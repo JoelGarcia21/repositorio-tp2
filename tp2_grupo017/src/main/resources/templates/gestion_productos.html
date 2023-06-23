@@ -37,9 +37,9 @@
                             <td th:text="${producto.precio}"></td>
                             <td><a th:if="${producto.imagen!=null}" th:href="@{/producto/detalle/}+${producto.codigo}" class="btn btn-warning">Ver</a></td>
                             <td>
-                                <a th:href="@{/producto/editar/}+${producto.codigo}" class="btn btn-warning">editar</a>
+                                <a th:href="@{/producto/editar/}+${producto.codigo}" class="btn btn-warning" title="Editar"><i class="fa-sharp fa-solid fa-pen-to-square fs-6" style="color: #08093d;"></i></a>
                                 <a th:href="@{/producto/eliminar/}+${producto.codigo}"
-                                    class="btn btn-danger">eliminar</a>
+                                    class="btn btn-danger" title="Eliminar"><i class="fa-sharp fa-solid fa-trash-can fs-6" style="color: #ebeff4;"></i></a>
                             </td>
                         </tr>
                     </tbody>
