@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+    <nav th:replace="~{layouts/nav :: nav}"></nav>
+    <div class="container-fluid">
+        <div class="row">
+            <h2 class="text-center">Productos para mascotas</h2>
+            <h3 class="titulo-sub"
+                th:text="${productos.size()}? '':'No hay productos cargados, puede agregar con el boton que esta abajo a la derecha'">
+            </h3>
+            <a th:href="@{/producto/nuevo}" class="btn-add btn btn-secondary" data-bs-toggle="tooltip"
+                data-bs-placement="top" data-bs-title="Nuevo Producto">
+                <i class="fa-solid fa-plus"></i>
+            </a>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-info">
+                            <th scope="col">Código</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Opcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto : ${productos}">
+                            <td th:text="${producto.codigo}"></td>
+                            <td th:text="${producto.nombre}"></td>
+                            <!-- <td th:text="${producto.categoria.nombre}"></td> -->
+                            <td th:text="${producto.categoria}"></td>
+                            <td th:text="${producto.precio}"></td>
+                            <td><a th:if="${producto.imagen!=null}" th:href="@{/producto/detalle/}+${producto.codigo}" class="btn btn-warning">Ver</a></td>
+                            <td>
+                                <a th:href="@{/producto/editar/}+${producto.codigo}" class="btn btn-warning">editar</a>
+                                <a th:href="@{/producto/eliminar/}+${producto.codigo}"
+                                    class="btn btn-danger">eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+
+</html>

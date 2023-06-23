@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layouts/head::head}"></head>
+
+<body>
+    <header th:replace="~{layouts/header::header}"></header>
+    <nav th:replace="~{layouts/nav::nav}"></nav>
+    <div class="container-fluid">
+        <div class="row col-md-6 offset-md-3 mt-5 mb-5">
+            <div class="card bg-success">
+                <div class="card-header text-center fs-3 bg-white" th:text="${nombreProducto}"></div>
+                <div class="card-body bg-white text-center">
+                    <img class="img-thumbnail rounded float-left" th:src="@{'/producto/uploads/'}+ ${filename}"
+                        th:alt="${nombreProducto}" style="max-width:50%">
+                </div>
+                <div class="card-footer bg-white d-flex justify-content-center">
+                    <a class="btn btn-success" th:href="@{/producto/gestion}">VOLVER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer th:replace="~{layouts/footer::footer}"></footer>
+</body>
+
+</html>

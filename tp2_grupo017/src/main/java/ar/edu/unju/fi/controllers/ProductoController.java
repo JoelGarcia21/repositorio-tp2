@@ -42,6 +42,14 @@ public class ProductoController {
 	private static final Log LOGGER = LogFactory.getLog(ProductoController.class);
 	private String titulo;
 
+	@GetMapping("/gestion")
+	public String getGestionProductoPage(Model model){
+		this.titulo = "Gestión Producto";
+		model.addAttribute("titulo", this.titulo);
+		model.addAttribute("productos", productoService.getProductos());
+		return "gestion_productos";
+	}
+
 	/**
 	 * el metodo producto renderiza la pagina creacion_de_productos(listado de
 	 * productos)
@@ -100,9 +108,19 @@ public class ProductoController {
         }        
 		// manejaListas.getLista().add(producto);
 		this.productoService.guardarProducto(producto);
-		return "redirect:/producto/listado";
+		return "redirect:/producto/gestion";
 	}
 
+	/**
+	 * Metodo que recupera un producto por su código y configura un modelo para editar el producto.
+	 * 
+	 * @param model Model es una interfaz en Spring MVC que proporciona una forma de pasar datos 
+	 * entre el controlador y la vista. Permite agregar atributos al modelo, a los cuales se puede 
+	 * acceder en el vista para renderizar contenido dinámico. En este caso, se añade al modelo el 
+	 * atributo "producto", que contiene el producto.
+	 * @param codigo el codigo del producto a editar.
+	 * @return un string "nuevo_producto".
+	 */
 	@GetMapping("/editar/{codigo}")
 	public String modificar(Model model, @PathVariable(value = "codigo") int codigo) {
 		this.titulo = "Editar Producto";
@@ -146,9 +164,16 @@ public class ProductoController {
 		// manejaListas.getLista().set(indice, producto);
 		// this.productoService.getProductos().set(indice, producto);
 		this.productoService.modificarProducto(indice, producto);
-		return "redirect:/producto/listado";
+		return "redirect:/producto/gestion";
 	}
 
+	/**
+	 * Esta función elimina un producto por su código y también elimina su 
+	 * archivo de imagen asociado si existe.
+	 * 
+	 * @param codigo valor del código del producto
+	 * @return Un string que redirecciona a la URL "/producto/gestion".
+	 */
 	@GetMapping("/eliminar/{codigo}")
 	public String eliminarProducto(@PathVariable(value = "codigo") int codigo) {
 		// Producto p = manejaListas.buscarProductoporNombre(nombre);		
@@ -158,15 +183,44 @@ public class ProductoController {
             uploadFileService.delete(prod.getImagen());            
         }
 		this.productoService.eliminarProductoByCodigo(codigo);
-		return "redirect:/producto/listado";
+		return "redirect:/producto/gestion";
 	}
 
 
 	// ---- Métodos para mostrar imagenes --------
 
+	/**
+	 * Esta función de Java devuelve un objeto ModelAndView que contiene los detalles y el nombre del 
+	 * archivo de imagen de un producto con un código dado.
+	 * 
+	 * @param codigo El parámetro "código" es una variable de ruta que representa el código único de un
+	 * producto. Se utiliza para recuperar los detalles y la imagen de un producto específico de la base de datos y
+	 * mostrarlo en la vista "detalle_producto".
+	 * @return Se devuelve un objeto ModelAndView, que contiene el nombre de vista "detalle_producto"
+	 */
+	@GetMapping("/detalle/{codigo}")
+    public ModelAndView getPageImagenProducto(@PathVariable(value = "codigo") int codigo){
+        ModelAndView modelAndView = new ModelAndView("detalle_producto");
+        Producto prod = productoService.buscarProductoByCodigo(codigo);
+        modelAndView.addObject("nombreProducto", prod.getNombre());
+        modelAndView.addObject("filename", prod.getImagen());
+        return modelAndView;
+    }
+
+
+
 	
-	@GetMapping("/uploads/{filename}")
-    public ResponseEntity<Resource> irImagen(@PathVariable(value = "filename") String filename) throws MalformedURLException{
+	
+	/** 
+	 * Método permite mostrar un archiv de imagen
+	 * @param filename variable de ruta de carga
+	 * @return ResponseEntity<Resource> con el archivo de imagen como el cuerpo de la 
+	 * respuesta y establece el encabezado `CONTENT_DISPOSITION` en "archivo adjunto" 
+	 * con el nombre del archivo del recurso Esto permite que el navegador muestre la imagen en línea
+	 * @throws MalformedURLException 
+	 */
+	@GetMapping("/uploads/{filename}")    
+	public ResponseEntity<Resource> irImagen(@PathVariable(value = "filename") String filename) throws MalformedURLException{
         Resource resource = null;
         resource = uploadFileService.load(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename:\"" + resource.getFilename() + "\"").body(resource);
