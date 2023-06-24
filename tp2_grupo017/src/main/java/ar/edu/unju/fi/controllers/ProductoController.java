@@ -21,8 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-// import ar.edu.unju.fi.listados.ListaProductos;
-import ar.edu.unju.fi.models.Producto;
+import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.services.IProductoService;
 import ar.edu.unju.fi.services.IUploadFileService;
 import jakarta.validation.Valid;

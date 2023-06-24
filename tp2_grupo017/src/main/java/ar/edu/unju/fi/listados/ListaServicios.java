@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import ar.edu.unju.fi.models.Servicio;
+import ar.edu.unju.fi.entity.Servicio;
 
 @Component
 public class ListaServicios {
@@ -14,10 +14,10 @@ public class ListaServicios {
 
     public ListaServicios() {
         this.listado = new ArrayList<Servicio>();
-        this.listado.add(new Servicio(1, "Paseador", "Perez", "Juan", "Lunes", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(2, "Paseador", "Díaz", "Lucas", "Lunes", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(3, "Paseador", "Gomez", "Maria", "Miercoles", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(4, "Paseador", "Vazquez", "Roberto", "Viernes", "9 a 12 - 16 a 18"));        
+        this.listado.add(new Servicio(1l, "Paseador", "Perez", "Juan", "Lunes", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(2l, "Paseador", "Díaz", "Lucas", "Lunes", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(3l, "Paseador", "Gomez", "Maria", "Miercoles", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(4l, "Paseador", "Vazquez", "Roberto", "Viernes", "9 a 12 - 16 a 18"));        
     }
 
 
@@ -31,7 +31,7 @@ public class ListaServicios {
 
     /**
      * Método que busca un servicio según un ID.
-     * @param id tipo int
+     * @param id tipo long
      * @return devulve un objeto Servicio si lo encuentra, sino retorna null.
      */
     public Servicio getServicio(int id){

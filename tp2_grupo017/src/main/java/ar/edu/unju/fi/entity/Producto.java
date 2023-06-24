@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.models;
+package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 

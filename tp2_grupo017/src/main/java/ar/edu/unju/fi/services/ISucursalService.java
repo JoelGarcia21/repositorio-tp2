@@ -2,7 +2,7 @@ package ar.edu.unju.fi.services;
 
 import java.util.List;
 
-import ar.edu.unju.fi.models.Sucursal;
+import ar.edu.unju.fi.entity.Sucursal;
 import jakarta.validation.Valid;
 
 public interface ISucursalService {

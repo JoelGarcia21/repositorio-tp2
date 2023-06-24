@@ -2,7 +2,7 @@ package ar.edu.unju.fi.services;
 
 import java.util.List;
 
-import ar.edu.unju.fi.models.Producto;
+import ar.edu.unju.fi.entity.Producto;
 
 public interface IProductoService {
     

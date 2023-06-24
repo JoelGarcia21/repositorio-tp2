@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Servicio;
 import ar.edu.unju.fi.listados.ListaServicios;
-import ar.edu.unju.fi.models.Servicio;
 import ar.edu.unju.fi.services.IServicioService;
 
 @Service
@@ -47,7 +47,7 @@ public class ServicioServiceImp implements IServicioService {
      * @return Servicio
      */
     @Override
-    public Servicio getServicioBy(int id) {
+    public Servicio getServicioBy(Long id) {
         Servicio servicioEncontrado = null;        
         for (Servicio servicio : this.servicios.getListado()) {
             if (servicio.getId() == id) {
@@ -65,14 +65,14 @@ public class ServicioServiceImp implements IServicioService {
      */
     @Override
     public void guardarServicio(Servicio servicio) {
-        int id;
-        if (this.servicios.getListado().isEmpty()) {
-            servicio.setId(1);
-        } else {
-            int ultimoId = this.servicios.getListado().get(this.servicios.getListado().size()-1).getId();
-            id = ultimoId+1;
-            servicio.setId(id);
-        }
+        // int id;
+        // if (this.servicios.getListado().isEmpty()) {
+        //     servicio.setId(1l);
+        // } else {
+        //     int ultimoId = this.servicios.getListado().get(this.servicios.getListado().size()-1).getId();
+        //     id = ultimoId+1;
+        //     servicio.setId(id);
+        // }
 
         this.servicios.getListado().add(servicio);
     }
@@ -105,7 +105,7 @@ public class ServicioServiceImp implements IServicioService {
      * @param id tipo int.
      */
     @Override    
-    public void eliminarServicio(int id) {
+    public void eliminarServicio(Long id) {
         for (Servicio servicio : this.servicios.getListado()) {
             if (servicio.getId() == id){
                 this.servicios.getListado().remove(servicio);

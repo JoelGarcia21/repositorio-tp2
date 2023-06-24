@@ -1,15 +1,28 @@
-package ar.edu.unju.fi.models;
+package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Component
+@Entity
+@Table(name = "servicios")
 public class Servicio {
-    private int id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ser_id")
+    private Long id;
+
+    @Column(name = "ser_nombre")
     @Size(min=3, max = 20, message = "El nombre del servicio tiene que tener entre 3 y 20 caracteres")
     @NotBlank(message = "No puede estar en blanco")
     private String nombre;
@@ -22,9 +35,11 @@ public class Servicio {
     @NotEmpty(message = "El nombre no puede ser vacío")
     private String nombres;
     
+    @Column(name = "ser_dia")
     @NotEmpty(message = "Debe ingresar un día")
     private String dia;
 
+    @Column(name = "ser_horario")
     @NotEmpty(message = "Tiene que ingresar un horario")
     private String horario;
 
@@ -33,8 +48,7 @@ public class Servicio {
     }
 
 
-
-    public Servicio(int id, String nombre, String apellido, String nombres, String dia, String horario) {
+    public Servicio(Long id, String nombre, String apellido, String nombres, String dia, String horario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -42,6 +56,7 @@ public class Servicio {
         this.dia = dia;
         this.horario = horario;
     }
+    
 
 
     public String getDia() {
@@ -60,13 +75,13 @@ public class Servicio {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
 
-    public int getId() {
+
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

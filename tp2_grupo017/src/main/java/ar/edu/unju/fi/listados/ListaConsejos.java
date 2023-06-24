@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import ar.edu.unju.fi.models.Consejos;
+import ar.edu.unju.fi.entity.Consejos;
 
 /**
  * Componente que almacena y gestiona una lista de consejos.
