@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.entity.Consejo;
@@ -17,18 +18,19 @@ public class ListaConsejos {
 	private List<Consejo> consejos;
 	
 	@Autowired
+	@Qualifier("consejoServiceMysqulImp") //La anotación @Qualifier se utiliza para especificar cuál implementación concreta de una interfaz se debe utilizar cuando hay múltiples implementaciones disponibles.
 	private IConsejoService consejoService;
 	
     public ListaConsejos(IConsejoService consejoService) {
     	this.consejoService = consejoService;
         consejos = new ArrayList<>();
         //Se agregan consejos de ejemplo.
-        consejoService.guardarConsejo(new Consejo("Mantén a tu mascota al día con sus vacunas: Es importante que tu mascota esté al día con sus vacunas para protegerla contra enfermedades peligrosas. Consulta con tu veterinario para determinar qué vacunas son necesarias para tu mascota."));
-        consejoService.guardarConsejo(new Consejo("Dale una dieta equilibrada: Una dieta equilibrada es esencial para la salud de tu mascota. Asegúrate de proporcionarle una alimentación adecuada y evitar darle alimentos que no sean adecuados para su especie."));
-        consejoService.guardarConsejo(new Consejo("Evita productos tóxicos: Muchos productos del hogar, como plantas y productos químicos, pueden ser tóxicos para las mascotas. Mantén estos productos fuera del alcance de tu mascota para evitar cualquier peligro."));
-        consejoService.guardarConsejo(new Consejo("Monitorea su salud dental: La salud dental es importante para la salud general de tu mascota. Asegúrate de cepillarle los dientes regularmente y proporcionarle juguetes adecuados para ayudar a mantener sus dientes limpios y sanos."));
-        consejoService.guardarConsejo(new Consejo("Presta atención a su comportamiento: Tu mascota no puede decirte cuándo algo no está bien, por lo que es importante prestar atención a su comportamiento y detectar cualquier cambio que pueda indicar un problema de salud. Si notas algún cambio en el comportamiento de tu mascota, consulta a tu veterinario."));
-        consejoService.guardarConsejo(new Consejo("Proporciona un ambiente seguro: Mantén a tu mascota en un ambiente seguro y protegido, lejos de peligros potenciales como calles transitadas, cuerpos de agua y productos químicos peligrosos."));
+        consejoService.guardarConsejo(new Consejo("Mantén a tu mascota al día con sus vacunas."));
+    	consejoService.guardarConsejo(new Consejo("Dale una dieta equilibrada: Una dieta equilibrada es esencial para la salud de tu mascota. "));
+    	consejoService.guardarConsejo(new Consejo("Evita productos tóxicos: Como plantas y productos químicos, pueden ser tóxicos para las mascotas"));
+    	consejoService.guardarConsejo(new Consejo("Monitorea su salud dental: La salud dental es importante para la salud general de tu mascota."));
+    	consejoService.guardarConsejo(new Consejo("Presta atención a su comportamiento: Tu mascota no puede decirte cuándo algo no está bien."));
+    	consejoService.guardarConsejo(new Consejo("Proporciona un ambiente seguro: Mantén a tu mascota en un ambiente seguro y protegido."));
     }
 
     public List<Consejo> getConsejos() {
