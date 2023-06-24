@@ -12,13 +12,13 @@ import ar.edu.unju.fi.services.IConsejoService;
  * Implementación de la interfaz IConsejoService que proporciona los métodos para administrar los consejos.
  */
 
-@Service
+@Service("alumnoServiceImp")
 public class ConsejoServiceImp implements IConsejoService{
 
 	@Autowired
 	private ListaConsejos listaConsejos;
 
-    /*public ConsejoServiceImp() {
+   /* public ConsejoServiceImp() {
         listaConsejos = new ListaConsejos();
     }*/
     @Override
