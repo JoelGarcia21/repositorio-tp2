@@ -28,18 +28,19 @@
                         <a class="nav-link" th:href="@{/consejos}">Consejos de salud</a>
                     </li>
                     <li class="nav-item dropdown py-4 px-4">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a th:href="@{/servicio/listado}" class="nav-link"></a>
+                        <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Servicios
-                        </a>
-                        <ul class="dropdown-menu px-4">
+                        </a> -->
+                        <!-- <ul class="dropdown-menu px-4">
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/paseos}">Horarios</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/paseos/paseadores}">Paseadores</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item py-3 px-4" href="#">Otros</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="nav-item py-4 px-4">
                         <a class="nav-link" th:href="@{/sucursal/listado}">Sucursales</a>
@@ -55,7 +56,7 @@
                         <ul class="dropdown-menu px-4">
                             <li><a class="dropdown-item py-3 px-4" href="#">Consejos de Salud</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/producto/gestion}">Productos</a></li>
-                            <li><a class="dropdown-item py-3 px-4" href="#">Servicios</a></li>                            
+                            <li><a class="dropdown-item py-3 px-4" th:href="@{/servicio/gestion}">Servicios</a></li>
                             <li><a class="dropdown-item py-3 px-4" href="#">Sucursales</a></li>
                         </ul>
                     </li>
