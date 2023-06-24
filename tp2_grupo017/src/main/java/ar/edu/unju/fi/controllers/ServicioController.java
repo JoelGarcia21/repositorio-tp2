@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.models.Servicio;
+import ar.edu.unju.fi.entity.Servicio;
 import ar.edu.unju.fi.services.IServicioService;
 import jakarta.validation.Valid;
 
@@ -78,7 +78,7 @@ public class ServicioController {
     }
 
     @GetMapping("/editar/{id}")
-    public ModelAndView getFormularioEmpleadoPage(@PathVariable(value = "id")int idServicio){
+    public ModelAndView getFormularioEmpleadoPage(@PathVariable(value = "id")Long idServicio){
         ModelAndView modelAndView = new ModelAndView("nuevo_servicio");
         String tituloForm = "Editar Datos Servicio";
         this.titulo = "Editar Servicio";
@@ -110,7 +110,7 @@ public class ServicioController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String eliminarPaseador(@ModelAttribute(value = "id")int idServicio){
+    public String eliminarPaseador(@ModelAttribute(value = "id")Long idServicio){
         this.servicioService.eliminarServicio(idServicio);
         return "redirect:/servicio/gestion";
     }

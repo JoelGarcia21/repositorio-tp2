@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Consejos;
 import ar.edu.unju.fi.listados.ListaConsejos;
-import ar.edu.unju.fi.models.Consejos;
 import ar.edu.unju.fi.services.IConsejoService;
 /**
  * Implementación de la interfaz IConsejoService que proporciona los métodos para administrar los consejos.

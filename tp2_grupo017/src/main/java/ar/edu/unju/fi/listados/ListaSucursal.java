@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.entity.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import ar.edu.unju.fi.models.*;
 
 @Component
 public class ListaSucursal {

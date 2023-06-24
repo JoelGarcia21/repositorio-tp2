@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.models;
+package ar.edu.unju.fi.entity;
 
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;

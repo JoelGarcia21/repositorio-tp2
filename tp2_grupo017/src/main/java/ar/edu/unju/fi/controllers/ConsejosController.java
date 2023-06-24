@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ar.edu.unju.fi.models.Consejos;
+import ar.edu.unju.fi.entity.Consejos;
 import ar.edu.unju.fi.services.IConsejoService;
 
 import java.util.List;
