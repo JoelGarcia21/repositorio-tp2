@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ar.edu.unju.fi.entity.Consejos;
+import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.services.IConsejoService;
 
 import java.util.List;
@@ -46,7 +46,7 @@ public class ConsejosController {
      */
     @GetMapping
     public String mostrarConsejos(Model model) {
-        List<Consejos> consejos = consejoService.listarConsejos();
+        List<Consejo> consejos = consejoService.listarConsejos();
         model.addAttribute("consejos", consejos);
         return "creacion_consejos_de_salud";
     }
@@ -68,7 +68,7 @@ public class ConsejosController {
      */
     @PostMapping("/agregar")
     public String agregarConsejo(@RequestParam("consejo") String texto) {
-        Consejos nuevoConsejo = new Consejos(texto);
+        Consejo nuevoConsejo = new Consejo(texto);
         consejoService.guardarConsejo(nuevoConsejo);
         return "redirect:/consejos";
     }

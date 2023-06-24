@@ -1,13 +1,13 @@
 package ar.edu.unju.fi.entity;
 
-public class Consejos {
+public class Consejo {
 
 	private String consejo;
 
-    public Consejos() {
+    public Consejo() {
     }
 
-    public Consejos(String consejo) {
+    public Consejo(String consejo) {
         this.consejo = consejo;
     }
 
