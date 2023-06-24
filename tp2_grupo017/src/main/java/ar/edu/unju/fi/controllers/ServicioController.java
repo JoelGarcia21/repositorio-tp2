@@ -37,7 +37,7 @@ public class ServicioController {
 
     @GetMapping("/listado")
     public ModelAndView getPaseadoresPage(){
-        ModelAndView modelAndView = new ModelAndView("paseadores");
+        ModelAndView modelAndView = new ModelAndView("servicios");
         this.titulo = "Listado de servicios";
         modelAndView.addObject("listado", this.servicioService.getListado());
         modelAndView.addObject("titulo", this.titulo);
@@ -96,7 +96,7 @@ public class ServicioController {
     }
 
     @PostMapping("/editar")
-    public String modificarServicio(@Valid @ModelAttribute(name = "paseador")Servicio servicio, BindingResult result, Model model){
+    public String modificarServicio(@Valid @ModelAttribute(name = "servicio")Servicio servicio, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Editar Paseador");
             model.addAttribute("tituloFormulario", "Editar Datos Paseador");

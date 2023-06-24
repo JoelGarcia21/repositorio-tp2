@@ -9,7 +9,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+            <div class="contenido">
                 <div class="contenedor-paseos">
                     <div class="titulo-seccion">
                         <div class="titulo-tabla">
@@ -27,6 +27,7 @@
                                     <th scope="col">Apellido</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Servicio</th>
+                                    <th scope="col">Día</th>
                                     <th scope="col">Horario</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
@@ -38,6 +39,7 @@
                                     <td class="align-middle" th:text="${servicio.apellido}"></td>
                                     <td class="align-middle" th:text="${servicio.nombres}"></td>
                                     <td class="align-middle" th:text="${servicio.nombre}"></td>
+                                    <td class="align-middle" th:text="${servicio.dia}"></td>
                                     <td class="align-middle" th:text="${servicio.horario}"></td>
                                     <td>
                                         
@@ -52,9 +54,9 @@
                 </div>
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+            <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
                 <aside th:replace="~{layouts/aside::aside}"></aside>
-            </div>
+            </div> -->
         </div>
 
 

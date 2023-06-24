@@ -22,6 +22,9 @@ public class Servicio {
     @NotEmpty(message = "El nombre no puede ser vacío")
     private String nombres;
     
+    @NotEmpty(message = "Debe ingresar un día")
+    private String dia;
+
     @NotEmpty(message = "Tiene que ingresar un horario")
     private String horario;
 
@@ -30,13 +33,25 @@ public class Servicio {
     }
 
 
-    public Servicio(int id, String nombre, String apellido, String nombres, String horario) {
+
+    public Servicio(int id, String nombre, String apellido, String nombres, String dia, String horario) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.nombres = nombres;
+        this.dia = dia;
         this.horario = horario;
     }
+
+
+    public String getDia() {
+        return this.dia;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
+    }
+    
 
     public String getNombre() {
         return this.nombre;

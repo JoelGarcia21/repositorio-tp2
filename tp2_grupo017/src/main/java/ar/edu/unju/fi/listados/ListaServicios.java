@@ -14,10 +14,10 @@ public class ListaServicios {
 
     public ListaServicios() {
         this.listado = new ArrayList<Servicio>();
-        this.listado.add(new Servicio(1, "Paseador", "Perez", "Juan", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(2, "Paseador", "Díaz", "Lucas", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(3, "Paseador", "Gomez", "Maria", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(4, "Paseador", "Vazquez", "Roberto", "9 a 12 - 16 a 18"));        
+        this.listado.add(new Servicio(1, "Paseador", "Perez", "Juan", "Lunes", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(2, "Paseador", "Díaz", "Lucas", "Lunes", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(3, "Paseador", "Gomez", "Maria", "Miercoles", "9 a 12 - 16 a 18"));
+        this.listado.add(new Servicio(4, "Paseador", "Vazquez", "Roberto", "Viernes", "9 a 12 - 16 a 18"));        
     }
 
 

@@ -89,6 +89,7 @@ public class ServicioServiceImp implements IServicioService {
                 servicio.setNombre(servicioModificado.getNombre());
                 servicio.setApellido(servicioModificado.getApellido());
                 servicio.setNombres(servicioModificado.getNombres());
+                servicio.setDia(servicioModificado.getDia());
                 servicio.setHorario(servicioModificado.getHorario());
                 break;
             }

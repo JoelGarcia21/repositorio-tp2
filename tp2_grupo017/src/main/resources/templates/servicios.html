@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{layouts/head :: head}"></head>
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+    <nav th:replace="~{layouts/nav :: nav}"></nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+                <div class="contenedor-paseos">
+                    <div class="titulo-seccion">
+                        <div class="titulo-tabla">
+                            <h2 class="text-center">Listado de Servicios</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="table-info">
+                                <th scope="col">ID</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Servicio</th>
+                                <th scope="col">Día</th>
+                                <th scope="col">Horario</th>                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- se cambia el listado -->
+                            <tr th:each="servicio : ${listado}">
+                                <td class="align-middle" th:text="${servicio.id}"></td>
+                                <td class="align-middle" th:text="${servicio.apellido}"></td>
+                                <td class="align-middle" th:text="${servicio.nombres}"></td>
+                                <td class="align-middle" th:text="${servicio.nombre}"></td>
+                                <td class="align-middle" th:text="${servicio.dia}"></td>
+                                <td class="align-middle" th:text="${servicio.horario}"></td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}"></aside>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+</html>
