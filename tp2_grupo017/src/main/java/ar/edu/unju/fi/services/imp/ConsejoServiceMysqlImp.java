@@ -17,14 +17,21 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 	@Autowired
 	private IConsejoRepository consejoRepository;
 	
-	//@Autowired
-	//private Consejo consejo;
-	
+	/**
+	 * Devuelve una lista de consejos activos.
+	 *
+	 * @return Lista de consejos activos.
+	 */
 	@Override
 	public List<Consejo> listarConsejos() {
-		return consejoRepository.findByEstado(true); //Muestra solo consejos activos o con el valor verdadero.
+		return consejoRepository.findByEstado(true);
 	}
 
+	/**
+	 * Guarda un nuevo consejo estableciendo su estado como activo.
+	 *
+	 * @param consejo El consejo a guardar.
+	 */
 	@Override
 	public void guardarConsejo(Consejo consejo) {
 		consejo.setEstado(true);
@@ -32,11 +39,22 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 
 	}
 
+	/**
+	 * Modifica un consejo existente en el repositorio.
+	 *
+	 * @param indice      El índice del consejo a modificar.
+	 * @param nuevoConsejo El nuevo objeto Consejo con los datos actualizados.
+	 */
 	@Override
 	public void modificarConsejo(int indice, Consejo nuevoConsejo) {
 		consejoRepository.save(nuevoConsejo);
 	}
 
+	/**
+	 * Elimina un consejo estableciendo su estado como inactivo.
+	 *
+	 * @param indice El índice del consejo a eliminar.
+	 */
 	@Override
 	public void eliminarConsejo(int indice) {
 		
@@ -46,18 +64,6 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 	        consejo.setEstado(false);
 	        consejoRepository.save(consejo);
 	    }
-		// Recuperar el consejo por su índice utilizando el método findById del repositorio.
-		// Realizamos una conversión explícita de int a long para asegurar la compatibilidad.
-		// Si se encuentra el consejo, se asigna a la variable 'consejo'.
-		// En caso de no encontrarse, se asigna null a la variable 'consejo'.
-		// Esto nos permite verificar si se encontró un consejo válido antes de continuar con las operaciones adicionales.
-	    //Consejo consejo = consejoRepository.findById((long) indice).orElse(null);
-	    
-		//Eliminarcion logica: No se borra la fila en la tabla, solo se cambia el valor de la columna estado a false.
-		//consejo.setEstado(false);
-		
-		// Guardar los cambios en el repositorio
-        //consejoRepository.save(consejo);
 		
 	}
 
