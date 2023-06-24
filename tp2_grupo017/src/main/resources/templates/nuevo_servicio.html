@@ -10,9 +10,14 @@
                 <div class="row justify-content-evenly"> 
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 formulario">
                         <h2 th:text="${tituloFormulario}"></h2>
-                        <form th:action="${nuevo} ? @{/paseos/paseadores/guardar} : @{/paseos/paseadores/editar}" th:object="${paseador}" method="post">
+                        <form th:action="${nuevo} ? @{/servicio/guardar} : @{/servicio/editar}" th:object="${servicio}" method="post">
                             <div>
                                 <input type="text" hidden="true" th:field="*{id}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Servicio:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del servicio" th:field="*{nombre}">
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido:</label>
@@ -23,6 +28,20 @@
                                 <label for="nombre" class="form-label">Nombres:</label>
                                 <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombres" th:field="*{nombres}">
                                 <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="dia" class="form-label">Día:</label>
+                                <select class="form-select form-control-sm" th:field="*{dia}">
+                                    <option value="">Escriba o seleccione un día</option>
+                                    <option value="Lunes">Lunes</option>
+                                    <option value="Martes">Martes</option>
+                                    <option value="Miercoles">Miercoles</option>
+                                    <option value="Jueves">Jueves</option>
+                                    <option value="Viernes">Viernes</option>
+                                    <option value="Sabado">Sabado</option>
+                                    <option value="Domingo">Domingo</option>
+                                </select>
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('dia')}" th:errors="*{dia}"></div>
                             </div>
         
                             <div class="mb-3">
