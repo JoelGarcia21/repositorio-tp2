@@ -11,107 +11,108 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.models.Paseador;
-import ar.edu.unju.fi.services.IPaseadorService;
+import ar.edu.unju.fi.models.Servicio;
+import ar.edu.unju.fi.services.IServicioService;
 import jakarta.validation.Valid;
 
 @Controller
-@RequestMapping("/paseos")
-public class ServicioPaseosController {
+@RequestMapping("/servicio")
+public class ServicioController {
     private String titulo;
     private boolean nuevo;
     private String textoBoton;
     
     
     @Autowired
-    private IPaseadorService paseadorService;
+    private IServicioService servicioService;
 
-    @GetMapping("")
+    @GetMapping("/gestion")
     public ModelAndView getServiciosPaseosPage(){
-        ModelAndView modelAndView = new ModelAndView("servicios_paseos");
-        this.titulo = "Servicios de Paseos";
+        ModelAndView modelAndView = new ModelAndView("gestion_servicios");
+        this.titulo = "Servicios";
         modelAndView.addObject("titulo", this.titulo);
+        modelAndView.addObject("listado", this.servicioService.getListado());
         return modelAndView; 
     }
 
-    @GetMapping("/paseadores")
+    @GetMapping("/listado")
     public ModelAndView getPaseadoresPage(){
         ModelAndView modelAndView = new ModelAndView("paseadores");
-        this.titulo = "Paseadores";
-        modelAndView.addObject("listado", this.paseadorService.getListado());
+        this.titulo = "Listado de servicios";
+        modelAndView.addObject("listado", this.servicioService.getListado());
         modelAndView.addObject("titulo", this.titulo);
         return modelAndView;
     }
 
-    @GetMapping("/paseadores/nuevo")
+    @GetMapping("/nuevo")
     public ModelAndView getPaseadorNuevoPage(){
-        String tituloForm = "Registro Nuevo Paseador";
-        ModelAndView modelAndView = new ModelAndView("nuevo_paseador");
-        this.titulo = "Nuevo Paseador";
+        String tituloForm = "Registro Nuevo servicio";
+        ModelAndView modelAndView = new ModelAndView("nuevo_servicio");
+        this.titulo = "Nuevo Servicio";
         this.nuevo = true;
         this.textoBoton = "Guardar";
         
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
-        modelAndView.addObject("paseador", this.paseadorService.getPaseador());
+        modelAndView.addObject("servicio", this.servicioService.getServicio());
         modelAndView.addObject("nuevo", this.nuevo);
         modelAndView.addObject("textoBoton", this.textoBoton);
         return modelAndView;
     }
 
-    @PostMapping("/paseadores/guardar")
-    public String guardarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){        
+    @PostMapping("/guardar")
+    public String guardarPaseador(@Valid @ModelAttribute(name = "servicio")Servicio servicio, BindingResult result, Model model){
         
         if (result.hasErrors()) {
-            model.addAttribute("titulo", "Nuevo Paseador");
-            model.addAttribute("tituloFormulario", "Registro Nuevo Paseador");
-            model.addAttribute("paseador", paseador);
+            model.addAttribute("titulo", "Nuevo Servicio");
+            model.addAttribute("tituloFormulario", "Registro Nuevo Servicio");
+            model.addAttribute("servicio", servicio);
             model.addAttribute("nuevo", true);
             model.addAttribute("textoBoton", "Guardar");
-            return "nuevo_paseador";
+            return "nuevo_servicio";
         }
                 
-        this.paseadorService.guardarPaseador(paseador);
+        this.servicioService.guardarServicio(servicio);
         
-        return "redirect:/paseos/paseadores";
+        return "redirect:/servicio/gestion";
     }
 
-    @GetMapping("/paseadores/editar/{id}")
-    public ModelAndView getFormularioEmpleadoPage(@PathVariable(value = "id")int idPaseador){
-        ModelAndView modelAndView = new ModelAndView("nuevo_paseador");
-        String tituloForm = "Editar Datos Paseador";
-        this.titulo = "Editar Paseador";
+    @GetMapping("/editar/{id}")
+    public ModelAndView getFormularioEmpleadoPage(@PathVariable(value = "id")int idServicio){
+        ModelAndView modelAndView = new ModelAndView("nuevo_servicio");
+        String tituloForm = "Editar Datos Servicio";
+        this.titulo = "Editar Servicio";
         this.nuevo = false;
         this.textoBoton = "Actualizar";
-        Paseador paseadorEncontrado = this.paseadorService.getPaseadorBy(idPaseador);
+        Servicio servicioEncontrado = this.servicioService.getServicioBy(idServicio);
         
         modelAndView.addObject("titulo", this.titulo);
         modelAndView.addObject("tituloFormulario", tituloForm);
-        modelAndView.addObject("paseador", paseadorEncontrado);
+        modelAndView.addObject("servicio", servicioEncontrado);
         modelAndView.addObject("nuevo", this.nuevo);
         modelAndView.addObject("textoBoton", this.textoBoton);
         return modelAndView;
         
     }
 
-    @PostMapping("/paseadores/editar")
-    public String modificarPaseador(@Valid @ModelAttribute(name = "paseador")Paseador paseador, BindingResult result, Model model){
+    @PostMapping("/editar")
+    public String modificarServicio(@Valid @ModelAttribute(name = "paseador")Servicio servicio, BindingResult result, Model model){
         if (result.hasErrors()) {
             model.addAttribute("titulo", "Editar Paseador");
             model.addAttribute("tituloFormulario", "Editar Datos Paseador");
-            model.addAttribute("paseador", paseador);
+            model.addAttribute("paseador", servicio);
             model.addAttribute("nuevo", false);
             model.addAttribute("textoBoton", "Actualizar");
-            return "nuevo_paseador";
+            return "nuevo_servicio";
         }
-        this.paseadorService.modificarPaseador(paseador);
-        return "redirect:/paseos/paseadores";
+        this.servicioService.modificarServicio(servicio);
+        return "redirect:/servicio/gestion";
     }
 
-    @GetMapping("paseadores/eliminar/{id}")
-    public String eliminarPaseador(@ModelAttribute(value = "id")int idPaseador){
-        this.paseadorService.eliminarPaseador(idPaseador);
-        return "redirect:/paseos/paseadores";
+    @GetMapping("/eliminar/{id}")
+    public String eliminarPaseador(@ModelAttribute(value = "id")int idServicio){
+        this.servicioService.eliminarServicio(idServicio);
+        return "redirect:/servicio/gestion";
     }
 
 

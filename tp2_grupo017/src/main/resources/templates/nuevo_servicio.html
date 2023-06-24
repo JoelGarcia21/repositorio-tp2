@@ -10,9 +10,14 @@
                 <div class="row justify-content-evenly"> 
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 formulario">
                         <h2 th:text="${tituloFormulario}"></h2>
-                        <form th:action="${nuevo} ? @{/paseos/paseadores/guardar} : @{/paseos/paseadores/editar}" th:object="${paseador}" method="post">
+                        <form th:action="${nuevo} ? @{/servicio/guardar} : @{/servicio/editar}" th:object="${servicio}" method="post">
                             <div>
                                 <input type="text" hidden="true" th:field="*{id}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Servicio:</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del servicio" th:field="*{nombre}">
+                                <div class="alert alert-danger mt-2" role="alert" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido:</label>

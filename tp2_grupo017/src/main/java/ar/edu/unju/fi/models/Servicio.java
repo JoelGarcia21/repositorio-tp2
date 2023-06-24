@@ -2,31 +2,50 @@ package ar.edu.unju.fi.models;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Component
-public class Paseador {
+public class Servicio {
     private int id;
+
+    @Size(min=3, max = 20, message = "El nombre del servicio tiene que tener entre 3 y 20 caracteres")
+    @NotBlank(message = "No puede estar en blanco")
+    private String nombre;
+    
     @Size(min = 3, max = 100, message = "El apellido tiene que tener entre 3 y 100 caractéres")
     @NotEmpty(message = "El apellido no puede ser vacío")
     private String apellido;
+    
     @Size(min = 3, max = 100, message = "El nombre tiene que tener entre 3 y 100 caractéres")
     @NotEmpty(message = "El nombre no puede ser vacío")
     private String nombres;
+    
     @NotEmpty(message = "Tiene que ingresar un horario")
     private String horario;
 
 
-    public Paseador() {
+    public Servicio() {
     }
 
-    public Paseador(int id, String apellido, String nombres, String horario) {
+
+    public Servicio(int id, String nombre, String apellido, String nombres, String horario) {
         this.id = id;
+        this.nombre = nombre;
         this.apellido = apellido;
         this.nombres = nombres;
         this.horario = horario;
     }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
 
     public int getId() {
         return this.id;
