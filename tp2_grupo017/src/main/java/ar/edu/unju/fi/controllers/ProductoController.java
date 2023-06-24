@@ -121,7 +121,7 @@ public class ProductoController {
 	 * @return un string "nuevo_producto".
 	 */
 	@GetMapping("/editar/{codigo}")
-	public String modificar(Model model, @PathVariable(value = "codigo") int codigo) {
+	public String modificar(Model model, @PathVariable(value = "codigo") Long codigo) {
 		this.titulo = "Editar Producto";
 		// Producto p = manejaListas.buscarProductoporNombre(nombre);
 		Producto p = this.productoService.buscarProductoByCodigo(codigo);
@@ -174,7 +174,7 @@ public class ProductoController {
 	 * @return Un string que redirecciona a la URL "/producto/gestion".
 	 */
 	@GetMapping("/eliminar/{codigo}")
-	public String eliminarProducto(@PathVariable(value = "codigo") int codigo) {
+	public String eliminarProducto(@PathVariable(value = "codigo") Long codigo) {
 		// Producto p = manejaListas.buscarProductoporNombre(nombre);		
 		// manejaListas.getLista().remove(p);
 		Producto prod = productoService.buscarProductoByCodigo(codigo);
@@ -198,7 +198,7 @@ public class ProductoController {
 	 * @return Se devuelve un objeto ModelAndView, que contiene el nombre de vista "detalle_producto"
 	 */
 	@GetMapping("/detalle/{codigo}")
-    public ModelAndView getPageImagenProducto(@PathVariable(value = "codigo") int codigo){
+    public ModelAndView getPageImagenProducto(@PathVariable(value = "codigo") Long codigo){
         ModelAndView modelAndView = new ModelAndView("detalle_producto");
         Producto prod = productoService.buscarProductoByCodigo(codigo);
         modelAndView.addObject("nombreProducto", prod.getNombre());

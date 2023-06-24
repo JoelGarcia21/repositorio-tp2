@@ -34,15 +34,15 @@ public class ProductoServiceImp implements IProductoService {
      */
     @Override
     public void guardarProducto(Producto unProducto) {
-        if (this.listaProductos.getLista().isEmpty()) {
-            // lista vacía
-            unProducto.setCodigo(1);
-        } else {
-            // lista tiene productos, buscar el ultimo codigo ingresado e incrementar en
-            // uno.
-            int ultimoCodigo = listaProductos.getLista().get(listaProductos.getLista().size() - 1).getCodigo();
-            unProducto.setCodigo(ultimoCodigo + 1);
-        }
+        // if (this.listaProductos.getLista().isEmpty()) {
+        //     // lista vacía
+        //     unProducto.setCodigo(1l);
+        // } else {
+        //     // lista tiene productos, buscar el ultimo codigo ingresado e incrementar en
+        //     // uno.
+        //     int ultimoCodigo = listaProductos.getLista().get(listaProductos.getLista().size() - 1).getCodigo();
+        //     unProducto.setCodigo(ultimoCodigo + 1);
+        // }
         this.listaProductos.getLista().add(unProducto);
     }
 
@@ -80,11 +80,11 @@ public class ProductoServiceImp implements IProductoService {
     /**
      * Método que busca un producto según el código del mismo.
      * 
-     * @param codigo tipo int.
+     * @param codigo tipo Long.
      * @return Producto
      */
     @Override
-    public Producto buscarProductoByCodigo(int codigo) {
+    public Producto buscarProductoByCodigo(Long codigo) {
         Producto productoEncontrado = null;
         for (Producto prod : this.listaProductos.getLista()) {
             if (prod.getCodigo() == codigo) {
@@ -109,10 +109,10 @@ public class ProductoServiceImp implements IProductoService {
     /**
      * Método que elimina un producto de la lista según el código del mismo.
      * 
-     * @param codigo tipo int.
+     * @param codigo tipo Long.
      */
     @Override
-    public void eliminarProductoByCodigo(int codigo) {
+    public void eliminarProductoByCodigo(Long codigo) {
         Producto productoEncontrado = buscarProductoByCodigo(codigo);
         this.listaProductos.getLista().remove(productoEncontrado);
     }
