@@ -10,9 +10,10 @@ public interface IProductoService {
     void guardarProducto(Producto unProducto);
     void modificarProducto(int posicion, Producto unProducto);
     Producto buscarProductoByNombre(String nombre);
-    Producto buscarProductoByCodigo(int codigo);
+    Producto buscarProductoByCodigo(Long codigo);
     void eliminarProductoByNombre(String nombre);
-    void eliminarProductoByCodigo(int codigo);
+    void eliminarProductoByCodigo(Long codigo);
+    List<Producto> buscarProductoByCategoria(Long idCategoria);
 
     Producto getProducto();
 }

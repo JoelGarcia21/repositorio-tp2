@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ar.edu.unju.fi.entity.Consejos;
+import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.services.IConsejoService;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 @RequestMapping("/consejos")
 public class ConsejosController {
 	@Autowired
+	@Qualifier("consejoServiceMysqulImp") //La anotación @Qualifier se utiliza para especificar cuál implementación concreta de una interfaz se debe utilizar cuando hay múltiples implementaciones disponibles.
 	private IConsejoService consejoService;
 	
 	/**
@@ -29,14 +31,6 @@ public class ConsejosController {
 	 */
     public ConsejosController(IConsejoService consejoService) {
     	this.consejoService = consejoService;
-    	//Se agregan consejos de ejemplo.
-    	consejoService.guardarConsejo(new Consejos("Mantén a tu mascota al día con sus vacunas: Es importante que tu mascota esté al día con sus vacunas para protegerla contra enfermedades peligrosas. Consulta con tu veterinario para determinar qué vacunas son necesarias para tu mascota."));
-    	consejoService.guardarConsejo(new Consejos("Dale una dieta equilibrada: Una dieta equilibrada es esencial para la salud de tu mascota. Asegúrate de proporcionarle una alimentación adecuada y evitar darle alimentos que no sean adecuados para su especie."));
-    	consejoService.guardarConsejo(new Consejos("Evita productos tóxicos: Muchos productos del hogar, como plantas y productos químicos, pueden ser tóxicos para las mascotas. Mantén estos productos fuera del alcance de tu mascota para evitar cualquier peligro."));
-    	consejoService.guardarConsejo(new Consejos("Monitorea su salud dental: La salud dental es importante para la salud general de tu mascota. Asegúrate de cepillarle los dientes regularmente y proporcionarle juguetes adecuados para ayudar a mantener sus dientes limpios y sanos."));
-    	consejoService.guardarConsejo(new Consejos("Presta atención a su comportamiento: Tu mascota no puede decirte cuándo algo no está bien, por lo que es importante prestar atención a su comportamiento y detectar cualquier cambio que pueda indicar un problema de salud. Si notas algún cambio en el comportamiento de tu mascota, consulta a tu veterinario."));
-    	consejoService.guardarConsejo(new Consejos("Proporciona un ambiente seguro: Mantén a tu mascota en un ambiente seguro y protegido, lejos de peligros potenciales como calles transitadas, cuerpos de agua y productos químicos peligrosos."));
-        
     }
     
     /**
@@ -46,7 +40,7 @@ public class ConsejosController {
      */
     @GetMapping
     public String mostrarConsejos(Model model) {
-        List<Consejos> consejos = consejoService.listarConsejos();
+        List<Consejo> consejos = consejoService.listarConsejos();
         model.addAttribute("consejos", consejos);
         return "creacion_consejos_de_salud";
     }
@@ -68,7 +62,7 @@ public class ConsejosController {
      */
     @PostMapping("/agregar")
     public String agregarConsejo(@RequestParam("consejo") String texto) {
-        Consejos nuevoConsejo = new Consejos(texto);
+        Consejo nuevoConsejo = new Consejo(texto);
         consejoService.guardarConsejo(nuevoConsejo);
         return "redirect:/consejos";
     }
