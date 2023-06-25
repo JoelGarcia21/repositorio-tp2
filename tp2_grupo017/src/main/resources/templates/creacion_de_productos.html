@@ -15,6 +15,24 @@
 	<section class="productos">
 
 		<h2>Productos para mascotas</h2>
+		<div class="row">
+			<form class="my-2" th:action="@{/producto/buscar}">
+				<div class="input-group">
+					<div class="col-md-4">
+						<select class="form-select form-control-sm" name="codigo">							
+							<option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}" selected = false></option>
+						</select>
+					</div>
+					<div class="col-md-6">
+						<button type="submit" class="btn btn-outline-secondary">Buscar</button>
+					</div>
+					<div class="col-md-2 ">
+						<a class="btn btn-info" th:href="@{/producto/listado}">Mostrar todos</a>
+					</div>
+				</div>
+
+			</form>
+		</div>
 
 
 		<h3 class="titulo-sub"

@@ -13,6 +13,7 @@ public interface IProductoService {
     Producto buscarProductoByCodigo(Long codigo);
     void eliminarProductoByNombre(String nombre);
     void eliminarProductoByCodigo(Long codigo);
+    List<Producto> buscarProductoByCategoria(Long idCategoria);
 
     Producto getProducto();
 }
