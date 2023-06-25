@@ -3,10 +3,13 @@ package ar.edu.unju.fi.services.imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Categoria;
 import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.repository.IProductoRepository;
+import ar.edu.unju.fi.services.ICategoriaService;
 import ar.edu.unju.fi.services.IProductoService;
 
 @Service("productoServiceMysql")
@@ -17,6 +20,10 @@ public class ProductoServiceMsqlImp implements IProductoService {
 
     @Autowired
     private IProductoRepository productoRepository;
+
+    @Autowired
+    @Qualifier("categoriaServiceMysql")
+    private ICategoriaService categoriaService;
 
     /**
      * Método que retorna una lista con los productos en estado activo
@@ -101,6 +108,18 @@ public class ProductoServiceMsqlImp implements IProductoService {
     @Override
     public Producto getProducto() {
         return this.producto;
+    }
+
+    /**
+     * Método que busca productos según la categoría.
+     * 
+     * @param idCategoria de la categoría a buscar.
+     * @return una lista de productos.
+     */
+    @Override
+    public List<Producto> buscarProductoByCategoria(Long idCategoria) {
+        Categoria categoriaBuscada = categoriaService.getCateriaById(idCategoria);
+        return productoRepository.findByCategoriaAndEstado(categoriaBuscada, true);
     }
 
 

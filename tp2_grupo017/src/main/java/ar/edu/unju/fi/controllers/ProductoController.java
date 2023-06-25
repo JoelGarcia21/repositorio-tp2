@@ -49,6 +49,16 @@ public class ProductoController {
 	private static final Log LOGGER = LogFactory.getLog(ProductoController.class);
 	private String titulo;
 
+	@GetMapping("/buscar")
+	public String getProductosFiltradosPage(Model model, @RequestParam(value = "codigo")Long codigo) {
+		this.titulo = "Productos";
+		// model.addAttribute("lista", manejaListas.getLista());
+		model.addAttribute("lista", productoService.buscarProductoByCategoria(codigo));
+		model.addAttribute("titulo", this.titulo);
+		model.addAttribute("categorias", categoriaService.getCategorias());
+		return "creacion_de_productos";
+	}
+
 	@GetMapping("/gestion")
 	public String getGestionProductoPage(Model model) {
 		this.titulo = "Gestión Producto";
@@ -71,6 +81,7 @@ public class ProductoController {
 		// model.addAttribute("lista", manejaListas.getLista());
 		model.addAttribute("lista", productoService.getProductos());
 		model.addAttribute("titulo", this.titulo);
+		model.addAttribute("categorias", categoriaService.getCategorias());
 		return "creacion_de_productos";
 	}
 

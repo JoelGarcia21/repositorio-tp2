@@ -127,4 +127,10 @@ public class ProductoServiceImp implements IProductoService {
         return this.producto;
     }
 
+    @Override
+    public List<Producto> buscarProductoByCategoria(Long idCategoria) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'buscarProductoByCategoria'");
+    }
+
 }
