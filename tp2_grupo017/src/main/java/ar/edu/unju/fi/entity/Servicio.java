@@ -8,10 +8,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Component
@@ -25,13 +26,12 @@ public class Servicio {
     private Long id;
 
     @Column(name = "ser_nombre")
-    @Size(min=3, max = 20, message = "El nombre del servicio tiene que tener entre 3 y 20 caracteres")
-    @NotBlank(message = "No puede estar en blanco")
+    @Size(min=3, max = 20, message = "El nombre del servicio tiene que tener entre 3 y 20 caracteres")    
     private String nombre;
     
         
     @Column(name = "ser_dia")
-    @NotEmpty(message = "Debe ingresar un día")
+    @NotNull(message = "debe ingresar un día")
     private String dia;
 
     @Column(name = "ser_horario")
@@ -40,7 +40,12 @@ public class Servicio {
 
     @Autowired
     @OneToOne
+    @JoinColumn(name = "emp_id")
+    // @NotNull(message = "debe elegir un empleado")
     private Empleado empleado;
+
+    @Column(name = "ser_estado")
+    private boolean estado;
 
 
     public Servicio() {
@@ -48,13 +53,16 @@ public class Servicio {
 
 
 
-    public Servicio(Long id, String nombre, String dia, String horario, Empleado empleado) {
+
+    public Servicio(Long id, String nombre, String dia, String horario, Empleado empleado, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.dia = dia;
         this.horario = horario;
         this.empleado = empleado;
+        this.estado = estado;
     }
+    
 
     public Long getId() {
         return this.id;
@@ -94,6 +102,18 @@ public class Servicio {
 
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
+    }
+
+    public boolean isEstado() {
+        return this.estado;
+    }
+
+    public boolean getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
 
