@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -40,9 +41,9 @@ public class Producto {
 	
 	
 	@Autowired
-	@NotEmpty(message="obligatorio ingresar categoria")
 	@ManyToOne
 	@JoinColumn(name = "prod_categoria")
+	@NotNull(message = "Debe ingresar una categoría")	
     private Categoria categoria;
 	
     @Min(value=0, message="valor minimo es 0")
