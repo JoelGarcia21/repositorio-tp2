@@ -14,10 +14,10 @@ public class ListaServicios {
 
     public ListaServicios() {
         this.listado = new ArrayList<Servicio>();
-        this.listado.add(new Servicio(1l, "Paseador", "Perez", "Juan", "Lunes", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(2l, "Paseador", "Díaz", "Lucas", "Lunes", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(3l, "Paseador", "Gomez", "Maria", "Miercoles", "9 a 12 - 16 a 18"));
-        this.listado.add(new Servicio(4l, "Paseador", "Vazquez", "Roberto", "Viernes", "9 a 12 - 16 a 18"));        
+        // this.listado.add(new Servicio(1l, "Paseador", "Perez", "Juan", "Lunes", "9 a 12 - 16 a 18"));
+        // this.listado.add(new Servicio(2l, "Paseador", "Díaz", "Lucas", "Lunes", "9 a 12 - 16 a 18"));
+        // this.listado.add(new Servicio(3l, "Paseador", "Gomez", "Maria", "Miercoles", "9 a 12 - 16 a 18"));
+        // this.listado.add(new Servicio(4l, "Paseador", "Vazquez", "Roberto", "Viernes", "9 a 12 - 16 a 18"));        
     }
 
 
@@ -50,15 +50,15 @@ public class ListaServicios {
      * @param servicioModificado
      */
     public void modificarPaseador(Servicio servicioModificado){
-        for (Servicio servicio : listado) {
-            if(servicio.getId() == servicioModificado.getId()){
-                servicio.setNombre(servicioModificado.getNombre());
-                servicio.setApellido(servicioModificado.getApellido());
-                servicio.setNombres(servicioModificado.getNombres());
-                servicio.setHorario(servicioModificado.getHorario());
-                break;
-            }
-        }
+        // for (Servicio servicio : listado) {
+        //     if(servicio.getId() == servicioModificado.getId()){
+        //         servicio.setNombre(servicioModificado.getNombre());
+        //         servicio.setApellido(servicioModificado.getApellido());
+        //         servicio.setNombres(servicioModificado.getNombres());
+        //         servicio.setHorario(servicioModificado.getHorario());
+        //         break;
+        //     }
+        // }
 
     }
 
