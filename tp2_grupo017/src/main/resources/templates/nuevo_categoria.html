@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="es">
+
+<head th:replace="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+    <nav th:replace="~{layouts/nav :: nav}"></nav>
+
+    <div class="container-fluid">
+        <div class="row" style="min-height: 70vh;">
+            <h2 th:text="${tituloForm}"></h2>
+            <form th:action="@{/categorias/guardar}" th:object="${categoria}" method="post">
+                <div>
+                    <!-- <label for="codigo">Código:</label> -->
+                    <input type="hidden" id="codigo" th:field="*{id}">
+                </div>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre Categoria"
+                        th:field="*{nombre}">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+
+</body>
+
+</html>

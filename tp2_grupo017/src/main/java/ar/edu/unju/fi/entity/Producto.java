@@ -52,6 +52,9 @@ public class Producto {
 
 	@Column(name = "prod_imagen")
 	private String imagen;
+
+	@Column(name = "prod_estado")
+	private boolean estado;
 	
 	
 	
@@ -62,14 +65,17 @@ public class Producto {
 
 
 
-	public Producto(Long codigo, String nombre, float precio, Categoria categoria, int descuento, String imagen) {
+
+	public Producto(Long codigo, String nombre, float precio, Categoria categoria, int descuento, String imagen, boolean estado) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.categoria = categoria;
 		this.descuento = descuento;
 		this.imagen = imagen;
+		this.estado = estado;
 	}
+	
 
 
 	public Long getCodigo() {
@@ -124,6 +130,19 @@ public class Producto {
 	}
 
 
+	public boolean isEstado() {
+		return this.estado;
+	}
+
+	public boolean getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
+
 
 
 	@Override
@@ -135,8 +154,10 @@ public class Producto {
 			", categoria='" + getCategoria() + "'" +
 			", descuento='" + getDescuento() + "'" +
 			", imagen='" + getImagen() + "'" +
+			", estado='" + isEstado() + "'" +
 			"}";
 	}
+	
 	
 	
 	/**

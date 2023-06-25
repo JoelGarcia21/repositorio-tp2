@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+    <nav th:replace="~{layouts/nav :: nav}"></nav>
+
+    <div class="container-fluid" style="min-height: 60vh;">
+        <div class="row mt-2 mb-3">
+            <a class="btn btn-info" th:href="@{/categorias/nuevo}">Agregar</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr class="table-info">
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="categoria : ${categorias}">
+                        <td th:text="${categoria.id}"></td>
+                        <td th:text="${categoria.nombre}"></td>
+
+                        <td>
+                            <a th:href="@{/categorias/editar/}+${categoria.id}" class="btn btn-warning">editar</a>
+                            <a th:href="@{/categorias/eliminar/}+${categoria.id}" class="btn btn-danger">eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+
+</html>

@@ -23,6 +23,9 @@ public class Categoria {
     @Column(name = "cat_nombre")
     private String nombre;
 
+    @Column(name = "cat_estado")
+    private boolean estado;
+
     @OneToMany(mappedBy = "categoria")
     private List<Producto> productos;
 
@@ -31,11 +34,14 @@ public class Categoria {
     }
 
 
-    public Categoria(Long id, String nombre, List<Producto> productos) {
+
+    public Categoria(Long id, String nombre, boolean estado, List<Producto> productos) {
         this.id = id;
         this.nombre = nombre;
+        this.estado = estado;
         this.productos = productos;
     }
+    
 
     public List<Producto> getProductos() {
         return this.productos;
@@ -60,6 +66,18 @@ public class Categoria {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public boolean isEstado() {
+        return this.estado;
+    }
+
+    public boolean getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
 }
