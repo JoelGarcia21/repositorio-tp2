@@ -29,7 +29,7 @@ public class Empleado {
     @Column(name = "emp_nombre", length = 20, nullable = false)
     private String nombre;
     
-    @NotEmpty(message = "Debe ingresar año de ingreso")
+    
     @Min(message = "el año debe ser un valor mayor que 0", value = 0)
     @Column(name = "emp_anio_ingreso", nullable = false)
     private int anioIngreso;
