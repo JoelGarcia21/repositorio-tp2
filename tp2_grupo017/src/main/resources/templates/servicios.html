@@ -34,7 +34,7 @@
                                 <button type="submit" class="btn btn-outline-secondary">Buscar</button>
                             </div>
                             <div class="col-md-2 ">
-                                <a class="btn btn-info" th:href="@{/producto/listado}">Mostrar todos</a>
+                                <a class="btn btn-info" th:href="@{/servicio/listado}">Mostrar todos</a>
                             </div>
                         </div>
 
@@ -56,8 +56,8 @@
                             <!-- se cambia el listado -->
                             <tr th:each="servicio : ${servicios}">
                                 <td class="align-middle" th:text="${servicio.id}"></td>
-                                <td class="align-middle" th:text="${servicio.apellido}"></td>
-                                <td class="align-middle" th:text="${servicio.nombres}"></td>
+                                <td class="align-middle" th:text="${servicio.empleado.apellido}"></td>
+                                <td class="align-middle" th:text="${servicio.empleado.nombre}"></td>
                                 <td class="align-middle" th:text="${servicio.nombre}"></td>
                                 <td class="align-middle" th:text="${servicio.dia}"></td>
                                 <td class="align-middle" th:text="${servicio.horario}"></td>

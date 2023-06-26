@@ -18,18 +18,17 @@
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Servicio:</label>
                                 <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre del servicio" th:field="*{nombre}">
-                                
+                                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                             </div>
+                            
                             <div class="mb-3">
-                                <label for="apellido" class="form-label">Apellido:</label>
-                                <input type="text" class="form-control" id="apellido" placeholder="Ingrese el apellido" th:field="*{apellido}">
-                                
+                                <label for="empleado" class="form-label">Empleado</label>
+                                <select name="empleado" id="empleado" class="form-select" th:field="*{empleado.codigo}">                                    
+                                    <option th:each="empleado : ${empleados}" th:value="${empleado.codigo}"
+                                        th:text="${empleado.apellido}+' '+${empleado.nombre}"></option>
+                                </select>
+                                <div class="text-danger" th:if="${#fields.hasErrors('empleado')}" th:errors="*{empleado}"></div>
                             </div>
-                            <div class="mb-3">
-                                <label for="nombre-emp" class="form-label">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre-emp" placeholder="Ingrese nombre del empleado" th:field="*{nombreEmpleado}">
-                                
-                            </div>                            
                             <div class="mb-3">
                                 <label for="dia" class="form-label">Día:</label>
                                 <select class="form-select form-control-sm" th:field="*{dia}">
@@ -42,18 +41,23 @@
                                     <option value="Sabado">Sabado</option>
                                     <option value="Domingo">Domingo</option>
                                 </select>
+                                <div class="text-danger" th:if="${#fields.hasErrors('dia')}" th:errors="*{dia}"></div>
                                 
                             </div>
         
                             <div class="mb-3">
                                 <label for="horario" class="form-label">Horario:</label>
                                 <input type="text" class="form-control" id="horario" placeholder="Ingrese horario" th:field="*{horario}">
-                                
+                                <div class="text-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
                             </div>
         
                             <div>
-                                <button th:class="${nuevo} ? 'btn btn-success mb-2':'btn btn-warning mb-2'" type="submit" th:text="${textoBoton}">                            
+                                <button th:if="${!empleadoVacio}" th:class="${nuevo} ? 'btn btn-success mb-2':'btn btn-warning mb-2'" type="submit" th:text="${textoBoton}">                            
                                 </button>
+                            </div>
+                            <div th:if="${empleadoVacio}" class="alert alert-danger">
+                                <p>No hay empleados registrados para asignar servicios</p>
+            
                             </div>
         
                         </form>

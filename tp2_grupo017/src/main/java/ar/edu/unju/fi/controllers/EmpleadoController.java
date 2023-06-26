@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Empleado;
 import ar.edu.unju.fi.services.IEmpleadoService;
-import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/empleados")
@@ -27,7 +25,7 @@ public class EmpleadoController {
     public String getEmpleadoPage(Model model){
         model.addAttribute("titulo", "Empleados");
         model.addAttribute("tituloForm", "Datos empleado");
-        model.addAttribute("empleados", empleadoService.getEmplados());
+        model.addAttribute("empleados", empleadoService.getEmpleadosByEstado(true));
         model.addAttribute("empleado", empleadoService.getEmpleado());
         return "empleado";
     }
