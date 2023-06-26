@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head th:replace="~{layouts/head :: head}"></head>
+
 <body>
     <header th:replace="~{layouts/header :: header}"></header>
     <nav th:replace="~{layouts/nav :: nav}"></nav>
@@ -11,8 +13,32 @@
                     <div class="titulo-seccion">
                         <div class="titulo-tabla">
                             <h2 class="text-center">Listado de Servicios</h2>
-                        </div>
+                        </div>                        
                     </div>
+                </div>
+                <div class="row">
+                    <form class="my-2" th:action="@{/servicio/buscar}">
+                        <div class="input-group">
+                            <div class="col-md-4">
+                                <select class="form-select form-control-sm" name="dia">
+                                    <option value="Lunes">Lunes</option>
+                                    <option value="Martes">Martes</option>
+                                    <option value="Miercoles">Miercoles</option>
+                                    <option value="Jueves">Jueves</option>
+                                    <option value="Viernes">Viernes</option>
+                                    <option value="Sabado">Sabado</option>
+                                    <option value="Domingo">Domingo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+                            </div>
+                            <div class="col-md-2 ">
+                                <a class="btn btn-info" th:href="@{/producto/listado}">Mostrar todos</a>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -23,18 +49,18 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Servicio</th>
                                 <th scope="col">Día</th>
-                                <th scope="col">Horario</th>                                
+                                <th scope="col">Horario</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- se cambia el listado -->
-                            <tr th:each="servicio : ${listado}">
+                            <tr th:each="servicio : ${servicios}">
                                 <td class="align-middle" th:text="${servicio.id}"></td>
                                 <td class="align-middle" th:text="${servicio.apellido}"></td>
                                 <td class="align-middle" th:text="${servicio.nombres}"></td>
                                 <td class="align-middle" th:text="${servicio.nombre}"></td>
                                 <td class="align-middle" th:text="${servicio.dia}"></td>
-                                <td class="align-middle" th:text="${servicio.horario}"></td>                                
+                                <td class="align-middle" th:text="${servicio.horario}"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -49,4 +75,5 @@
 
     <footer th:replace="~{layouts/footer :: footer}"></footer>
 </body>
+
 </html>
