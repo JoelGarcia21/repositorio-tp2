@@ -24,7 +24,7 @@ public class EmpleadoController {
     private IEmpleadoService empleadoService;
 
     @GetMapping("/gestion")
-    public String getEmpleadoPage(Model model) {
+    public String getEmpleadoPage(Model model){
         model.addAttribute("titulo", "Empleados");
         model.addAttribute("tituloForm", "Datos empleado");
         model.addAttribute("empleados", empleadoService.getEmplados());
@@ -33,15 +33,7 @@ public class EmpleadoController {
     }
 
     @PostMapping("/guardar")
-    public String guardarEmpleado(@Valid @ModelAttribute(name = "empleado") Empleado empleado, BindingResult result,
-            Model model) {
-        if (result.hasErrors()) {
-            model.addAttribute("titulo", "Empleados");
-            model.addAttribute("tituloForm", "Datos empleado");
-            model.addAttribute("empleados", empleadoService.getEmplados());
-            model.addAttribute("empleado", empleadoService.getEmpleado());
-            return "empleado";
-        }
+    public String guardarEmpleado(@ModelAttribute(name = "empleado")Empleado empleado){
         empleado.setEstado(true);
         empleadoService.guardarEmpleado(empleado);
         return "redirect:/empleados/gestion";
@@ -51,15 +43,15 @@ public class EmpleadoController {
     public ModelAndView editarEmpleado(@PathVariable(value = "codigo")Long codigo){
         Empleado empleadoEncontrado= empleadoService.getEmpleadoByCodigo(codigo);
         ModelAndView modelAndView = new ModelAndView("empleado");
-        modelAndView.addObject("titulo", "Editar");  
-        modelAndView.addObject("tit uloForm", "Editar empleado");
+        modelAndView.addObject("titulo", "Editar");
+        modelAndView.addObject("tituloForm", "Editar empleado");
         modelAndView.addObject("empleado", empleadoEncontrado);
         return modelAndView;
     }
 
     @GetMapping("/eliminar/{codigo}")
     public String eliminarEmpleado(@PathVariable(value = "codigo")Long codigo){
-        empleadoService.eliminarEmpleadoByCodigo(codigo);   
+        empleadoService.eliminarEmpleadoByCodigo(codigo);
         return "redirect:/empleados/gestion";
-    }  
+    }
 }

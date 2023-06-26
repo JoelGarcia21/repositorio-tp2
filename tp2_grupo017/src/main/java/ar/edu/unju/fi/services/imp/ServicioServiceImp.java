@@ -11,16 +11,16 @@ import ar.edu.unju.fi.services.IServicioService;
 
 @Service
 public class ServicioServiceImp implements IServicioService {
-    
+
     @Autowired
     private ListaServicios servicios;
 
     @Autowired
     private Servicio servicio;
 
-    
-    /** 
+    /**
      * Método que retorna el listado de servicios.
+     * 
      * @return List<Servicio>
      */
     @Override
@@ -28,10 +28,9 @@ public class ServicioServiceImp implements IServicioService {
         return this.servicios.getListado();
     }
 
-    
-    
-    /** 
+    /**
      * Método que retorna un objeto del tipo Servicio.
+     * 
      * @return Paseador
      */
     @Override
@@ -40,15 +39,77 @@ public class ServicioServiceImp implements IServicioService {
     }
 
     
-    /** 
-     * Método que retorna un objeto del tipo Servicio,según un nro. 
-     * de ID  
+
+    /**
+     * Método que guarda un objeto del tipo Servicio en una lista.
+     * 
+     * @param servicio del tipo Servicio
+     */
+    @Override
+    public void guardarServicio(Servicio servicio) {
+        // int id;
+        // if (this.servicios.getListado().isEmpty()) {
+        // servicio.setId(1l);
+        // } else {
+        // int ultimoId =
+        // this.servicios.getListado().get(this.servicios.getListado().size()-1).getId();
+        // id = ultimoId+1;
+        // servicio.setId(id);
+        // }
+
+        this.servicios.getListado().add(servicio);
+    }
+
+    /**
+     * Método que busca y actualiza los datos de un servicio.
+     * 
+     * @param servicioModificado
+     */
+    @Override
+    public void modificarServicio(Servicio servicioModificado) {
+        for (Servicio servicio : this.servicios.getListado()) {
+            if (servicio.getId() == servicioModificado.getId()) {
+                servicio.setNombre(servicioModificado.getNombre());
+                // servicio.setApellido(servicioModificado.getApellido());
+                // servicio.setNombres(servicioModificado.getNombres());
+                servicio.setDia(servicioModificado.getDia());
+                servicio.setHorario(servicioModificado.getHorario());
+                break;
+            }
+        }
+    }
+
+    /**
+     * Método que elimina un objeto Paseador de la lista según el id del servicio.
+     * 
+     * @param id tipo int.
+     */
+    @Override
+    public void eliminarServicio(Long id) {
+        for (Servicio servicio : this.servicios.getListado()) {
+            if (servicio.getId() == id) {
+                this.servicios.getListado().remove(servicio);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public List<Servicio> getServicioByEstado(boolean estado) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getServicioByEstado'");
+    }
+
+    /**
+     * Método que retorna un objeto del tipo Servicio,según un nro.
+     * de ID
+     * 
      * @param id de tipo int
      * @return Servicio
      */
     @Override
-    public Servicio getServicioBy(Long id) {
-        Servicio servicioEncontrado = null;        
+    public Servicio getServicioById(Long id) {
+        Servicio servicioEncontrado = null;
         for (Servicio servicio : this.servicios.getListado()) {
             if (servicio.getId() == id) {
                 servicioEncontrado = servicio;
@@ -58,61 +119,10 @@ public class ServicioServiceImp implements IServicioService {
         return servicioEncontrado;
     }
 
-    
-    /** 
-     * Método que guarda un objeto del tipo Servicio en una lista. 
-     * @param servicio del tipo Servicio
-     */
     @Override
-    public void guardarServicio(Servicio servicio) {
-        // int id;
-        // if (this.servicios.getListado().isEmpty()) {
-        //     servicio.setId(1l);
-        // } else {
-        //     int ultimoId = this.servicios.getListado().get(this.servicios.getListado().size()-1).getId();
-        //     id = ultimoId+1;
-        //     servicio.setId(id);
-        // }
-
-        this.servicios.getListado().add(servicio);
+    public List<Servicio> getServiciosByDia(String dia) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getServiciosByDia'");
     }
 
-    
-    /** 
-     * Método que busca y actualiza los datos de un servicio.
-     * @param servicioModificado
-     */
-    @Override
-    public void modificarServicio(Servicio servicioModificado) {
-        for (Servicio servicio : this.servicios.getListado()) {
-            if(servicio.getId() == servicioModificado.getId()){
-                servicio.setNombre(servicioModificado.getNombre());
-                servicio.setApellido(servicioModificado.getApellido());
-                servicio.setNombres(servicioModificado.getNombres());
-                servicio.setDia(servicioModificado.getDia());
-                servicio.setHorario(servicioModificado.getHorario());
-                break;
-            }
-        }
-    }
-    
-
-    
-    
-    
-    /** 
-     * Método que elimina un objeto Paseador de la lista según el id del servicio.
-     * @param id tipo int.
-     */
-    @Override    
-    public void eliminarServicio(Long id) {
-        for (Servicio servicio : this.servicios.getListado()) {
-            if (servicio.getId() == id){
-                this.servicios.getListado().remove(servicio);
-                break;
-            }
-        }
-    }
-
-    
 }

@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
@@ -8,11 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+
 
 @Component
 @Entity
@@ -25,22 +21,23 @@ public class Servicio {
     private Long id;
 
     @Column(name = "ser_nombre")
-    @Size(min=3, max = 20, message = "El nombre del servicio tiene que tener entre 3 y 20 caracteres")
-    @NotBlank(message = "No puede estar en blanco")
     private String nombre;
     
         
-    @Column(name = "ser_dia")
-    @NotEmpty(message = "Debe ingresar un día")
+    @Column(name = "ser_dia")    
     private String dia;
 
     @Column(name = "ser_horario")
-    @NotEmpty(message = "Tiene que ingresar un horario")
     private String horario;
 
-    @Autowired
-    @OneToOne
-    private Empleado empleado;
+    @Column(name = "ser_apellido_emp")
+    private String apellido;
+
+    @Column(name = "ser_nombre_emp")
+    private String nombreEmpleado;
+
+    @Column(name = "ser_estado")
+    private boolean estado;
 
 
     public Servicio() {
@@ -48,13 +45,9 @@ public class Servicio {
 
 
 
-    public Servicio(Long id, String nombre, String dia, String horario, Empleado empleado) {
-        this.id = id;
-        this.nombre = nombre;
-        this.dia = dia;
-        this.horario = horario;
-        this.empleado = empleado;
-    }
+
+    
+    
 
     public Long getId() {
         return this.id;
@@ -88,12 +81,34 @@ public class Servicio {
         this.horario = horario;
     }
 
-    public Empleado getEmpleado() {
-        return this.empleado;
+
+    public String getApellido() {
+        return this.apellido;
     }
 
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getNombreEmpleado() {
+        return this.nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+    
+
+    public boolean isEstado() {
+        return this.estado;
+    }
+
+    public boolean getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
 

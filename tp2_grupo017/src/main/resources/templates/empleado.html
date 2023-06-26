@@ -17,6 +17,24 @@
                     <div class="col-xs-12 col-sm-12 col-md-4">
                         <label for="apellido" class="form-label">Apellido</label>
                         <input type="text" class="form-control" id="apellido" th:field="*{apellido}">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label for="nombre" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2">
+                        <label for="anio" class="form-label">Año Ingreso</label>
+                        <input type="text" class="form-control" id="anio" th:field="*{anioIngreso}">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                      </div>
+                </form>
+                <!-- <form class="row g-3" th:action="@{/empleados/guardar}" th:object="${empleado}" method="post">
+                    <input type="hidden" th:field="*{codigo}">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" th:field="*{apellido}">
                         <div class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6">
@@ -32,7 +50,7 @@
                     <div class="col-12 mb-3 ">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                       </div>
-                </form>
+                </form> -->
             </div>
         </div>
         <div class="row">
