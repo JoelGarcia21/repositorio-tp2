@@ -36,8 +36,8 @@
                                 <!-- se cambia el listado -->
                                 <tr th:each="servicio : ${servicios}">
                                     <td class="align-middle" th:text="${servicio.id}"></td>
-                                    <td class="align-middle" th:text="${servicio.apellido}"></td>
-                                    <td class="align-middle" th:text="${servicio.nombreEmpleado}"></td>
+                                    <td class="align-middle" th:text="${servicio.empleado.apellido}"></td>
+                                    <td class="align-middle" th:text="${servicio.empleado.nombre}"></td>
                                     <td class="align-middle" th:text="${servicio.nombre}"></td>
                                     <td class="align-middle" th:text="${servicio.dia}"></td>
                                     <td class="align-middle" th:text="${servicio.horario}"></td>
