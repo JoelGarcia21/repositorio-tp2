@@ -39,7 +39,7 @@ public class ServicioServiceMysql implements IServicioService {
     }
 
     @Override
-    public void guardarServicio(Servicio servcio) {
+    public void guardarServicio(Servicio servicio) {
         this.servicioRepository.save(servicio);
     }
 

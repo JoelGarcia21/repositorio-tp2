@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -20,37 +21,19 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_id")
     private Long codigo;
-    
-    @NotEmpty(message = "Debe ingresar el apellido")
-    @Column(name = "emp_apellido", length = 20, nullable = false)
+    @Column(name = "emp_apellido")
     private String apellido;
-    
-    @NotEmpty(message = "Debe ingresar el nombre")
-    @Column(name = "emp_nombre", length = 20, nullable = false)
+    @Column(name = "emp_nombre")
     private String nombre;
-    
-    
-    @Min(message = "el año debe ser un valor mayor que 0", value = 0)
-    @Column(name = "emp_anio_ingreso", nullable = false)
+    @Column(name = "emp_anio_ingreso")
     private int anioIngreso;
-    
     @Column(name = "emp_estado")
     private boolean estado;
-    
     @Column(name = "emp_asignado")
     private boolean asignado;
-    
+
 
     public Empleado() {
-    }
-
-    public Empleado(Long codigo, String apellido, String nombre, int anioIngreso, boolean estado, boolean asignado) {
-        this.codigo = codigo;
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.anioIngreso = anioIngreso;
-        this.estado = estado;
-        this.asignado = asignado;
     }
 
     public Long getCodigo() {
@@ -108,5 +91,6 @@ public class Empleado {
     public void setAsignado(boolean asignado) {
         this.asignado = asignado;
     }
+
 
 }
