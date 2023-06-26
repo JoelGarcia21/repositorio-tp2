@@ -37,8 +37,16 @@ public class ServicioController {
 
     @GetMapping("/gestion")
     public String getServicioPage(Model model) {
+        model.addAttribute("titulo", "Gestión Servicios");
         model.addAttribute("servicios", this.servicioService.getServicioByEstado(true));
         return "gestion_servicios";
+    }
+
+    @GetMapping("/listado")
+    public String getServicioPagePrincipal(Model model){
+        model.addAttribute("titulo", "Servicios");
+        model.addAttribute("servicios", servicioService.getServicioByEstado(true));
+        return "servicios";
     }
 
     @GetMapping("/nuevo")
