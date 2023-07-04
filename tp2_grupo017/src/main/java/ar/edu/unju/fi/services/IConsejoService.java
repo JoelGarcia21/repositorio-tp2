@@ -12,6 +12,8 @@ public interface IConsejoService {
 
 	List<Consejo> listarConsejos();
     void guardarConsejo(Consejo consejo);
-    void modificarConsejo(int indice, Consejo nuevoConsejo);
-    void eliminarConsejo(int indice);
+    void modificarConsejo(Consejo nuevoConsejo);
+    void eliminarConsejo(Long id);
+    Consejo getByIdConsejo(Long id);
+    Consejo getConsejo();
 }
