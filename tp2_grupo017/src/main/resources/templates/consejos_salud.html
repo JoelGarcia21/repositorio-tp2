@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head th:replace="~{layouts/head :: head}"></head>
+	<body>
+		<header th:replace="~{layouts/header :: header}"></header>
+		<nav th:replace="~{layouts/nav :: nav}"></nav>
+		<div>
+			<div class="row">
+				<div class="principal">
+					<h3>Consejos de salud para cuidar a tu mascota:</h3>
+					<div>
+						<table class="table table-striped table-bordered">
+						    <thead class="thead-dark">
+						        <tr>
+						            <th style="width: 85%;" class="border"></th>						            
+						        </tr>
+						    </thead>
+						    <tbody>
+						        <tr th:each="consejo : ${consejos}">
+						            <td th:text="${consejo.descripcion}" class="border"></td>						            
+						        </tr>
+						    </tbody>
+						</table>						
+					</div>	
+				</div>
+				<div class="col-sm-4 content-aside2">
+					<nav th:replace="~{layouts/aside :: aside}"></nav>
+				</div>
+			</div>
+		</div>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+	</body>
+</html>

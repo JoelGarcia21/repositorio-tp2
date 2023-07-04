@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import ar.edu.unju.fi.entity.ContactenosModel;
+import ar.edu.unju.fi.entity.Contacto;
 import jakarta.validation.Valid;
 
     @Controller
@@ -15,13 +15,13 @@ import jakarta.validation.Valid;
 
     @GetMapping("/contactenos")
 	public String getContactenos(Model model) {
-		    model.addAttribute("contactenosModel", new ContactenosModel());
+		    model.addAttribute("contactenosModel", new Contacto());
 		    return "contactenos";
 	}
 	
 	
 	@PostMapping("/enviar")
-	public String enviarFormulario(@ModelAttribute("contactenosModel") @Valid ContactenosModel contactenosModel,
+	public String enviarFormulario(@ModelAttribute("contactenosModel") @Valid Contacto contactenosModel,
             BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 		return "contactenos";

@@ -48,7 +48,7 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 	 * @param nuevoConsejo El nuevo objeto Consejo con los datos actualizados.
 	 */
 	@Override
-	public void modificarConsejo(Consejo nuevoConsejo) {
+	public void modificarConsejo(Consejo nuevoConsejo) {		
 		consejoRepository.save(nuevoConsejo);
 	}
 

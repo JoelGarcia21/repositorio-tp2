@@ -25,7 +25,7 @@
                         <a class="nav-link" th:href="@{/producto/listado}">Productos</a>
                     </li>
                     <li class="nav-item py-4 px-4">
-                        <a class="nav-link" th:href="@{/consejos}">Consejos de salud</a>
+                        <a class="nav-link" th:href="@{/consejos/listado}">Consejos de salud</a>
                     </li>
                     <li class="nav-item dropdown py-4 px-4">
                         <a th:href="@{/servicio/listado}" class="nav-link">Servicios</a>
@@ -54,10 +54,10 @@
                             Gestión
                         </a>
                         <ul class="dropdown-menu px-4">
-                            <li><a class="dropdown-item py-3 px-4" href="#">Consejos de Salud</a></li>
+                            <li><a class="dropdown-item py-3 px-4" th:href="@{/consejos/gestion}">Consejos de Salud</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/producto/gestion}">Productos</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/servicio/gestion}">Servicios</a></li>
-                            <li><a class="dropdown-item py-3 px-4" href="#">Sucursales</a></li>
+                            <!-- <li><a class="dropdown-item py-3 px-4" href="#">Sucursales</a></li> -->
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/categorias/listado}">Categorias</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/empleados/gestion}">Empleados</a></li>
                             <li><a class="dropdown-item py-3 px-4" th:href="@{/sucursal/gestion}">Sucursales</a></li>

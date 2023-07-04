@@ -3,7 +3,7 @@ package ar.edu.unju.fi.entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-public class ContactenosModel {
+public class Contacto {
 	@NotBlank(message = ".El nombre es obligatorio.")
 	private String nombre;
 	@NotBlank(message = ".El correo es obligatorio")
