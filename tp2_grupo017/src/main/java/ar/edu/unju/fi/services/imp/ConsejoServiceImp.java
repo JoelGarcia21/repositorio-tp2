@@ -32,12 +32,24 @@ public class ConsejoServiceImp implements IConsejoService{
     }
 
     @Override
-    public void modificarConsejo(int indice, Consejo nuevoConsejo) {
-        listaConsejos.editarConsejo(indice, nuevoConsejo);
+    public void modificarConsejo(Consejo nuevoConsejo) {
+        // listaConsejos.editarConsejo(indice, nuevoConsejo);
     }
 
     @Override
-    public void eliminarConsejo(int indice) {
-        listaConsejos.eliminarConsejo(indice);
+    public void eliminarConsejo(Long indice) {
+        // listaConsejos.eliminarConsejo(indice);
+    }
+
+    @Override
+    public Consejo getByIdConsejo(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getByIdConsejo'");
+    }
+
+    @Override
+    public Consejo getConsejo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getConsejo'");
     }
 }

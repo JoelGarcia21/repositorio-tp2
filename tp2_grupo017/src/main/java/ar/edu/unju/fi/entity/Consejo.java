@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Component
 @Entity
@@ -20,7 +21,8 @@ public class Consejo {
 	private Long id;
 	
 	@Column(name="consejo", nullable = false) // nullable = false, No acepta valores nulos.
-	private String consejo;
+	@NotEmpty(message = "Debe ingresar un consejo.")
+	private String descripcion;
 
 	@Column(name="csj_estado")
 	private boolean estado; //El atribo indica si el objeto esta activo o no.
@@ -28,24 +30,45 @@ public class Consejo {
     public Consejo() {
     }
 
-    public Consejo(String consejo) {
-        this.consejo = consejo;
-    }
 
-    public String getConsejo() {
-        return consejo;
-    }
+	public Consejo(Long id, String consejo, boolean estado) {
+		this.id = id;
+		this.descripcion = consejo;
+		this.estado = estado;
+	}
 
-    public void setConsejo(String consejo) {
-        this.consejo = consejo;
-    }
+
+	public Consejo(String consejo) {
+		this.descripcion = consejo;
+	}
+
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String consejo) {
+		this.descripcion = consejo;
+	}
 
 	public boolean isEstado() {
-		return estado;
+		return this.estado;
+	}
+
+	public boolean getEstado() {
+		return this.estado;
 	}
 
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+	
 		
 }

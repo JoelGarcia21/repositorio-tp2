@@ -15,6 +15,9 @@ import ar.edu.unju.fi.services.IConsejoService;
 public class ConsejoServiceMysqlImp implements IConsejoService {
 
 	@Autowired
+	private Consejo consejo;
+
+	@Autowired
 	private IConsejoRepository consejoRepository;
 	
 	/**
@@ -41,12 +44,11 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 
 	/**
 	 * Modifica un consejo existente en el repositorio.
-	 *
-	 * @param indice      El índice del consejo a modificar.
+	 *	 
 	 * @param nuevoConsejo El nuevo objeto Consejo con los datos actualizados.
 	 */
 	@Override
-	public void modificarConsejo(int indice, Consejo nuevoConsejo) {
+	public void modificarConsejo(Consejo nuevoConsejo) {		
 		consejoRepository.save(nuevoConsejo);
 	}
 
@@ -56,15 +58,42 @@ public class ConsejoServiceMysqlImp implements IConsejoService {
 	 * @param indice El índice del consejo a eliminar.
 	 */
 	@Override
-	public void eliminarConsejo(int indice) {
+	public void eliminarConsejo(Long id) {
 		
-		List<Consejo> consejos = listarConsejos();
-	    if (indice >= 0 && indice < consejos.size()) {
-	        Consejo consejo = consejos.get(indice);
-	        consejo.setEstado(false);
-	        consejoRepository.save(consejo);
-	    }
+		// List<Consejo> consejos = listarConsejos();
+	    // if (indice >= 0 && indice < consejos.size()) {
+	    //     Consejo consejo = consejos.get(indice);
+	    //     consejo.setEstado(false);
+	    //     consejoRepository.save(consejo);
+	    // }
+		Consejo consejoBuscado = consejoRepository.findById(id).get();
+		consejoBuscado.setEstado(false);
+		consejoRepository.save(consejoBuscado);
+
 		
+	}
+
+	
+	/**
+	 * Método que retorna un objeto del tipo Consejo según el id del mismo.
+	 * 
+	 * @param id del tipo Long
+	 * @return objeto del tipo Consejo.
+	 */
+	@Override
+	public Consejo getByIdConsejo(Long id) {
+		return consejoRepository.findById(id).get();
+	}
+
+	
+	/**
+	 * Métod que retorna un objeto del tipo Consejo
+	 * 
+	 * @return objeto del tipo Consejo.
+	 */
+	@Override
+	public Consejo getConsejo() {
+		return this.consejo;
 	}
 
 }

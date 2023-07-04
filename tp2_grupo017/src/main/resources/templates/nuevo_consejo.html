@@ -9,10 +9,13 @@
 		    <div class="d-flex justify-content-center">
 		        <div class="col-lg-5">
 		            <h1 class="text-center">Formulario Consejo</h1>
-		            <form action="/consejos/agregar" method="post">
+					<form ></form>
+		            <form th:action="${edicion}?@{/consejos/editar}:@{/consejos/agregar} " th:object="${consejo}" method="post">
+						<input type="hidden" th:field="*{id}">
 		                <div>
 		                    <label for="consejo">Consejo:</label>
-		                    <textarea class="form-control" id="consejo" name="consejo" rows="5" required></textarea>
+		                    <textarea class="form-control" id="consejo" name="consejo" rows="5" th:field="*{descripcion}"></textarea>
+							<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 		                </div>
 		                <div class="text-center">
 		                    <button type="submit" class="btn btn-primary">Guardar</button>

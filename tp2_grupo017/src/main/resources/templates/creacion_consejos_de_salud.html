@@ -17,12 +17,12 @@
 						        </tr>
 						    </thead>
 						    <tbody>
-						        <tr th:each="consejo, indice : ${consejos}">
-						            <td th:text="${consejo.consejo}" class="border"></td>
+						        <tr th:each="consejo : ${consejos}">
+						            <td th:text="${consejo.descripcion}" class="border"></td>
 						            <td class="text-center">
 						                <div class="btn-group btn-group-sm">
-						                    <!-- <a class="btn btn-primary mr-2" th:href="@{/consejos/editar/{indice}(indice=${indice.index})}">Editar</a> -->
-						                    <a class="btn btn-danger" th:href="@{/consejos/eliminar/{indice}(indice=${indice.index})}">Eliminar</a>
+						                    <a class="btn btn-primary mr-2" th:href="@{/consejos/editar/}+${consejo.id}">Editar</a>
+						                    <a class="btn btn-danger" th:href="@{/consejos/eliminar/}+${consejo.id}">Eliminar</a>
 						                </div>
 						            </td>
 						        </tr>
