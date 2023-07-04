@@ -1,20 +1,22 @@
 package ar.edu.unju.fi.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import ar.edu.unju.fi.entity.Sucursal;
-import jakarta.validation.Valid;
 
 public interface ISucursalService {
 	List<Sucursal> getLista();
 	
-	void guardar(@Valid Sucursal sucursal);
+	void guardar(Sucursal sucursal);
 	
-	Sucursal getBy(String nombre);
+	Sucursal getBy(Long codigo);
 
 	void modificar(Sucursal sucursal);
 	
-	void eliminar(Sucursal sucursalEncontrada);
+	void eliminar(Long codigo);
 	
 	Sucursal getSucursal();
+
+	List<Sucursal> getSucursalBeetwen(LocalDate inicio, LocalDate fin);
 }

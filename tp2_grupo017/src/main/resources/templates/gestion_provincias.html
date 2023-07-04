@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{layouts/head :: head}"></head>
+
+<body>
+    <header th:replace="~{layouts/header :: header}"></header>
+    <nav th:replace="~{layouts/nav :: nav}"></nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 offset-md-3">
+                <h2 th:text="${tituloForm}"></h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card mt-2 mb-5 pt-3 pb-3 px-5">
+                <form class="row row-cols-lg-auto" th:action="@{/provincia/guardar}"
+                    th:object="${provincia}" method="post">
+                    <input type="hidden" th:field="*{codigo}">
+                    <div class="col-xs-12 col-sm-12 col-md-10">                        
+                        <input type="text" class="form-control" id="provincia" th:field="*{nombre}" placeholder="Provincia">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-resoponsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Provincia</th>
+                            <th scope="col">Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="provincia : ${provincias}">
+                            <th scope="row" th:text="${provincia.codigo}"></th>
+                            <td th:text="${provincia.nombre}"></td>
+                            <td>
+                                <a th:href="@{/provincia/editar/}+${provincia.codigo}"
+                                    class="btn btn-warning">Editar</a>
+                                <a th:href="@{/provincia/eliminar/}+${provincia.codigo}"
+                                    class="btn btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+
+</html>

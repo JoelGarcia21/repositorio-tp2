@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="~{/layouts/head :: head}"></head>
+
+<body>
+    <header th:replace="~{/layouts/header :: header}"></header>
+
+    <nav th:replace="~{/layouts/nav :: nav}"></nav>
+
+    <div id="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 contenido">
+                <div class="contenedor-paseos"> <!--  Revisar esto -->
+                    <div class="titulo-seccion">
+                        <div class="titulo-tabla">
+                            <h2 class="text-center">Listado de Sucursales</h2>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <form class="my-2" th:action="@{/sucursal/buscar}" method="get">
+                            <div class="input-group">
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="inicio" required="required">
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" name="final" required="required">
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-outline-secondary" title="Buscar"><i
+                                            class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <a class="btn btn-info" th:href="@{/sucursal/listado}">Mostrar todos</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="table-info">
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Direccion</th>
+                                    <th scope="col">Ciudad</th>
+                                    <th scope="col">Fecha Inicio</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Telefono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="sucursal : ${sucursales}">
+                                    <td class="align-middle" th:text="${sucursal.nombre}"></td>
+                                    <td class="align-middle" th:text="${sucursal.direccion}"></td>
+                                    <td class="align-middle" th:text="${sucursal.provincia.nombre}"></td>
+                                    <td class="align-middle" th:text="${sucursal.fechaInicio}"></td>
+                                    <td class="align-middle" th:text="${sucursal.email}"></td>
+                                    <td class="align-middle" th:text="${sucursal.telefono}"></td>
+                                </tr>
+                            </tbody>
+
+
+                        </table>
+                        <div class="alert alert-danger" th:if="${error}">
+                            <p>La fecha inicial de busqueda tiene que ser menor a la fecha final</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 content-aside">
+                <aside th:replace="~{layouts/aside::aside}"></aside>
+            </div>
+        </div>
+
+    </div>
+    <footer th:replace="~{/layouts/footer :: footer}" class="classefooter"></footer>
+</body>
+
+</html>
