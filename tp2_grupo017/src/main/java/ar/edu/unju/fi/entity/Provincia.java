@@ -19,7 +19,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class Provincia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "prov_codigo")
+    @Column(name = "prov_codigo")    
     private Long codigo;
 
     @Column(name = "prov_nombre")

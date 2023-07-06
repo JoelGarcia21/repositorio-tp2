@@ -20,11 +20,34 @@
                     </div>
                     <div class="row">
                         <form class="my-2" th:action="@{/sucursal/buscar}" method="get">
-                            <div class="input-group">
+                            <div class="row g-5 align-items-center">
+                                <div class="col-auto">
+                                    <label for="inicio" class="col-form-label">Desde:</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="date" class="form-control" name="inicio" required="required">
+                                </div>
+                                <div class="col-auto">
+                                    <label for="final" class="col-form-label">Hasta:</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="date" class="form-control" name="final" required="required">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-outline-secondary" title="Buscar"><i
+                                            class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                                <div class="col-md-2 ">
+                                    <a class="btn btn-info" th:href="@{/sucursal/listado}">Mostrar todos</a>
+                                </div>
+                            </div>
+                            <!-- <div class="input-group">
                                 <div class="col-md-3">
+                                    <label for="inicio" class="form-control">Desde</label>
                                     <input type="date" class="form-control" name="inicio" required="required">
                                 </div>
                                 <div class="col-md-3">
+                                    <label for="inicio" class="form-control">Hasta</label>
                                     <input type="date" class="form-control" name="final" required="required">
                                 </div>
                                 <div class="col-md-3">
@@ -34,7 +57,7 @@
                                 <div class="col-md-3 ">
                                     <a class="btn btn-info" th:href="@{/sucursal/listado}">Mostrar todos</a>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </form>
                     </div>

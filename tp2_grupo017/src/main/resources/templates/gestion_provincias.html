@@ -19,6 +19,8 @@
                     <input type="hidden" th:field="*{codigo}">
                     <div class="col-xs-12 col-sm-12 col-md-10">                        
                         <input type="text" class="form-control" id="provincia" th:field="*{nombre}" placeholder="Provincia">
+                        <div class="alert alert-danger mt-2" role="alert"
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-2">
                         <button type="submit" class="btn btn-primary">Guardar</button>

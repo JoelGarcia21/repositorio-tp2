@@ -41,6 +41,7 @@ public class SucursalesController {
 	 */
 	@GetMapping("/listado")
 	public String getListaSucursalesPage (Model model) {
+		model.addAttribute("titulo", "Sucursales");
 		model.addAttribute("sucursales", sucursalService.getLista()); 
 
 		return "sucursales_page";
@@ -53,6 +54,7 @@ public class SucursalesController {
 	 */
 	@GetMapping("/gestion")
 	public String getListaSucursalesGestionPage(Model model) {
+		model.addAttribute("titulo", "Gestión | Sucursales");
 		model.addAttribute("sucursales", sucursalService.getLista());
 
 		return "sucursales";
@@ -68,7 +70,7 @@ public class SucursalesController {
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion = false;
-
+		model.addAttribute("titulo", "Nueva Sucursal");
 		model.addAttribute("sucursal", sucursalService.getSucursal());
 		model.addAttribute("edicion", edicion);
 		model.addAttribute("provincias", provinciaService.getByEstado(true));
@@ -88,6 +90,7 @@ public class SucursalesController {
 		ModelAndView modelView = new ModelAndView("sucursales");
 		if(result.hasErrors()) {
 			modelView.setViewName("nueva_sucursal");
+			modelView.addObject("titulo", "Nueva Sucursal");
 			modelView.addObject("sucursal", sucursal);
 			modelView.addObject("provincias", provinciaService.getByEstado(true));
 			return modelView;
@@ -96,7 +99,8 @@ public class SucursalesController {
 		sucursal.setProvincia(provincia);
 		sucursal.setEstado(true);		
 		sucursalService.guardar(sucursal);
-		modelView.addObject("sucursales", sucursalService.getLista());		
+		modelView.addObject("sucursales", sucursalService.getLista());
+		modelView.addObject("titulo", "Gestión | Sucursales");
 		return modelView;
 	}
 	
@@ -115,6 +119,7 @@ public class SucursalesController {
 		model.addAttribute("sucursal", sucursalEncontrada);
 		model.addAttribute("provincias", provinciaService.getByEstado(true));
 		model.addAttribute("edicion", edicion);
+		model.addAttribute("titulo", "Editar Sucursal");
 
 		return "nueva_sucursal";
 	}
@@ -134,6 +139,7 @@ public class SucursalesController {
 			model.addAttribute("sucursal", sucursal);
 			model.addAttribute("provincias", provinciaService.getByEstado(true));
 			model.addAttribute("edicion", edicion);
+			model.addAttribute("titulo", "Editar Sucursal");
 
 			return "nueva_sucursal";
 		}
@@ -176,12 +182,13 @@ public class SucursalesController {
 			@RequestParam(value = "final") @DateTimeFormat(pattern = "yyyy-MM-dd")LocalDate fechaFinal, Model model) {
 		
 		
-		if (fechaInicial.isBefore(fechaFinal)) {
+		if (fechaInicial.isBefore(fechaFinal)) {			
 			model.addAttribute("error", false);
 			model.addAttribute("sucursales", this.sucursalService.getSucursalBeetwen(fechaInicial, fechaFinal));			
 		}else {
 			model.addAttribute("error", true);			
 		}
+		model.addAttribute("titulo", "Sucursales");
 		return "sucursales_page";
 	}
 }
