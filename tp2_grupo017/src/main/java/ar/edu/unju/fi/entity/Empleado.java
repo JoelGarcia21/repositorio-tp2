@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 
 @Component
 @Entity
@@ -18,14 +20,22 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_id")
     private Long codigo;
+
+    @NotEmpty(message = "Debe ingresar un Apellido.")
     @Column(name = "emp_apellido")
     private String apellido;
+
+    @NotEmpty(message = "Debe ingresar un Nombre.")
     @Column(name = "emp_nombre")
     private String nombre;
+
+    @Min(value = 1900, message = "Valor ingresado debe ser mayor que 1900")
     @Column(name = "emp_anio_ingreso")
     private int anioIngreso;
+
     @Column(name = "emp_estado")
     private boolean estado;
+    
     @Column(name = "emp_asignado")
     private boolean asignado;
 
