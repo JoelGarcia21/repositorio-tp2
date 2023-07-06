@@ -48,6 +48,7 @@ public class ConsejosController {
     public String mostrarConsejos(Model model) {
         List<Consejo> consejos = consejoService.listarConsejos();
         model.addAttribute("consejos", consejos);
+        model.addAttribute("titulo", "Gestion | Consejos de Salud");
         return "creacion_consejos_de_salud";
     }
 
@@ -58,6 +59,7 @@ public class ConsejosController {
      */
     @GetMapping("/listado")
     public String mostrarConsejosPage(Model model) {
+        model.addAttribute("titulo", "Consejos de Salud");
         model.addAttribute("consejos", consejoService.listarConsejos());
         return "consejos_salud";
 
@@ -69,6 +71,7 @@ public class ConsejosController {
      */
     @GetMapping("/nuevo_consejo")
     public String nuevoConsejo(Model model) {
+        model.addAttribute("titulo", "Nuevo Consejo");
     	model.addAttribute("consejo", consejoService.getConsejo());
         model.addAttribute("edicion", false);
     	return "nuevo_consejo";
@@ -83,6 +86,7 @@ public class ConsejosController {
     public String agregarConsejo(@Valid @ModelAttribute("consejo")Consejo consejo, BindingResult result, Model model) {
         // Consejo nuevoConsejo = new Consejo(texto);
         if (result.hasErrors()) {
+            model.addAttribute("titulo", "Nuevo Consejo");
             model.addAttribute("consejo", consejo);
             model.addAttribute("edicion", false);
             return "nuevo_consejo";
@@ -102,6 +106,7 @@ public class ConsejosController {
     @GetMapping("/editar/{id}")
     public String editarConsejoPage(@PathVariable(value = "id")Long id, Model model){
         Consejo consejoBuscado = consejoService.getByIdConsejo(id);
+        model.addAttribute("titulo", "Editar Consejo");
         model.addAttribute("consejo", consejoBuscado);
         model.addAttribute("edicion", true);
         LOGGER.info("valor del estado-------->"+consejoBuscado.getEstado());
@@ -120,6 +125,7 @@ public class ConsejosController {
     @PostMapping("/editar")
     public String editar(@Valid @ModelAttribute("consejo")Consejo consejo, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("titulo", "Editar Consejo");
             model.addAttribute("consejo", consejo);
             model.addAttribute("edicion", true);
             return "nuevo_consejo";
