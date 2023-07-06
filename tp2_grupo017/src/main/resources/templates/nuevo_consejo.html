@@ -17,7 +17,7 @@
 		                    <textarea class="form-control" id="consejo" name="consejo" rows="5" th:field="*{descripcion}"></textarea>
 							<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 		                </div>
-		                <div class="text-center">
+		                <div class="text-center mt-4">
 		                    <button type="submit" class="btn btn-primary">Guardar</button>
 		                </div>
 		            </form>

@@ -218,8 +218,7 @@ public class ProductoController {
 
 	/**
 	 * Esta función de Java devuelve un objeto ModelAndView que contiene los
-	 * detalles y el nombre del
-	 * archivo de imagen de un producto con un código dado.
+	 * detalles y el nombre del archivo de imagen de un producto con un código dado.
 	 * 
 	 * @param codigo El parámetro "código" es una variable de ruta que representa el
 	 *               código único de un
@@ -231,8 +230,9 @@ public class ProductoController {
 	 */
 	@GetMapping("/detalle/{codigo}")
 	public ModelAndView getPageImagenProducto(@PathVariable(value = "codigo") Long codigo) {
-		ModelAndView modelAndView = new ModelAndView("detalle_producto");
+		ModelAndView modelAndView = new ModelAndView("detalle_producto");		
 		Producto prod = productoService.buscarProductoByCodigo(codigo);
+		modelAndView.addObject("titulo", "Imagen del producto");
 		modelAndView.addObject("nombreProducto", prod.getNombre());
 		modelAndView.addObject("filename", prod.getImagen());
 		return modelAndView;
