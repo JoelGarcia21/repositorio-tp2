@@ -23,6 +23,12 @@ public class EmpleadoController {
     @Qualifier("empleadoServiceMysql")
     private IEmpleadoService empleadoService;
 
+    /**
+     * Método que renderiza la página empleado.
+     * 
+     * @param model  parammetro de tipo Model.
+     * @return un string que es el nombre de la pág. html "empleado".
+     */
     @GetMapping("/gestion")
     public String getEmpleadoPage(Model model) {
         model.addAttribute("titulo", "Empleados");
@@ -32,6 +38,18 @@ public class EmpleadoController {
         return "empleado";
     }
 
+    
+    /**
+     * Método que guarda un objeto del tipo Empleado, previamente verificando si el objeto es válido.
+     * Si el empleado tiene campos invalidos retorna a la pág del formulario.
+     * 
+     * @param empleado parametro del tipo Empleado traido por @ModelAttribute de la vista.
+     * @Valid indica que el objeto podría ser validado usando las reglas de validacion de la clase Empleado.
+     * @param result el parametro de tipo BindingResult usado para almacenar mostrar los errores de validación.
+     * @param model parametro del tipo Model usado para enviar datos entre el controller y la vista.
+     * @return un String, si hay errores de validación retorna al formualrio de empleado, sino redirecciona a la 
+     * vista de gestión de empleados.
+     */
     @PostMapping("/guardar")
     public String guardarEmpleado(@Valid @ModelAttribute(name = "empleado") Empleado empleado, BindingResult result,
             Model model) {
@@ -48,6 +66,14 @@ public class EmpleadoController {
         return "redirect:/empleados/gestion";
     }
 
+    
+    /**
+     * Método que recupera un empleado por su código y retorna un objeto ModelAnView con la 
+     * información de para editar.
+     * 
+     * @param codigo parametro del tipo Long que representa el codigo del empleado a buscar.
+     * @return un objetod del tipo ModelAndView, con los datos del empleado.
+     */
     @GetMapping("/editar/{codigo}")
     public ModelAndView editarEmpleado(@PathVariable(value = "codigo") Long codigo) {
         Empleado empleadoEncontrado = empleadoService.getEmpleadoByCodigo(codigo);
@@ -58,6 +84,12 @@ public class EmpleadoController {
         return modelAndView;
     }
 
+    /**
+     * Método que elimina un empleado según su codigo.
+     * 
+     * @param codigo parametro del tipo long que representa el codigo del empleado a eliminar.
+     * @return un string que es el nombre de la página de gestión de empleados.
+     */
     @GetMapping("/eliminar/{codigo}")
     public String eliminarEmpleado(@PathVariable(value = "codigo") Long codigo) {
         empleadoService.eliminarEmpleadoByCodigo(codigo);

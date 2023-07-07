@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Component
 @Entity
@@ -30,6 +31,7 @@ public class Empleado {
     private String nombre;
 
     @Min(value = 1900, message = "Valor ingresado debe ser mayor que 1900")
+    @NotNull(message = "No valido")
     @Column(name = "emp_anio_ingreso")
     private int anioIngreso;
 

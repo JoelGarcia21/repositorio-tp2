@@ -13,7 +13,7 @@ import ar.edu.unju.fi.services.ICategoriaService;
 import ar.edu.unju.fi.services.IProductoService;
 
 @Service("productoServiceMysql")
-public class ProductoServiceMsqlImp implements IProductoService {
+public class ProductoServiceMysqlImp implements IProductoService {
     
     @Autowired
     private Producto producto;

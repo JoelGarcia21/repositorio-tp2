@@ -24,18 +24,18 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/consejos")
-public class ConsejosController {
+public class ConsejoController {
 	@Autowired
 	@Qualifier("consejoServiceMysqulImp") //La anotación @Qualifier se utiliza para especificar cuál implementación concreta de una interfaz se debe utilizar cuando hay múltiples implementaciones disponibles.
 	private IConsejoService consejoService;
 
-    private static final Log LOGGER = LogFactory.getLog(ConsejosController.class);
+    private static final Log LOGGER = LogFactory.getLog(ConsejoController.class);
 	
 	/**
 	 * Constructor que inyecta la dependencia de IConsejoService.
 	 * @param consejoService Servicio de consejos
 	 */
-    public ConsejosController(IConsejoService consejoService) {
+    public ConsejoController(IConsejoService consejoService) {
     	this.consejoService = consejoService;
     }
     

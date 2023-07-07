@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Component
 @Entity
@@ -20,7 +21,9 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cat_id")
     private Long id;
+
     @Column(name = "cat_nombre")
+    @NotEmpty(message = "debe Ingresar una categoría")
     private String nombre;
 
     @Column(name = "cat_estado")

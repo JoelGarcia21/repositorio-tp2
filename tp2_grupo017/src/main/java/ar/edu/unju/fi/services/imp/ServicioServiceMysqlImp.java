@@ -10,7 +10,7 @@ import ar.edu.unju.fi.repository.IServicioRepository;
 import ar.edu.unju.fi.services.IServicioService;
 
 @Service("servicioServiceMysql")
-public class ServicioServiceMysql implements IServicioService {
+public class ServicioServiceMysqlImp implements IServicioService {
 
     @Autowired
     private Servicio servicio;

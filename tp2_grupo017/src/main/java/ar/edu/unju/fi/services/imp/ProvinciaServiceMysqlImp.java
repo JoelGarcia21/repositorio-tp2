@@ -10,7 +10,7 @@ import ar.edu.unju.fi.repository.IProvinciaRepository;
 import ar.edu.unju.fi.services.IProvinciaService;
 
 @Service("provinciaServiceMysql")
-public class ProvinciaServiceImpMysql implements IProvinciaService {
+public class ProvinciaServiceMysqlImp implements IProvinciaService {
 
     @Autowired
     private Provincia provincia;

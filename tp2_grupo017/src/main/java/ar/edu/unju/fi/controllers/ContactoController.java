@@ -11,7 +11,7 @@ import ar.edu.unju.fi.entity.Contacto;
 import jakarta.validation.Valid;
 
     @Controller
-    public class ContactenosController {    
+    public class ContactoController {    
 
     @GetMapping("/contactenos")
 	public String getContactenos(Model model) {
