@@ -24,7 +24,7 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/sucursal")
-public class SucursalesController {
+public class SucursalController {
 	
 	@Autowired
 	@Qualifier("sucursalServiceMysql")

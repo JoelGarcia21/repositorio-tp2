@@ -19,6 +19,7 @@
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" id="nombre" class="form-control" placeholder="Nombre Categoria"
                         th:field="*{nombre}">
+                        <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Guardar</button>

@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import ar.edu.unju.fi.services.IUploadFileService;
 
 @Service
-public class UploadFileService implements IUploadFileService {
+public class UploadFileServiceImp implements IUploadFileService {
 
     private static final String UPLOADS_FOLDER = "src/main/resources/static/uploads";
 
